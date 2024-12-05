@@ -1,0 +1,107 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
+    /* padding-bottom: 150px; */
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+/*------------------------*/
+
+/*상단에 문구들 div*/
+.text-block {
+    margin: 15% 0 16% 0;
+    text-align: center;
+}
+
+/*서비스명 문구*/
+.service-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #656EE8;
+}
+
+/*환영합니다 문구*/
+.welcome{
+    font-size: 18px;
+}
+
+/*손 이미지*/
+.hand-img {
+    width: 40%;
+}
+/*---------------------------------*/
+
+/*회원가입 폼 선택 div*/
+.form-select{
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+    width: 85%;
+    margin: 0 auto;
+}
+
+/*회원가입 선택 a들(순찰대, 일반주민)*/
+.petrol-link, .people-link {
+    border: 1px solid #FCFCFC;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px 0px rgba(90, 90, 90, 0.25);
+    width: 50%;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 5%;
+}
+
+/*순찰대랑 주민 사진*/
+.form-select img {
+    width: 50%;
+}
+
+/*이거 강아지랑 얼굴이랑 안 맞아서..*/
+.people-link > img {
+    padding-top: 0.2%;
+}
+
+/*각 버튼마다 순찰대, 동네 주민 문구 p 태그*/
+.select-title {
+    color: #656EE8;
+    font-size: 1.1rem;
+    margin: 5% 0 7% 0;
+}
+
+/*각 버튼 안의 회원가입 문구 p*/
+.signUp-text {
+    margin: 0 0 10% 0;
+    color: black;
+    font-size: 0.9rem;
+}

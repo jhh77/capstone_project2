@@ -1,0 +1,77 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
+    /* padding-bottom: 150px; */
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+/*------------------------*/
+
+/*상단에 문구들 div*/
+.text-block {
+    margin: 30% 0;
+    text-align: center;
+}
+
+/*회원가입 완료 문구*/
+.signup-complete{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #656EE8;
+}
+
+/*가입이 완료되었습니다. 문구*/
+.welcome{
+    font-size: 18px;
+}
+
+/*손 이미지*/
+.hand-img {
+    width: 40%;
+}
+/*---------------------------------*/
+
+.complete-btn {
+    margin: 0 auto;
+    width: 80%;
+    height: 5.4%;
+    background-color: #F9E3A7;
+    box-shadow: 0px 4px 4px 0px #f1f1f1;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+}

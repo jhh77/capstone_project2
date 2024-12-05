@@ -1,0 +1,113 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*화면 스크롤바로 인해 화면 밀림 방지*/
+::-webkit-scrollbar {
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /*column -> row*/
+    flex-wrap: wrap; /*추가*/
+    /* padding-bottom: 150px; */
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    width: 100%;
+    background-color: #FFA652;
+}
+
+/*-------------------------------------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+
+/*이미지 영역*/
+.login-img {
+    margin-top: 5%; /*임의로 띄운 것*/
+    /* outline: 1px solid red; */
+    text-align: center;
+    background-color: #FFA652;
+}
+
+/*강아지 사진 이미지*/
+.login-img > img {
+    width: 70%;
+    height: 100%;
+}
+/*-----------------------------------------------------*/
+
+.login-block {
+    height: 100%;  /*📌이거 하니까 되네...?*/
+    background-color: white;
+    border-radius: 30px 30px 0 0;
+    padding-top: 20%;
+}
+
+.login-form {
+    /* outline: 1px solid blue; */
+    text-align: center;
+}
+
+.login-form input { /*입력 부분들*/
+    width: 75%;
+    height: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 7%;
+    border: 1px solid #a5a5a5;
+    padding: 3%;
+    font-family: 'SCoreDream';
+    font-size: 16px;
+}
+
+.login-form input::placeholder { /*입력 부분 예시 css*/
+    font-size: 15px;
+    color: #c5c5c5;
+}
+
+.login-btn { /*로그인 버튼 css*/
+    width: 81%;
+    border: none;
+    height: 3.5rem;
+    margin-top: 7%;
+    border-radius: 10px;
+    font-size: 17px;
+    background-color: #F9E3A7;
+    box-shadow: 0px 4px 8px 0px #F1F1F1;
+    font-family: 'SCoreDream';
+    cursor: pointer;
+}
+
+.login-form input:focus { /*입력부분들 포커스 css*/
+    outline: 1px solid #FF8652;
+    border: none;
+    box-shadow: 0px 4px 8px 0px #f0f0f0;
+}
+/*---------------------------------------------*/
+
+.sign-up { /*회원가입 물음 부분*/
+    margin-top: 13%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.sign-up > a { /*회원가입으로 이동하는 링크 부분*/
+    margin-left: 1%;
+    /* text-decoration-color: #5D6DBE; */
+    color: #5D6DBE;
+}

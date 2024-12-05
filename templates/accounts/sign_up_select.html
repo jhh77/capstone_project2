@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="{% static 'css/sign_up_select.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <div class="text-block">
+                <p class="service-name">안전하개</p>
+                <p class="welcome">회원가입을 환영합니다!</p>
+                <img src="{% static 'image/welcome_hand.png' %}" class="hand-img" alt=""> <!--⭐url 연결-->
+            </div>
+
+            <div class="form-select">
+                <a href="{% url 'accounts:sign-up' %}?member_type=2" class="petrol-link"> <!--⭐url 연결-->
+                    <img src="{% static 'image/one_dog.png' %}" alt="">
+                    <p class="select-title">반려견 순찰대</p>
+                    <p  class="signUp-text">회원가입</p>
+                </a>
+
+                <a href="{% url 'accounts:sign-up' %}?member_type=1" class="people-link"> <!--⭐url 연결-->
+                    <img src="{% static 'image/one_human.png' %}" alt="">
+                    <p class="select-title">동네 주민</p>
+                    <p class="signUp-text">회원가입</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
