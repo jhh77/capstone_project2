@@ -49,7 +49,7 @@
 
             {% if member_type == '반려견 순찰대' %}
                 <div class="block">  <!--⭐⭐유저 종류에 따라 유무가 달라짐-->
-                    <a href=""> <!--⭐여기 url 연결-->
+                    <a href="{% url 'journals:journal_home' %}"> <!--⭐여기 url 연결-->
                         <div class="journal-block">
                             <div class="journal-texts">
                                 <div class="text-title">순찰 일지 작성</div>

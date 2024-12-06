@@ -1,0 +1,250 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh + 600px);
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/*일지 작성 form*/
+.journal-form {
+    /* outline: 1px solid red; */
+}
+
+/* 상단 부분 div */
+.top-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5rem;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+}
+
+/* 뒤로가기 아이콘 이미지 */
+.top-block img {
+    width: 21%;
+    margin: 3% 0 0 5%;
+}
+
+/* 상단 요소들 정렬시키려고 */
+.arrow-img, .btn-block, .title {
+    width: 30%;
+}
+
+/* 페이지 제목 문구 */
+.title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* 버튼 div */
+.btn-block {
+    /* width: 15%; */
+    text-align: right;
+}
+
+/* 제출 버튼 */
+.submit-btn {
+    font-family: 'SCoreDream';
+    border: none;
+    background-color: #D4D4D4;
+    border-radius: 7px;
+    padding: 6% 10%;
+    margin-right: 5%;
+    cursor: pointer;
+}
+/*-------------------------------------*/
+/*상단 부분 끝*/
+
+/* 순찰 날짜, 지역 부분 div */
+.date-block {
+    display: flex;
+    flex-direction: row;
+    /* outline:1px solid blue; */
+    padding-left: 4%;
+    align-items: center;
+    margin: 5% 0;
+}
+
+/* 날짜랑 지역 부분 */
+.date {
+    font-size: 0.9rem;
+    margin-left: 2%;
+}
+
+/* 시간 선택 부분 div */
+.time-block {
+    display: flex;
+    flex-direction: row;
+    padding-left: 4%;
+    align-items: center;
+}
+
+/* 시간 input */
+.start-time, .date-input {
+    outline: 1px solid #A5A5A5;
+    border: none;
+    border-radius: 7px;
+    height: 1.8rem;
+    font-family: 'SCoreDream';
+    padding-left: 0.5rem;
+}
+
+/* 시간 input 간격 띄우기 위해 */
+.margin-l {
+    margin-left: 2%;
+}
+
+/* ~ 양옆 간격 띄우기 위해 */
+.margin-rl {
+    margin: 0 2%;
+}
+
+/*-------------------------------------*/
+/*일지 정보 관련 부분 끝*/
+
+#write-text { /* textarea*/
+    font-family: 'SCoreDream';
+    width: 88%;
+    margin: 4% 0 0 4%;
+    border: none;
+    resize: none;
+    word-break: break-all;
+    line-height: 1.6rem;
+    font-size: 14px;
+    padding: 2%;
+    outline: 1px solid #c5c5c5;
+    border-radius: 10px;
+}
+
+#write-text:focus { /*textarea focus*/
+    border-radius: 7px;
+    outline: 1.5px solid #656EE8;
+}
+
+#text-count { /*글자 수 표시 부분*/
+    width: 96%;
+    text-align: right;
+    color: #5D6DBE;
+}
+
+/* 사진 선택 div */
+.img-select {
+    border-top: 1px solid #D5D5D5;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0;
+    position: fixed;
+    width: 420px;
+    bottom: 0;
+    background-color: white;
+}
+
+.img-select > div {
+    /* outline: 1px solid red; */
+}
+
+/* 카메라 아이콘 부분 div */
+.camera-block {
+    width: 17%;
+}
+
+/* file input  */
+#fileInput { /*파일 선택, 이름 등 글자 숨기기*/
+    display: none;
+}
+
+/* 카메라 아이콘 이미지 */
+#imageButton > img{
+    width: 60%;
+    margin-left: 15%;
+    cursor: pointer;
+}
+
+/* 파일 이름 div */
+.src-block {
+    margin-top: 2%;
+    color: #A1A1A1;
+}
+
+/* 파일 이름 class */
+.file-item {
+    margin-bottom: 5%;
+    cursor: pointer;
+}

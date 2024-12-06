@@ -18,7 +18,7 @@
 
             <div class="top-block">
                 <div>
-                    <a href=""><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                    <a href="{% url 'home' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
                 </div>
                 <div class="title">반려견 순찰대 일지</div>
             </div>
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <a href=""> <!--⭐⭐여기 링크 연결-->
+            <a href="{% url 'journals:journal_write' %}"> <!--⭐⭐여기 링크 연결-->
                 <button type="button" class="write-btn"> <!--글 작성 버튼-->
                     &#43;
                 </button>
