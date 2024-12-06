@@ -132,7 +132,7 @@ body {
 }
 
 /*아이디 중복검사, 에러 결과 문구*/
-.error, #idCheckResponse, #error-message, .id-error {
+.error, #idCheckResponse, #error-message, .id-error, .passwd-error {
     font-size: 0.78rem;
     margin-top:6%;
     color: #E07070;

@@ -206,7 +206,7 @@ $('#idCheckBtn').click(function () {
             success: function (data) {
                 if (data.is_taken) {
                     $('#idCheckSuccess').val("false"); // 중복 검사 실패
-                    $('#idCheckResponse').text('이미 사용 중인 아이디입니다.');
+                    $('#idCheckResponse').text('이미 등록된 아이디입니다.');
                     $('#idCheckResponse').css('color', '#E07070');
                     $('#user_id').focus()
 
@@ -223,19 +223,27 @@ $('#idCheckBtn').click(function () {
     }
 });
 
-//비밀번호 두 개가 같아야 폼 제출 가능?
-
-// 폼 제출 시, 중복 검사가 성공적으로 이뤄졌는지 확인
+// 폼 제출 시, 중복 검사가 성공적으로 이뤄졌는지, 비밃번호가 맞는 지 확인
 $('.submit-btn').click(function (e) {
     // alert($('#sido-input').val() + $('#sigugun-input').val() + $('#dong-input').val());
-    // $('.id-error').text('');
+    $('.id-error').text('');
+    let passwd1 = $('#password1').val()
+    let passwd2 = $('#password2').val()
+    alert(passwd1 + passwd2)
+
     const isIdChecked = $('#idCheckSuccess').val();
     if (isIdChecked !== "true") {
         $('#idCheckResponse').text("아이디 확인 후 중복 검사를 해주세요.");
         $('#idCheckResponse').css('color', '#E07070');
         return false; // 폼 제출 방지
     }
+    else if (passwd1 !== passwd2) {
+        $('.passwd-error').text('비밀번호가 다릅니다.')
+        $('.passwd-error').css('color', '#E07070');
+        return false; // 폼 제출 방지
+    }
     else {
         $('#idCheckResponse').text('');
+        $('.passwd-error').text('');
     }
 });

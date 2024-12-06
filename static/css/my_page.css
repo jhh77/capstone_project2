@@ -1,0 +1,266 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* padding-bottom: 150px; */
+    z-index: 0;
+    position: relative;
+    background-color: #F8F8FA;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/*a 태그 넣으려고 감싼 div*/
+.block {
+    width: 90%;
+    margin: 10% 0% 6% 0%;
+
+}
+
+/*프로필 페이지로 a 태그*/
+.block > a {
+    text-decoration: none;
+    color: black;
+}
+
+/*프로필 관련 div*/
+.profile-block {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    box-shadow: 0px 4px 7px #E5E5E5;
+    outline: 1px solid #D5D5D5;
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.profile-block > div {
+    /* outline: 1px solid blue; */
+}
+
+/* 프로필 이미지 div */
+.profile-img {
+    width: 19%;
+}
+
+/* 프로필 이미지 */
+.profile-img > img {
+    width: 90%;
+}
+
+/* 회원 정보 관련 div */
+.profile-info {
+    width: 81%;
+    margin-left: 3%;
+}
+
+/* 닉네임 관련 div */
+.name-block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+.name-block > div {
+    /* outline: 1px solid red; */
+}
+
+/* 화살표 이미지 */
+.arrow-img > img {
+    transform: scaleX(-1);
+    width: 1rem;
+    margin-top: 0.13rem;
+}
+
+/* 유저 지역 문구 */
+.region-info {
+    margin-top: 4.5%;
+    color: #8C8C8C;
+    font-size: 0.8rem;
+}
+
+/* 텍스트 조금 진하게 */
+.text-strong {
+    font-weight: 500;
+}
+/*-----------------------------------*/
+/*프로필 관련 블록 끝*/
+
+/*유저 게시글 관련 div*/
+.post-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: white;
+    box-shadow: 0px 4px 7px #E5E5E5;
+    outline: 1px solid #D5D5D5;
+    border-radius: 20px;
+    padding: 5% 0;
+    width: 90%;
+    margin-bottom: 6%;
+}
+
+.post-block > div {
+    /* outline: 1px solid red; */
+}
+
+/* 유저 게시글 a */
+.post-block a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 아이콘 이미지 div */
+.write-img {
+    margin-bottom: 5%;
+}
+
+/* 아이콘 이미지 */
+.write-img > img {
+    width: 20%;
+}
+
+/* 작성한 글 이미지 가운데에 맞추려고 */
+.img-margin {
+    margin-left: 7%;
+}
+
+/* 쓴 글, 작성한 글 div */
+.write-post, .write-comment {
+    text-align: center;
+    width: 100%;
+}
+
+/* 쓴 글 div */
+.write-post {
+    border-right: 1px solid #D5D5D5;
+}
+/*-----------------------------------*/
+/*게시글 관련 부분 끝*/
+
+/* 설정 관련 div */
+.setting-block {
+    background-color: white;
+    box-shadow: 0px 4px 7px #E5E5E5;
+    outline: 1px solid #D5D5D5;
+    border-radius: 20px;
+    padding: 7% 5%;
+    width: 80%;
+}
+
+/* 이용 안내 div */
+.app-guide {
+    font-size: 0.96rem;
+    padding-bottom: 5%;
+    margin-bottom: 10%;
+    border-bottom: 1px solid #D5D5D5;
+}
+
+/* 각각의 설정 제목 */
+.title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 7%;
+}
+
+/* 앱 버전 부분 div */
+.version-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4%;
+}
+
+/* 버전 문구 */
+.version {
+    color: #9E9E9E;
+}
+
+/* 설정 문구마다 간격띄우기(마지막 빼고) */
+.text-margin:not(:last-child) {
+    margin-bottom: 4%;
+}
+
+/* 계정 관련 설정 div */
+.account-setting {
+    font-size: 0.96rem;
+}
+
+/* 로그아웃, 회원탈퇴 a */
+.account-setting a {
+    text-decoration: none;
+    color: black;
+}

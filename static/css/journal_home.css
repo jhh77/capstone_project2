@@ -1,0 +1,361 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh + 600px);
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/* 상단 부분 div */
+.top-block {
+    height: 3rem;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-shrink: 0; /* 줄어들지 않도록 설정 */
+}
+
+/* 뒤로가기 아이콘 이미지 */
+.top-block img {
+    width: 1.7rem;
+    margin-left: 1rem;
+    margin-top: 0.15rem;
+}
+
+/* 페이지 제목 부분 */
+.title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-left: 23%;
+}
+/*-------------------------------------*/
+/*상단 부분 끝*/
+
+
+/*3️⃣달력 부분 css*/
+.CalendarStart {
+    /* background-color: white; */
+    height: auto;
+    width: 88%;
+    margin: 0px;
+    padding: 20px 30px 20px 20px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px 0px #e5e5e5;
+    margin-bottom: 8%;
+    outline: 1px solid #EEEEEE;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.Calendar {
+    text-align: center;
+}
+
+.Calendar>thead>tr:first-child>td {
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'SCoreDream';
+}
+
+.Calendar>thead>tr:last-child>td {
+    font-weight: 600;
+    font-family: 'SCoreDream';
+}
+
+.Calendar>tbody>tr>td>p {
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+    font-family: 'SCoreDream';
+}
+
+/* .pastDay {
+            color: lightgray;
+        } */
+
+.today {
+    background-color: #FFDB79;
+    /* color: #fff; */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.futureDay:hover {
+    background: #eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: rgb(202, 202, 202);
+    color: #fff;
+    /* font-weight: 500; */
+    cursor: pointer;
+}
+
+.sunday {
+    color: #656EE8;
+}
+
+.saturday {
+    color: #FF3C3C;
+}
+/*-------------------------------------*/
+/*달력 부분 끝*/
+
+/* 순찰 일지 부분 div */
+.journal-block {
+    outline: 1px solid #d5d5d5;
+    width: 85%;
+    padding: 4%;
+    margin: 0 0 5% 4%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(193, 193, 193, 0.25);
+}
+
+/* 일지 상세보기로 넘어가는 a */
+.journal-block > a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 일지 날짜&시간 부분 div */
+.date-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 3%;
+}
+
+/* 일지 날짜 */
+.date {
+    font-weight: 500;
+}
+
+/* 일지 시간 */
+.time {
+    color: #A5A5A5;
+    font-size: 0.8rem;
+}
+
+/* 반려견 순찰대 일지 문구 */
+.journal-title {
+    margin-bottom: 7%;
+}
+
+/* 수정&삭제 버튼 div */
+.change-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 4%;
+}
+
+/* 일지 수정 a 태그 */
+.update > a {
+    color: #5D6DBE;
+}
+
+/* 일지 삭제 */
+.delete {
+    text-decoration: underline;
+    cursor: pointer;
+}
+/*-------------------------------------*/
+/*반려견 순찰대 일지 부분 끝*/
+
+/* 글 작성하기 버튼(+)*/
+.write-btn {
+    background-color: #d5d5d5;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 340px;
+    border: none;
+    cursor: pointer;
+}
+/*-------------------------------------*/
+
+
+#modal { /*모달 큰 div*/
+    width: 420px;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.modal-contents { /*모달창 div*/
+    box-shadow: 1px 5px 7px 0px rgba(130, 130, 130, 0.25);
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    z-index: 2;
+    border: 1px solid #EFEFEF;
+}
+
+.modal-contents a {
+    text-decoration: none;
+}
+
+.btn-close { /*모달창에 x 버튼*/
+    float: right;
+    margin: 4% 4% 0 0;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-close:before { /*모달창에 x 버튼 꾸미기 */
+    /* 닫기 버튼의 'X' 아이콘 색상 변경 (SVG 필터 사용) */
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M.646 1.354a.5.5 0 0 1 .708 0L8 8.293l6.646-6.647a.5.5 0 0 1 .708.708L8.707 9l6.647 6.646a.5.5 0 0 1-.708.708L8 9.707l-6.646 6.647a.5.5 0 0 1-.708-.708L7.293 9 .646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    mask-size: cover;
+    background-color: #acacac; /* 'X' 아이콘 색상 */
+}
+
+.modal-title { /*글을 삭제하시겠습니까 텍스트*/
+    font-size: 20px;
+    margin-top: 18%;
+    font-weight: 500;
+}
+
+.closePopup, .delete_post { /*아니오, 네 버튼*/
+    width: 26%;
+    border-radius: 10px;
+    height: 2.2rem;
+    margin-top: 8%;
+}
+
+.closePopup { /*아니오 버튼 - 글을 지우지 않음*/
+    background-color: #E5E5E5;
+    display:inline;
+    float: left;
+    margin-left: 18%;
+    text-align: center;
+    line-height: 2.2rem;
+    color: black;
+}
+
+.delete_post { /*네 버튼 - 글을 지움*/
+    font-family: 'SCoreDream';
+    font-size: 1rem;
+    border: none;
+    background-color: #FFCD4A;
+    margin-right: 7%;
+    cursor: pointer;
+}

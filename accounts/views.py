@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
@@ -7,13 +7,29 @@ from accounts.models import Member
 
 
 # Create your views here.
+# 시작 시 페이지 (루트 페이지)
+def home(request):
+    if request.user.is_authenticated:
+        member = Member.objects.get(user_id=request.user) # 현재 로그인 한 유저 정보 저장
+        print(member.member_type.type_name)
+
+        context = {
+            'member' : member,
+            'member_type': member.member_type.type_name,
+        }
+        return render(request, 'accounts/home.html', context)
+    else:
+        return render(request, 'accounts/login.html')
+
 def login(request):
     return render(request, 'accounts/login.html')
 
 
 # 회원가입 메서드
 def sign_up(request):
-    member_type = request.GET.get('member_type')
+    # member_type = request.GET.get('member_type')
+    # print(member_type)
+    current_path = request.path
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -27,7 +43,10 @@ def sign_up(request):
                 print("회원가입 실패")
     else:
         form = SignupForm()
-    return render(request, 'accounts/sign_up.html', {'form': form, 'member_type': member_type})
+    if 'sign-up-petrol' in current_path:
+        return render(request, 'accounts/sign_up_petrol.html', {'form': form})
+    else:
+        return render(request, 'accounts/sign_up_people.html', {'form': form})
 
 
 def sign_up_select(request):
@@ -43,3 +62,20 @@ def id_check(request):
 
 def sign_up_done(request):
     return render(request, 'accounts/sign_up_complete.html')
+
+
+# 로그아웃 메서드
+def logout_view(request):
+    logout(request)
+    return redirect('accounts:login')
+
+
+# 마이 페이지
+def my_page(request):
+    member = Member.objects.get(user_id=request.user)  # 현재 로그인 한 유저 정보 저장
+    context = {
+        'member': member,
+        'member_type': member.member_type.type_name,
+    }
+    return render(request, 'accounts/my_page.html', context)
+

@@ -20,13 +20,13 @@
             </div>
 
             <div class="form-select">
-                <a href="{% url 'accounts:sign-up' %}?member_type=2" class="petrol-link"> <!--⭐url 연결-->
+                <a href="{% url 'accounts:sign-up-petrol' %}" class="petrol-link"> <!--⭐url 연결-->
                     <img src="{% static 'image/one_dog.png' %}" alt="">
                     <p class="select-title">반려견 순찰대</p>
                     <p  class="signUp-text">회원가입</p>
                 </a>
 
-                <a href="{% url 'accounts:sign-up' %}?member_type=1" class="people-link"> <!--⭐url 연결-->
+                <a href="{% url 'accounts:sign-up-people' %}" class="people-link"> <!--⭐url 연결-->
                     <img src="{% static 'image/one_human.png' %}" alt="">
                     <p class="select-title">동네 주민</p>
                     <p class="signUp-text">회원가입</p>

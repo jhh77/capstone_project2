@@ -17,7 +17,8 @@
             </div>
 
             <div class="login-block">
-                <form action="" method="post" class="login-form"> <!--⭐⭐로그인 폼-->
+                <form action="{% url 'accounts:login' %}" method="post" class="login-form"> <!--⭐⭐로그인 폼-->
+                    {% csrf_token %}
                     <input type="text" id="user_id" name="username" placeholder="아이디" value="" required>
                     <input type="password" id="password" name="password" placeholder="비밀번호" value="" required>
                     <button type="submit" class="login-btn">로그인</button>
