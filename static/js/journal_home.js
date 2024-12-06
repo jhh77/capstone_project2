@@ -95,14 +95,15 @@ function formatDate(dateString) {
 }
 
 function express_journals(journalData) {
-    const $journalContainer = $('.journals-block'); // 일지를 표시할 컨테이너
-    $journalContainer.empty(); // 기존 내용 초기화
+    const journalContainer = $('.journals-block'); // 일지를 표시할 컨테이너
+
+    journalContainer.empty(); // 기존 내용 초기화
 
     $.each(journalData, function(index, journal) {
         let date = formatDate(journal.date);
-        const $journalElement = $(`
+        const journalElement = $(`
             <div class="journal-block">
-                <a href="">
+                <a href="${journalDetailUrl.replace('0', journal.id)}">
                     <div class="date-block">
                         <div class="date">${date}</div>
                         <div class="time">${journal.start_time} ~ ${journal.end_time}</div>
@@ -115,7 +116,7 @@ function express_journals(journalData) {
                 </div>
             </div>
         `);
-        $journalContainer.append($journalElement);
+        journalContainer.append(journalElement);
     });
 }
 

@@ -1,0 +1,185 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 150px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh + 600px);
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/* 상단 부분 div */
+.top-block {
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+}
+
+.top-block > div {
+    /* outline: 1px solid blue; */
+}
+
+/* 뒤로가기 아이콘 이미지 */
+.top-block img {
+    width: 30%;
+    margin: 5% 0 0 15%;
+}
+
+/*페이지 제목*/
+.title {
+    margin-left: 8%;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 순찰 시간, 지역 부분 div */
+.date-block {
+    display: flex;
+    flex-direction: row;
+    /* outline:1px solid blue; */
+    padding-left: 4%;
+    align-items: center;
+    margin: 5% 0 0 0;
+}
+
+/* 날짜랑 지역 부분 */
+.date {
+    font-size: 0.9rem;
+    margin-left: 2%;
+}
+
+/* 일지 내용 부분 div */
+.journal-content {
+    padding: 5%;
+    margin: 10% 4% 5%;
+    border-radius: 10px;
+    line-height: 1.6rem;
+    font-size: 0.95rem;
+    word-break: break-all;
+    outline: 1px solid #d5d5d5;
+}
+
+/* 이미지들 div */
+.imgs-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5%;
+    padding: 4% 5%;
+    margin-top: 5%;
+    outline: 1px solid #d5d5d5;
+}
+
+/* 이미지들 */
+.imgs {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 7px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* 모달 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000; /* 최상위 레이어 */
+    width: 420px; /* 전체 화면 너비 */
+    height: 100%; /* 전체 화면 높이 */
+    overflow: auto; /* 스크롤 가능 */
+    background-color: rgba(88, 88, 88, 0.8); /* 반투명 배경 */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%; /* 최대 너비를 90%로 설정 */
+    max-height: 80%; /* 최대 높이를 80%로 설정 */
+    width: auto; /* 자동으로 너비 조정 */
+    height: auto; /* 자동으로 높이 조정 */
+    padding-top: 30%;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}

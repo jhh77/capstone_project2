@@ -59,3 +59,10 @@ def journal_write(request):
     }
 
     return render(request, 'journals/journal_write.html', context)
+
+
+# 일지 상세보기
+def journal_detail(request, id):
+    journal = Journal.objects.get(id=id)
+    images = JournalImage.objects.filter(journal=journal)
+    return render(request, 'journals/journal_detail.html')
