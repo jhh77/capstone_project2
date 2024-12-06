@@ -14,7 +14,7 @@
         <div class="contents">
 
             <!--⭐⭐일지 작성 폼-->
-            <form action="" method="post" class="journal-form">
+            <form action="{% url 'journals:journal_write' %}" method="post" class="journal-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
@@ -30,23 +30,23 @@
 
                 <div class="date-block">
                     <div>순찰 날짜 : </div>
-                    <div class="date"><input type="date" class="date-input"></div> <!--⭐⭐여기 날짜-->
+                    <div class="date"><input type="date" class="date-input" name="date" value="{{ form.date.value|default_if_none:'' }}" required></div> <!--⭐⭐여기 날짜-->
                 </div>
 
                 <div class="time-block">
                     <div>순찰 시간 :</div>
-                    <div class="margin-l"><input type="time" class="start-time" required></div>
+                    <div class="margin-l"><input type="time" class="start-time" name="start_time" value="{{ form.start_time.value|default_if_none:'' }}" required></div>
                     <div class="margin-rl">~</div>
-                    <div><input type="time" class="start-time" required></div>
+                    <div><input type="time" class="start-time" name="end_time" value="{{ form.end_time.value|default_if_none:'' }}" required></div>
                 </div>
 
                 <div class="date-block">
                     <div>순찰 지역 : </div>
-                    <div class="date">서울특별시 성동구 사근동</div> <!--⭐⭐여기 회원 지역-->
+                    <div class="date">{{ member.region_sido }} {{ member.region_sigungu }} {{ member.region_dong }}</div> <!--⭐⭐여기 회원 지역-->
                 </div>
 
-                <textarea name="patrol_content" id="write-text" placeholder="순찰 일지 내용을 적어주세요!"
-                    maxlength="1000" spellcheck="false" required></textarea>
+                <textarea name="content" id="write-text" placeholder="순찰 일지 내용을 적어주세요!"
+                    maxlength="1000" spellcheck="false" required>{{ form.content.value|default_if_none:'' }}</textarea>
 
                 <div id="text-count">0 / 1000</div>
 
@@ -55,7 +55,7 @@
                         <label for="fileInput" id="imageButton">
                             <img src="{% static 'image/camera.png' %}" alt="파일 선택하기">
                         </label>
-                        <input type="file" id="fileInput" name="info_image" accept="image/*" multiple>
+                        <input type="file" id="fileInput" name="image_path" accept="image/*" multiple>
                     </div>
                     <div class="src-block">
                         <div class="file-item">최대 4개 첨부 가능 (파일 이름 클릭 시 삭제)</div>

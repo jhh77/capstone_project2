@@ -59,10 +59,66 @@ function choiceDate(newDIV) {
         document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
     }
     newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
-    console.log(document.getElementById("calYear").innerText);
-    console.log(document.getElementById("calMonth").innerText);
-    console.log(newDIV.innerText);
+    // console.log(document.getElementById("calYear").innerText);
+    // console.log(document.getElementById("calMonth").innerText);
+    // console.log(newDIV.innerText);
+
+    const selectedDate = $(newDIV).text(); // 선택한 날짜
+    const year = $('#calYear').text();
+    const month = $('#calMonth').text();
+
+    // 해당 날짜의 순찰 일지 ajax로 요청학히
+    $.ajax({
+        url: '/journals/get-journal/',
+        method: 'GET',
+        data: {
+            date : `${year}-${month}-${selectedDate}`
+        },
+        success: function(response) {
+            // 서버에서 받은 데이터 처리
+            express_journals(response) // 일지 데이터 출력
+            // 여기에 일지를 페이지에 표시하는 코드를 추가하세요
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
 }
+
+function formatDate(dateString) {
+    const date = new Date(dateString); // 문자열을 Date 객체로 변환
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, '0'); // 일자
+
+    return `${year}년 ${month}월 ${day}일`; // 원하는 형식으로 반환
+}
+
+function express_journals(journalData) {
+    const $journalContainer = $('.journals-block'); // 일지를 표시할 컨테이너
+    $journalContainer.empty(); // 기존 내용 초기화
+
+    $.each(journalData, function(index, journal) {
+        let date = formatDate(journal.date);
+        const $journalElement = $(`
+            <div class="journal-block">
+                <a href="">
+                    <div class="date-block">
+                        <div class="date">${date}</div>
+                        <div class="time">${journal.start_time} ~ ${journal.end_time}</div>
+                    </div>
+                    <div class="journal-title">반려견 순찰대 일지</div>
+                </a>
+                <div class="change-block">
+                    <div class="update"><a href="">수정</a></div>
+                    <div class="delete">삭제</div>
+                </div>
+            </div>
+        `);
+        $journalContainer.append($journalElement);
+    });
+}
+
 
 // 이전달 버튼 클릭
 function prevCalendar() {
@@ -87,17 +143,34 @@ function leftPad(value) {
 buildCalendar();
 //달력 코드 끝-------------------------------------------------------------------------
 
-//반려견 순찰대 일지 삭제 모달 코드
-const modal = $('#modal'); //모달 변수에 저장
+// //반려견 순찰대 일지 삭제 모달 코드
+// const modal = $('#modal'); //모달 변수에 저장
+//
+// $('.delete').on('click', function() { //삭제하기 버튼 누르면 모달창 뜨기
+//     modal.slideDown();
+// });
+//
+// $('.closePopup').on('click', function() { // 아니오를 누르면 모달창이 사라지기
+//     modal.slideUp();
+// });
+//
+// $('.btn-close').on('click', function() { // X를 누르면 모달창이 사라지기
+//     modal.slideUp();
+// });
+$(document).ready(function() {
+    //반려견 순찰대 일지 삭제 모달 코드
+    const modal = $('#modal'); //모달 변수에 저장
 
-$('.delete').on('click', function() { //삭제하기 버튼 누르면 모달창 뜨기
-    modal.slideDown();
-});
+    // .delete 클래스가 있는 요소에 대한 클릭 이벤트를 문서에 바인딩
+    $(document).on('click', '.delete', function() {
+        modal.slideDown(); // 모달 열기
+    });
 
-$('.closePopup').on('click', function() { // 아니오를 누르면 모달창이 사라지기
-    modal.slideUp();
-});
+    $('.closePopup').on('click', function() { // 아니오를 누르면 모달창이 사라지기
+        modal.slideUp();
+    });
 
-$('.btn-close').on('click', function() { // X를 누르면 모달창이 사라지기
-    modal.slideUp();
-});
+    $('.btn-close').on('click', function() { // X를 누르면 모달창이 사라지기
+        modal.slideUp();
+    });
+})

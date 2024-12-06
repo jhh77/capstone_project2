@@ -8,4 +8,5 @@ app_name = 'journals'
 urlpatterns = [
     path('journal-home/', views.journal_home, name='journal_home'),
     path('journal-write/', views.journal_write, name='journal_write'),
+    path('get-journal/', views.get_journal, name='get_journal'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

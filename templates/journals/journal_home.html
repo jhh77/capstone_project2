@@ -53,21 +53,24 @@
                 </table>
             </div>
 
-            <!--⭐⭐여기 반복문-->
-            <div class="journal-block">
-                <a href=""> <!--⭐여기 url 연결-->
-                    <div class="date-block">
-                        <div class="date">2024년 11월 23일</div> <!--⭐⭐여기 날짜-->
-                        <div class="time">11:00 ~ 12:00</div> <!--⭐⭐여기 시간-->
-                    </div>
-                    <div class="journal-title">반려견 순찰대 일지</div>
-                </a>
+            <div class="journals-block">
 
-                <div class="change-block">
-                    <div class="update"><a href="">수정</a></div> <!--⭐여기 url 연결-->
-                    <div class="delete">삭제</div> <!--⭐여기 url 연결-->
-                </div>
             </div>
+            <!--⭐⭐여기 반복문-->
+{#            <div class="journal-block">#}
+{#                <a href=""> <!--⭐여기 url 연결-->#}
+{#                    <div class="date-block">#}
+{#                        <div class="date">2024년 11월 23일</div> <!--⭐⭐여기 날짜-->#}
+{#                        <div class="time">11:00 ~ 12:00</div> <!--⭐⭐여기 시간-->#}
+{#                    </div>#}
+{#                    <div class="journal-title">반려견 순찰대 일지</div>#}
+{#                </a>#}
+{##}
+{#                <div class="change-block">#}
+{#                    <div class="update"><a href="">수정</a></div> <!--⭐여기 url 연결-->#}
+{#                    <div class="delete">삭제</div> <!--⭐여기 url 연결-->#}
+{#                </div>#}
+{#            </div>#}
 
             <a href="{% url 'journals:journal_write' %}"> <!--⭐⭐여기 링크 연결-->
                 <button type="button" class="write-btn"> <!--글 작성 버튼-->
