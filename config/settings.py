@@ -140,4 +140,5 @@ SESSION_COOKIE_AGE = 3600 # 1시간
 
 LOGOUT_REDIRECT_URL = '/login/'  # 자동 로그아웃 시 로그인 페이지 URL로 변경
 
+DEFAULT_CHARSET = 'utf-8'
 

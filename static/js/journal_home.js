@@ -3,8 +3,26 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
+// //url에서 쿼리 문자열 가져오기
+// let urlParams = new URLSearchParams(window.location.search);
+// let selectDate = urlParams.get('date');
+// let year, month, day; // 전역 변수 선언
+//
+// if (selectDate) {
+//     let [year, month, day] = selectDate.split('-');
+//     year = parseInt(year); // 문자열을 숫자로 변환
+//     month = parseInt(month); // 문자열을 숫자로 변환
+//     day = parseInt(day); // 문자열을 숫자로 변환
+//     nowMonth = new Date(year, month - 1, day);
+//     console.log(`Parsed Date: ${year}-${month}-${day}`); // 파싱된 날짜 출력
+// } else {
+//     nowMonth = new Date(); // 쿼리 파라미터가 없을 경우 현재 날짜로 설정
+//     console.log(`Using Current Date: ${nowMonth}`); // 현재 날짜 출력
+// }
+
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
+    // console.log(`Building calendar for: ${nowMonth}`); // 달력 생성 날짜 출력
 
     let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     // 이번달 1일
     let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth() + 1, 0);  // 이번달 마지막날
@@ -25,10 +43,7 @@ function buildCalendar() {
     }
 
     for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {   // day는 날짜를 저장하는 변수, 이번달 마지막날까지 증가시키며 반복
-
         let nowColumn = nowRow.insertCell();        // 새 열을 추가하고
-
-
         let newDIV = document.createElement("p");
         newDIV.innerHTML = leftPad(nowDay.getDate());        // 추가한 열에 날짜 입력
         nowColumn.appendChild(newDIV);
@@ -45,11 +60,30 @@ function buildCalendar() {
         else if (nowDay.getFullYear() == today.getFullYear() && nowDay.getMonth() == today.getMonth() && nowDay.getDate() == today.getDate()) { // 오늘인 경우
             newDIV.className = "today";
             newDIV.onclick = function () { choiceDate(this); }
+            choiceDate(newDIV);
         }
         else {                                      // 미래인 경우
             newDIV.className = "futureDay";
             newDIV.onclick = function () { choiceDate(this); }
         }
+
+        // // 날짜 클릭 이벤트 처리
+        // newDIV.onclick = function () { choiceDate(this); };
+        //
+        // // 날짜 클래스 설정
+        // if (nowDay < today) {
+        //     newDIV.className = "pastDay"; // 과거일
+        // } else if (nowDay.getFullYear() === today.getFullYear() && nowDay.getMonth() === today.getMonth() && nowDay.getDate() === today.getDate()) {
+        //     newDIV.className = "today"; // 오늘
+        // } else {
+        //     newDIV.className = "futureDay"; // 미래일
+        // }
+        //
+        // // 선택된 날짜가 URL에서 가져온 경우
+        // if (selectDate && nowDay.getFullYear() === year && nowDay.getMonth() === month - 1 && nowDay.getDate() === day) {
+        //     choiceDate(newDIV); // 선택된 날짜에 대해 선택 처리
+        //     console.log(`Selected Date Highlighted: ${nowDay}`); // 디버깅 로그
+        // }
     }
 }
 
@@ -138,6 +172,8 @@ function leftPad(value) {
 }
 
 buildCalendar();
+
+
 //달력 코드 끝-------------------------------------------------------------------------
 
 // //반려견 순찰대 일지 삭제 모달 코드

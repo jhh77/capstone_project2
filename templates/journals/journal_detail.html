@@ -15,7 +15,7 @@
 
             <div class="top-block">
                 <div class="arrow-img">
-                    <a href="{% url 'journals:journal_home' %}"> <!--⭐여기 url 연결-->
+                    <a href="{% url 'journals:journal_home' %}?date={{ journal.date|date:'Y-m-d' }}"> <!--⭐여기 url 연결-->
                         <img src="{% static 'image/back.png' %}" alt="">
                     </a>
                 </div>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="journal-content">
-                {{ journal.content }}
+                {{ journal.content|linebreaks }}
             </div>
 
             {% if images %}
@@ -50,7 +50,7 @@
             </button>
 
             <div class="btns">
-                <a href="">
+                <a href="{% url 'journals:journal_edit' journal.id %}">
                     <button type="button" class="edit-btn">수정하기</button> <!--⭐⭐수정하기 버튼-->
                 </a>
                 <button type="button" class="delete-btn">삭제하기</button> <!--⭐⭐삭제하기 버튼-->
@@ -67,7 +67,7 @@
                     <button type="button" class="btn-close"></button>
                     <div class="modal-title">글을 삭제하시겠습니까?</div>
                     <div class="closePopup">아니오</div>
-                    <form class="yesBtn" method="post" action="">
+                    <form class="yesBtn" method="post" action="{% url 'journals:journal_delete' journal.id %}">
                         <button type="submit" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
                     </form>
                 </div>
