@@ -15,58 +15,62 @@
 
             <div class="top-block">
                 <div class="arrow-img">
-                    <a href=""> <!--⭐여기 url 연결-->
+                    <a href="{% url 'journals:journal_home' %}"> <!--⭐여기 url 연결-->
                         <img src="{% static 'image/back.png' %}" alt="">
                     </a>
                 </div>
-                <div class="title">2024년 10월 31일 일지</div>
+                <div class="title">{{ journal.date|date:"Y년 m월 d일" }} 일지</div>
             </div>
 
             <div class="date-block">
                 <div>순찰 시간 : </div>
-                <div class="date">13:00 ~ 14:00</div> <!--⭐⭐여기 시간-->
+                <div class="date">{{ journal.start_time|date:"H:i"}} ~ {{ journal.end_time|date:"H:i"}}</div> <!--⭐⭐여기 시간-->
             </div>
             <div class="date-block">
                 <div>순찰 지역 : </div>
-                <div class="date">서울특별시 성동구 사근동</div> <!--⭐⭐여기 회원 지역-->
+                <div class="date">{{ journal.region_sido }} {{ journal.region_sigungu }} {{ journal.region_dong }}</div> <!--⭐⭐여기 회원 지역-->
             </div>
 
             <div class="journal-content">
-                오늘도 아침 일찍 일어나 반려견과 함께 산책을 나갔다. 창문을 열자 시원한 바람이 불어오고, 햇살이 따뜻하게 내리쬐었다. 반려견은 나를 보며 신나게 짖고, 꼬리를 흔들며 나를 기다리고 있었다. 나는 그의 목줄을 채우고, 간단한 산책용 가방에 물과 간식을 챙겼다.
-
-산책로에 나서자, 반려견은 마치 세상의 모든 향기를 맡으려는 듯 바닥을 킁킁거리며 뛰어다녔다. 길가에는 꽃들이 만개해 있었고, 그 향기가 코를 간지럽혔다. 우리는 공원으로 향했고, 그곳에는 다른 개들과 그들의 주인들이 있었다. 반려견은 다른 개들과 인사를 하며 즐거워했다. 친구를 만나면 항상 그런 반응을 보인다.
-
-공원에 도착하자, 나는 반려견과 함께 잔디밭에 앉았다. 그는 내 옆에 누워서 편안하게 쉬었고, 나는 그 모습을 보며 미소 지었다. 산책 중간중간에 물을 주고, 간식을 조금씩 나눠주었다. 반려견은 간식을 먹고 나서 더욱 활기차게 뛰어다녔다.
-
-그 후 우리는 근처에 있는 작은 호수로 걸어갔다. 호수 주변에는 수많은 새들이 있었고, 반려견은 새들을 쫓아가고 싶어하는 듯 짖어댔다. 나는 그를 붙잡고, '기다려'라고 말하며 새들에게 다가가지 않도록 했다. 반려견은 조금 실망한 듯 보였지만, 곧 다시 나와 함께 산책하는 것에 집중하기 시작했다.
-
-산책이 끝나고 집으로 돌아오는 길, 나는 오늘의 일상이 얼마나 소중한지 다시 한번 느꼈다. 반려견과의 시간은 나에게 큰 행복을 주며, 그와 함께하는 모든 순간이 특별하다는 것을 알게 되었다. 집에 도착하자, 반려견은 피곤한 듯 나의 곁에 와서 누웠다. 나는 그를 쓰다듬으며, 오늘의 산책이 얼마나 즐거웠는지 이야기해주었다.
-
-이렇게 매일 아침 반려견과의 산책은 나의 일상에서 중요한 부분이 되었다. 그는 나에게 친구이자 가족이며, 함께하는 시간은 정말 소중하다. 앞으로도 매일매일 함께 산책하며 추억을 쌓고 싶다. 반려견과의 일상이 나에게 주는 기쁨은 언제나 커다란 행복으로 다가온다.
+                {{ journal.content }}
             </div>
 
-            <div class="imgs-block"> <!--⭐⭐여기 유저가 올린 사진-->
-                <div>
-                    <img src="https://cdn.pixabay.com/photo/2019/10/07/04/52/mountain-4531731_640.jpg" class="imgs" alt="">
+            {% if images %}
+                <div class="imgs-block"> <!--⭐⭐여기 유저가 올린 사진-->
+                    {% for image in images %}
+                        <div>
+                            <img src="{{ image.image_path.url }}" class="imgs" alt="">
+                        </div>
+                    {% endfor %}
                 </div>
+            {% endif %}
 
-                <div>
-                    <img src="https://cdn.pixabay.com/photo/2019/07/17/00/29/nature-4342808_640.jpg" class="imgs" alt="">
-                </div>
+            <button type="button" id="dots-btn"> <!--⭐... 버튼-->
+                <img src="{% static 'image/dots.png' %}" alt="">
+            </button>
 
-                <div>
-                    <img src="https://cdn.pixabay.com/photo/2020/03/31/20/25/waterfall-4989144_1280.jpg" class="imgs" alt="">
-                </div>
-
-                <div>
-                    <img src="https://cdn.pixabay.com/photo/2020/03/31/20/25/waterfall-4989144_1280.jpg" class="imgs" alt="">
-                </div>
+            <div class="btns">
+                <a href="">
+                    <button type="button" class="edit-btn">수정하기</button> <!--⭐⭐수정하기 버튼-->
+                </a>
+                <button type="button" class="delete-btn">삭제하기</button> <!--⭐⭐삭제하기 버튼-->
             </div>
 
             <div id="imageModal" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="modalImage">
                 <div id="caption"></div>
+            </div>
+
+            <div id="modal"> <!--모달창-->
+                <div class="modal-contents">
+                    <button type="button" class="btn-close"></button>
+                    <div class="modal-title">글을 삭제하시겠습니까?</div>
+                    <div class="closePopup">아니오</div>
+                    <form class="yesBtn" method="post" action="">
+                        <button type="submit" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
+                    </form>
+                </div>
             </div>
         </div>
     </div>

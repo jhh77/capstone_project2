@@ -110,10 +110,6 @@ function express_journals(journalData) {
                     </div>
                     <div class="journal-title">반려견 순찰대 일지</div>
                 </a>
-                <div class="change-block">
-                    <div class="update"><a href="">수정</a></div>
-                    <div class="delete">삭제</div>
-                </div>
             </div>
         `);
         journalContainer.append(journalElement);

@@ -65,4 +65,8 @@ def journal_write(request):
 def journal_detail(request, id):
     journal = Journal.objects.get(id=id)
     images = JournalImage.objects.filter(journal=journal)
-    return render(request, 'journals/journal_detail.html')
+    context = {
+        'journal': journal,
+        'images': images,
+    }
+    return render(request, 'journals/journal_detail.html', context)

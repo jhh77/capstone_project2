@@ -10,4 +10,4 @@ urlpatterns = [
     path('journal-write/', views.journal_write, name='journal_write'),
     path('get-journal/', views.get_journal, name='get_journal'),
     path('journal-detail/<int:id>/', views.journal_detail, name='journal_detail'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
