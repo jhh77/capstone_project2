@@ -83,7 +83,7 @@
                             {% if comment.user == request.user %}
                                 <div class="comment-btns"> <!--⭐댓글 쓴 사람만 보이게-->
                                     <a href="">수정</a>
-                                    <button type="button">삭제</button>
+                                    <button type="button"><a href="">삭제</a></button>
                                 </div>
                             {% endif %}
                         </div>
@@ -115,7 +115,8 @@
                         <button type="button" class="btn-close"></button>
                         <div class="modal-title">글을 삭제하시겠습니까?</div>
                         <div class="closePopup">아니오</div>
-                        <form class="yesBtn" method="post" action="">
+                        <form class="yesBtn" method="post" action="{% url 'boards:petrol_board_delete' board.id %}">
+                            {% csrf_token %}
                             <button type="submit" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
                         </form>
                     </div>

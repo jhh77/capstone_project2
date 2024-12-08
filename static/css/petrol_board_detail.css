@@ -355,6 +355,10 @@ body {
     cursor: pointer;
 }
 
+.comment-btns > button > a{
+    color: black;
+}
+
 /* 댓글 버튼들 div */
 .comment-btns {
     width: 17%;

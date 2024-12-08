@@ -140,3 +140,12 @@ def petrol_board_edit(request, id):
     }
     return render(request, 'boards/petrol_board_edit.html', context)
 
+
+# 신고글 삭제하기
+def petrol_board_delete(request, id):
+    if request.method == 'POST':
+        board = Board.objects.get(id=id)
+        board.delete()
+        return redirect('boards:petrol_board')
+
+
