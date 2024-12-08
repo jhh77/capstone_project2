@@ -1,0 +1,386 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 300px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFA652;
+    /* height: calc(100vh + 600px); */
+    height: 100%;
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/* 상단 부분 div */
+.top-block {
+    height: 3rem;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-shrink: 0; /* 줄어들지 않도록 설정 */
+}
+
+/* 뒤로가기 아이콘 이미지 */
+.top-block img {
+    width: 1.7rem;
+    margin-left: 1rem;
+}
+
+/* 페이지 제목 부분 */
+.title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-left: 29%;
+}
+/*-------------------------------------*/
+/*상단 부분 끝*/
+
+/*이거 요소들 높이 자동 조절 되는 거 막으려고 테스트*/
+.test {
+    height: 100%;
+}
+
+/* 게시판 메인 사진 div */
+.img-block {
+    background-color: #FFA652;
+}
+
+/* 게시판 메인 이미지 */
+.img-block > img {
+    width: 50%; /*이거 딱 붙게 만드네*/
+    display: block;
+    margin: 0 auto;
+}
+/*----------------------------------------*/
+/* 이미지 부분 끝 */
+
+
+/* 페이지 컨텐츠들 div */
+.board-block {
+    height: 100%;
+    background-color: white;
+    /* outline: 1px solid red; */
+    border-radius: 30px 30px 0 0;
+    padding-top: 7%;
+}
+
+/* 지역 설정 부분 div */
+.region-block {
+    /* outline: 1px solid red; */
+    border-bottom: 1px solid #EFEFEF;
+    padding: 4% 4% 10% 4%;
+}
+
+/* 지역 설정 문구 */
+.block-title {
+    margin-bottom: 6%;
+}
+
+/*지역 선택*/
+.region {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.custom-select {
+    position: relative;
+    margin-bottom: 15px; /* 간격 설정 */
+    width: 32%;
+}
+
+.select-selected {
+    padding: 10px; /* 패딩 */
+    border: 1px solid #A5A5A5; /* 테두리 */
+    cursor: pointer; /* 커서 변경 */
+    border-radius: 10px;
+    color: #a5a5a5;
+    font-size: 0.9rem;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white; /* 배경색 */
+    border: 1px solid #a5a5a5; /* 테두리 */
+    border-radius: 10px;
+    z-index: 999; /* 다른 요소 위에 표시 */
+    width: 100%; /* 너비 설정 */
+    display: none; /* 기본적으로 숨김 */
+    /* bottom: 100%; */
+    max-height: 250px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    font-size: 0.9rem;
+}
+
+
+.select-items div {
+    padding: 10px; /* 패딩 */
+    cursor: pointer; /* 커서 변경 */
+}
+
+.select-items div:hover {
+    background-color: #f3f3f3; /* hover 시 배경색 변경 */
+}
+
+
+.select-selected.selected {
+    color: black; /* 선택 후 글자 색: 검정색 */
+}
+
+/*지역 설정 버튼*/
+.check-btn {
+    width: 8%;
+    /* height: 100%; */
+    margin-left: 2%;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 5px;
+    padding: 1.5% 2%;
+    cursor: pointer;
+}
+
+/* 지역 설정 버튼 체크 이미지 */
+.check-btn > img {
+    width: 100%;
+}
+
+/* 게시글 부분 div */
+.post-block {
+    /* outline: 1px solid blue; */
+    padding: 4%;
+}
+
+/* a 태그 줄, 글자색 조절 */
+.post-block a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 게시글의 윗부분(프로필,닉네임,날짜) 부분 div */
+.post-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.post-header > div {
+    /* outline: 1px solid purple; */
+}
+
+/* 프로필, 닉네임 부분 div */
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-profile > div {
+    /* outline: 1px solid green; */
+}
+
+/* 프로필 div */
+.user-img {
+    width: 12%;
+    margin: 2% 5% 0 0;
+}
+
+/* 프로필 이미지 */
+.user-profile img {
+    width: 100%;
+}
+
+/* 게시글 날짜 문구 */
+.post-date {
+    font-size: 0.8rem;
+    color: #A5A5A5;
+}
+
+.user-name {
+    font-size: 0.9rem;
+}
+
+/* 텍스트 진하게 */
+.text-strong {
+    font-weight: 500;
+}
+
+/* 게시글 내용 부분 */
+.post-content {
+    word-break: break-all;
+    line-height: 1.8rem;
+    margin-bottom: 5%;
+    font-size: 0.9rem;
+}
+
+/* 게시글 하단(활동지역, 댓글 수) 부분 div */
+.post-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-footer > div {
+    /* outline: 1px solid brown; */
+}
+
+/* 댓글 부분 div */
+.comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+.comment > div {
+    /* outline: 1px solid skyblue; */
+}
+
+/* 댓글 이미지 div */
+.comment-img {
+    width: 22%;
+    margin-right: 7%;
+}
+
+/* 댓글 아이콘 이미지 */
+.comment-img img {
+    width: 100%;
+    margin-top: 10%;
+    opacity: 0.8;
+}
+
+/* 활동 지역 문구 */
+.post-region {
+    color: #A5A5A5;
+    font-size: 0.75rem;
+}
+
+/* 게시글 구분 블럭 */
+.gap-block {
+    background-color: #F6F6F6;
+    height: 8px;
+}
+
+/* 더보기 텍스트 */
+.text-light {
+    color: #a5a5a5;
+}
+/*------------------------------------*/
+
+
+.write-btn { /* 글 작성하기 버튼(+)*/
+    background-color: #FFCD4A;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 347px;
+    border: none;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.up-btn { /*맨 위로 이동하기 버튼(↑)*/
+    opacity: 0.9;
+    background-color: #f8e9bf;
+    border: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2rem;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.up-btn > img { /*화살표 아이콘*/
+    margin-top: 20%;
+    width: 30px;
+    height: 29px;
+}

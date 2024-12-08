@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고게시판 글 작성</title>
+    <link rel="stylesheet" href="{% static 'css/petrol_board_write.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <form action="{% url 'boards:petrol_board_write' %}" method="post" class="journal-form" name="petrol_board_post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="top-block">
+                    <div class="arrow-img">
+                        <a href="{% url 'boards:petrol_board' %}"> <!--⭐여기 url 연결-->
+                            <img src="{% static 'image/back.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="title">글 작성</div>
+                    <div class="btn-block">
+                        <button type="submit" class="submit-btn">등록</button>
+                    </div>
+                </div>
+
+                <textarea name="content" id="write-text" placeholder="순찰하며 신고한 내용을 적어주세요!"
+                maxlength="1000" spellcheck="false" required></textarea>
+                <div id="text-count">0 / 1000</div>
+
+                <div class="img-select">
+                    <div class="camera-block">
+                        <label for="fileInput" id="imageButton">
+                            <img src="{% static 'image/camera.png' %}" alt="파일 선택하기">
+                        </label>
+                        <input type="file" id="fileInput" name="image_path" accept="image/*">
+                    </div>
+                    <div class="src-block">
+                        <div class="file-item">최대 1개 첨부 가능 (파일 이름 클릭 시 삭제)</div>
+                        <div class="src-name"></div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="lat" name="lat">
+                <input type="hidden" id="lon" name="lon">
+
+                <input type="hidden" name="board_type" value="1">
+            </form>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static 'js/petrol_board_write.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 300px;
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* height: calc(100vh + 600px); */
+    height: 100%;
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/* 상단 부분 div */
+.top-block {
+    height: 3rem;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-shrink: 0; /* 줄어들지 않도록 설정 */
+    margin-bottom: 3%;
+}
+
+/* 뒤로가기 아이콘 이미지 */
+.top-block img {
+    width: 1.7rem;
+    margin-left: 1rem;
+}
+
+/* 페이지 제목 부분 */
+.title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-left: 29%;
+}
+/*-------------------------------------*/
+/*상단 부분 끝*/
+
+/*이거 요소들 높이 자동 조절 되는 거 막으려고 테스트*/
+.content {
+    height: 100%;
+}
+
+.post-block {
+    /* outline: 1px solid red; */
+    padding: 4%;
+    margin-bottom: 3%;
+}
+
+/* 게시글의 윗부분(프로필,닉네임,날짜) 부분 div */
+.post-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4%;
+}
+
+/* 프로필, 닉네임 부분 div */
+.user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 프로필 이미지 div */
+.user-img {
+    width: 11%;
+    margin: 1% 3% 0 0;
+}
+
+/* 프로필 이미지 */
+.user-profile img {
+    width: 100%;
+}
+
+/* 게시글 날짜 문구 */
+.post-date {
+    font-size: 0.8rem;
+    color: #A5A5A5;
+}
+
+/* 텍스트 진하게 */
+.text-strong {
+    font-weight: 500;
+}
+
+/* 게시글 내용 부분 */
+.post-content {
+    word-break: break-all;
+    line-height: 1.8rem;
+    margin-bottom: 4%;
+    font-size: 0.9rem;
+}
+
+/* 게시글 사진 div */
+.post-img-block {
+    /* width: 100%; */
+    margin-bottom: 4%;
+}
+
+/* 게시글 사진 */
+.post-img-block > img {
+    width: 100%;
+}
+
+/* 카카오 지도 */
+#map {
+    /*outline: 1px solid red;*/
+    width: 100%;
+    height: 20rem;
+    margin-bottom: 4%;
+    z-index: 0;
+}
+
+/* 유저 활동 지역 */
+.user-region {
+    color: #A5A5A5;
+    font-size: 0.75rem;
+    margin-bottom: 18%;
+}
+
+/* 댓글 아이콘이랑 수 div */
+.comment-title-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5%;
+    /* width: 100%; */
+}
+
+.comment-title-header > div {
+    /* outline: 1px solid green; */
+}
+
+/* 말풍선 이미지 div */
+.comment-img {
+    width: 6%;
+    margin-right: 3%;
+}
+
+/* 말풍선 이미지 */
+.comment-img > img {
+    width: 100%;
+    margin-top: 15%;
+}
+
+/* 댓글 수 */
+.comment-num {
+    font-size: 0.97rem;
+}
+
+#comment-form {
+    /* border-bottom: 1px solid #D5D5D5; */
+    /* padding-bottom */
+}
+
+#comment-area { /*댓글 쓰기 textarea*/
+    font-family: 'SCoreDream';
+    width: 96%;
+    height: 5rem;
+    border-radius: 10px;
+    resize: none;
+    word-break: break-all;
+    line-height: 1.7rem;
+    font-size: 14px;
+    overflow-y: hidden;
+    padding: 2%;
+    border: 1px solid #c5c5c5;
+    margin-bottom: 2%;
+}
+
+#comment-area::placeholder {/*댓글 쓰기 textarea placeholder*/
+    color: #b5b5b5;
+}
+
+#comment-area:focus { /*댓글 쓰는 textarea에 focus 되면*/
+    outline: none;
+}
+
+/* 버튼이랑 글자 수 카운트 div */
+.comment-form-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* outline: 1px solid blue; */
+    height: 2rem;
+}
+
+.comment-form-footer > div {
+    /* outline: 1px solid saddlebrown; */
+}
+
+/* 버튼 div */
+.submit-btn {
+    height: 100%;
+    width: 13%;
+}
+
+/* 제출 버튼 */
+.submit-btn > button { /*댓글 등록 버튼*/
+    font-family: 'SCoreDream';
+    border: none;
+    background-color: #F9E3A7;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+#text-count { /*댓글 글자 수 세는 부분*/
+    /* text-align: right; */
+    font-size: 14px;
+    /* margin: 2% 0% 4% 0%; */
+    color: #5D6DBE;
+}
+
+/* 구분선 */
+.line {
+    border-bottom: 1px solid #d5d5d5;
+}
+/*---------------------------------*/
+
+/*댓글 블럭 div*/
+.comment-block {
+    /* outline: 1px solid blue; */
+    border-bottom: 1px solid #D5D5D5;
+    padding: 5% 4%;
+}
+
+/* 상단에 댓글 정보 부분 div */
+.comment-block-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.comment-block-header > div {
+    /* outline: 1px solid brown; */
+}
+
+/* 프로필 & 닉네임 div */
+.comment-infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* 유저 프로필 이미지 div */
+.comment-user-profile {
+    width: 11%;
+    margin-right: 4%;
+}
+
+/* 유저 프로필 이미지 */
+.comment-user-profile > img {
+    width: 100%;
+    margin-top: 18%;
+}
+
+/* 유저 닉네임 */
+.comment-user-name {
+    font-size: 0.89rem;
+}
+
+/* 수정 버튼  */
+.comment-btns > a {
+    color: #5D6DBE;
+    font-size: 0.8rem;
+}
+
+/* 삭제하기 버튼 */
+.comment-btns > button {
+    border: none;
+    background-color: white;
+    font-family: 'SCoreDream';
+    padding: 0;
+    margin-left: 5%;
+    font-size: 0.84rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 댓글 버튼들 div */
+.comment-btns {
+    width: 17%;
+    text-align: right;
+}
+
+/* 댓글 내용 */
+.comment-content {
+    word-break: break-all;
+    line-height: 1.8rem;
+    margin-bottom: 3%;
+    font-size: 0.9rem;
+}
+
+/* 댓글 작성 날짜 */
+.comment-date {
+    color: #A5A5A5;
+    font-size: 0.7rem;
+}
+/*---------------------------------------*/
+
+#dots-btn { /*... 버튼*/
+    background-color: #F9E3A7;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    line-height: 3.5rem;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    margin-left: 347px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#dots-btn > img {
+    margin-top: 25%;
+}
+
+.btns { /*수정하기, (글) 삭제하기 버튼 div*/
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 155px;
+    margin-left: 280px;
+}
+
+.btns > a {
+    text-decoration: none;
+}
+
+.delete-btn, .edit-btn { /*(글) 삭제하기, 수정하기 버튼*/
+    font-family: 'SCoreDream';
+    font-size: 1rem;
+    position: absolute;
+    display: block;
+    border: none;
+    width: 8rem;
+    height: 2.3rem;
+    border-radius: 20px;
+    bottom: 0;
+    font-weight: 500;
+    box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
+    display: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.edit-btn { /*수정하기 버튼*/
+    margin-bottom: 50px;
+    background-color: #FFCD4A;
+
+}
+
+.delete-btn { /*삭제하기 버튼*/
+    background-color: #E5E5E5;
+}
+
+#modal { /*모달 큰 div*/
+    width: 420px;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.modal-contents { /*모달창 div*/
+    box-shadow: 1px 5px 7px 0px rgba(130, 130, 130, 0.25);
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    z-index: 2;
+    border: 1px solid #EFEFEF;
+}
+
+.modal-contents a {
+    text-decoration: none;
+}
+
+.btn-close { /*모달창에 x 버튼*/
+    float: right;
+    margin: 4% 4% 0 0;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-close:before { /*모달창에 x 버튼 꾸미기 */
+    /* 닫기 버튼의 'X' 아이콘 색상 변경 (SVG 필터 사용) */
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M.646 1.354a.5.5 0 0 1 .708 0L8 8.293l6.646-6.647a.5.5 0 0 1 .708.708L8.707 9l6.647 6.646a.5.5 0 0 1-.708.708L8 9.707l-6.646 6.647a.5.5 0 0 1-.708-.708L7.293 9 .646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    mask-size: cover;
+    background-color: #acacac; /* 'X' 아이콘 색상 */
+}
+
+.modal-title { /*글을 삭제하시겠습니까 텍스트*/
+    font-size: 20px;
+    margin-top: 18%;
+    font-weight: 500;
+}
+
+.closePopup, .delete_post { /*아니오, 네 버튼*/
+    width: 26%;
+    border-radius: 10px;
+    height: 2.2rem;
+    margin-top: 8%;
+}
+
+.closePopup { /*아니오 버튼 - 글을 지우지 않음*/
+    background-color: #E5E5E5;
+    display:inline;
+    float: left;
+    margin-left: 18%;
+    text-align: center;
+    line-height: 2.2rem;
+    color: black;
+    cursor: pointer;
+}
+
+.delete_post { /*네 버튼 - 글을 지움*/
+    font-family: 'SCoreDream';
+    font-size: 1rem;
+    border: none;
+    background-color: #FFCD4A;
+    margin-right: 7%;
+    cursor: pointer;
+}

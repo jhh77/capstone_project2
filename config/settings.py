@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'journals.apps.JournalsConfig',
+    'boards.apps.BoardsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,7 +137,7 @@ AUTH_USER_MODEL = 'accounts.Member' #회원가입 모델 커스터마이징 설�
 LOGIN_REDIRECT_URL = '/'
 
 #세션 만료 시간 설정
-SESSION_COOKIE_AGE = 3600 # 1시간
+SESSION_COOKIE_AGE = 7200 # 2시간
 
 LOGOUT_REDIRECT_URL = '/login/'  # 자동 로그아웃 시 로그인 페이지 URL로 변경
 
