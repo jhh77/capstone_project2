@@ -178,3 +178,28 @@ def comment_delete(request, id):
         return redirect('boards:petrol_board_detail', id=comment.board.id)
 
 
+# 지역 게시글 검색
+def region_select(request):
+    sido = request.POST.get('sido')
+    sigungu = request.POST.get('sigungu')
+    dong = request.POST.get('dong')
+    boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong)
+
+    # 게시물 내용을 자르기
+    for board in boards:
+        if len(board.content) > 150:
+            board.short_content = board.content[:150]
+        else:
+            board.short_content = board.content
+
+    # 게시물 내용을 자르기
+    for board in boards:
+        if len(board.content) > 150:
+            board.short_content = board.content[:150]
+        else:
+            board.short_content = board.content
+
+    context = {
+        'boards': boards,
+    }
+    return render(request, 'boards/petrol_board_main.html', context)

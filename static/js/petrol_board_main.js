@@ -75,11 +75,10 @@ jQuery(document).ready(function () {
 
         // 선택된 값을 hidden input에 설정
         // '시군구 선택'이나 '읍면동 선택'일 경우 값 설정 안 함
-        console.log(selectedValue);
         if (selectedValue !== '') {
-            jQuery('#sido-input').val(jQuery('#sido-select .select-selected').data('value'));
-            jQuery('#sigugun-input').val(jQuery('#sigugun-select .select-selected').data('value'));
-            jQuery('#dong-input').val(selectedValue);
+            jQuery('#sido-input').val(jQuery('#sido-select .select-selected').text());
+            jQuery('#sigugun-input').val(jQuery('#sigugun-select .select-selected').text());
+            jQuery('#dong-input').val(selectedText);
         }
     });
 
@@ -120,10 +119,12 @@ jQuery(document).ready(function () {
     }
 
     // 지역 선택 안했을 시 폼 제출 막기
-    jQuery('.nickname-form').on('submit', function (event) {
+    jQuery('.region-block').on('submit', function (event) {
         let sido = jQuery('#sido-input').val();
         let sigugun = jQuery('#sigugun-input').val();
         let dong = jQuery('#dong-input').val();
+
+        alert(sido + sigugun + dong);
 
         // 유효성 검사
         if (!sido || !sigugun || !dong) {
@@ -134,10 +135,6 @@ jQuery(document).ready(function () {
         }
     });
 
-});
-
-$('.check-btn').on('click', function() {
-    alert('ajax 구현해야힘');
 });
 
 //게시글 내용 150자까지 보이고 ...더보기 표시하기

@@ -26,10 +26,11 @@
                 </div>
 
                 <div class="board-block">
-                    <div class="region-block">
+                    <form class="region-block" action="{% url 'boards:region_select' %}" method="post">
+                        {% csrf_token %}
                         <div class="block-title">
                             지역 설정
-                            <button type="button" class="check-btn"><img src="{% static 'image/check.png' %}" alt=""></button>
+                            <button type="submit" class="check-btn"><img src="{% static 'image/check.png' %}" alt=""></button>
                         </div>
 
                         <div class="region">
@@ -46,14 +47,14 @@
                                 <div class="select-items"></div>
                             </div>
                             <input type="hidden" name="sido" id="sido-input" required>
-                            <input type="hidden" name="sigugun" id="sigugun-input" required>
+                            <input type="hidden" name="sigungu" id="sigugun-input" required>
                             <input type="hidden" name="dong" id="dong-input" required>
 
                             <!-- <div style="outline: 1px solid red; width: 10%;">
                                 <button type="button" class="check-btn"><img src="../static/image/check.png" alt=""></button>
                             </div> -->
                         </div>
-                    </div>
+                    </form>
 
                     <!--⭐⭐여기 컨텐츠 반복문-->
                     {% for board in boards %}
