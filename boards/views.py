@@ -168,3 +168,13 @@ def comment_edit(request, id):
     }
 
     return render(request, 'boards/comment_edit.html', context)
+
+
+# 댓글 삭제
+def comment_delete(request, id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, id=id)
+        comment.delete()
+        return redirect('boards:petrol_board_detail', id=comment.board.id)
+
+

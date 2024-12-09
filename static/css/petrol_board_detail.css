@@ -278,6 +278,7 @@ body {
     border-radius: 5px;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 #text-count { /*댓글 글자 수 세는 부분*/

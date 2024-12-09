@@ -11,4 +11,5 @@ urlpatterns = [
     path('petrol-board-edit/<int:id>/', views.petrol_board_edit, name='petrol_board_edit'),
     path('petrol-board-delete/<int:id>/', views.petrol_board_delete, name='petrol_board_delete'),
     path('comment-edit/<int:id>/', views.comment_edit, name='comment_edit'),
+    path('comment-delete/<int:id>/', views.comment_delete, name='comment_delete'),
 ]

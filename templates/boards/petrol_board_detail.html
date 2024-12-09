@@ -81,10 +81,11 @@
                             </div>
 
                             {% if comment.user == request.user %}
-                                <div class="comment-btns"> <!--⭐댓글 쓴 사람만 보이게-->
+                                <form action="{% url 'boards:comment_delete' comment.id %}" method="post" class="comment-btns"> <!--⭐댓글 쓴 사람만 보이게-->
+                                    {% csrf_token %}
                                     <a href="{% url 'boards:comment_edit' comment.id %}">수정</a>
-                                    <button type="button"><a href="">삭제</a></button>
-                                </div>
+                                    <button type="submit">삭제</button>
+                                </form>
                             {% endif %}
                         </div>
 
