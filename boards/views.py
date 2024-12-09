@@ -1,7 +1,7 @@
 import json
 from urllib.parse import unquote
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from boards.forms import *
 from .models import *
@@ -149,3 +149,22 @@ def petrol_board_delete(request, id):
         return redirect('boards:petrol_board')
 
 
+# 댓글 수정하기
+def comment_edit(request, id):
+    comment = get_object_or_404(Comment, id=id)
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        comment.content = content
+        comment.save()
+        return redirect('boards:petrol_board_detail', id=comment.board.id)
+
+    else:
+        form = CommentForm()
+
+    context = {
+        'form': form,
+        'comment': comment,
+    }
+
+    return render(request, 'boards/comment_edit.html', context)
