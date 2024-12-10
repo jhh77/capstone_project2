@@ -39,10 +39,15 @@
                         <input type="file" id="fileInput" name="image_path" accept="image/*">
                     </div>
                     <div class="src-block">
-                        <div class="file-item">최대 1개 첨부 가능 (파일 이름 클릭 시 삭제)</div>
+                        <div class="file-item">
+                            최대 1개 첨부 가능
+                            <span id="clearImage">사진 삭제</span>
+                        </div>
                         <div class="src-name">
                             {% if board.image_path %}
-                                <div class="file-item" data-full-name="{{ board.image_path.name }}">{{ short_name }}</div>
+                                <div class="file-item" data-full-name="{{ board.image_path.name }}">
+                                    {{ short_name }}
+                                </div>
                             {% endif %}
                         </div>
                     </div>
@@ -50,6 +55,8 @@
 
                 <input type="hidden" id="lat" name="lat">
                 <input type="hidden" id="lon" name="lon">
+
+                <input type="hidden" name="delete" id="img-delete" value="0">
             </form>
 
         </div>

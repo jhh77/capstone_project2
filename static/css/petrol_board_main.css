@@ -141,7 +141,7 @@ body {
 .region-block {
     /* outline: 1px solid red; */
     border-bottom: 1px solid #EFEFEF;
-    padding: 4% 4% 10% 4%;
+    padding: 4% 4% 5% 4%;
 }
 
 /* 지역 설정 문구 */
@@ -154,6 +154,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 10%;
 }
 
 .custom-select {
@@ -215,6 +216,37 @@ body {
 /* 지역 설정 버튼 체크 이미지 */
 .check-btn > img {
     width: 100%;
+}
+
+/* 전체 지역 게시글 보기*/
+.all-board {
+    background-color: #b5b5b5;
+    text-align: center;
+    align-content: center;
+    width: 30%;
+    height: 2rem;
+    border-radius: 25px;
+}
+
+/* 전체 지역 게시글 보기 a 태그 */
+.all-link {
+    color: black;
+    text-decoration: none;
+}
+
+/*-----------------------------------*/
+
+/*게시글 없을 때 부분 div*/
+.no-board-block {
+    margin-top: 20%;
+    text-align: center;
+    padding-bottom: 400px;
+    opacity: 0.6;
+}
+
+/* 게시글 하나도 없을 때 이미지 */
+.no-board-img {
+    width: 20%;
 }
 
 /* 게시글 부분 div */

@@ -36,14 +36,25 @@
                 </div>
 
                 <div class="user-infos">
-                    <div class="report-num">
-                        <div>신고 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
-                        <div class="num">0</div> <!--⭐⭐횟수-->
-                    </div>
-                    <div class="patrol-num">
-                        <div>순찰 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
-                        <div class="num">0</div>  <!--⭐⭐횟수-->
-                    </div>
+                    {% if member_type == '반려견 순찰대' %}
+                        <div class="report-num">
+                            <div>신고 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
+                            <div class="num">{{ info1_count }}</div> <!--⭐⭐횟수-->
+                        </div>
+                        <div class="patrol-num">
+                            <div>순찰 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
+                            <div class="num">{{ info2_count }}</div>  <!--⭐⭐횟수-->
+                        </div>
+                    {% else %}
+                        <div class="report-num">
+                            <div>건의 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
+                            <div class="num">0</div> <!--⭐⭐횟수-->
+                        </div>
+                        <div class="patrol-num">
+                            <div>제보 횟수</div> <!--⭐⭐유저 종류에 따라 텍스트 다름-->
+                            <div class="num">0</div>  <!--⭐⭐횟수-->
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 

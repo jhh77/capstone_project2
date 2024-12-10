@@ -3,19 +3,31 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 from accounts.forms import SignupForm
-from accounts.models import Member
+from accounts.models import *
+from boards.models import *
+from journals.models import Journal
 
 
 # Create your views here.
 # 시작 시 페이지 (루트 페이지)
 def home(request):
     if request.user.is_authenticated:
+        info1_count = 0
+        info2_count = 0
+
         member = Member.objects.get(user_id=request.user) # 현재 로그인 한 유저 정보 저장
-        print(member.member_type.type_name)
+
+        if member.member_type.type_name == '주민':
+            print('주민')
+        else:
+            info1_count = Board.objects.filter(user_id=request.user).count()
+            info2_count = Journal.objects.filter(user_id=request.user).count()
 
         context = {
-            'member' : member,
+            'member': member,
             'member_type': member.member_type.type_name,
+            'info1_count': info1_count,
+            'info2_count': info2_count,
         }
         return render(request, 'accounts/home.html', context)
     else:

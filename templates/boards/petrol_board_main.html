@@ -35,7 +35,7 @@
 
                         <div class="region">
                             <div class="custom-select" id="sido-select">
-                                <div class="select-selected">시/도</div>
+                                <div class="select-selected">시/도 {{ sido }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <div class="custom-select" id="sigugun-select">
@@ -54,7 +54,19 @@
                                 <button type="button" class="check-btn"><img src="../static/image/check.png" alt=""></button>
                             </div> -->
                         </div>
+
+                        <a href="{% url 'boards:petrol_board' %}" class="all-link">
+                            <div class="all-board">전체 게시글</div>
+                        </a>
                     </form>
+                
+                    {% if not boards %}
+                        <div class="no-board-block">
+                            <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">
+                            <p>게시글이 없습니다.</p>
+                            <p>게시글을 작성해 보세요!</p>
+                        </div>
+                    {% endif %}
 
                     <!--⭐⭐여기 컨텐츠 반복문-->
                     {% for board in boards %}

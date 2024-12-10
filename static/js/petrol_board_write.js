@@ -112,12 +112,21 @@ $('#fileInput').on('change', function(event) {
     messageBlock.append(fileItem);
 });
 
-// 파일 이름 클릭 시 삭제 기능
-$('.src-name').on('click', '.file-item', function() {
-    // 파일 초기화
-    $('#fileInput').val(''); // 선택된 파일 초기화
-    $(this).remove(); // 삭제된 파일의 이름 제거
+// "사진 삭제" 스팬 클릭 시 파일 입력 초기화
+$('#clearImage').on('click', function () {
+    // 파일 입력 초기화
+    $('#fileInput').val('');
+
+    // 파일 이름 표시 초기화
+    $('.src-name').empty(); // 파일 이름 숨기기
 });
+
+// 파일 이름 클릭 시 삭제 기능
+// $('.src-name').on('click', '.file-item', function() {
+//     // 파일 초기화
+//     $('#fileInput').val(''); // 선택된 파일 초기화
+//     $(this).remove(); // 삭제된 파일의 이름 제거
+// });
 
 // $('.journal-form').on('submit', function (event) {
 //     event.preventDefault(); // 기본 폼 제출 방지
