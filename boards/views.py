@@ -11,7 +11,15 @@ from .models import *
 
 
 def petrol_board(request):
-    boards = Board.objects.all().order_by('-created_at')
+    if request.method == 'POST':
+        sido = request.POST.get('sido')
+        sigungu = request.POST.get('sigungu')
+        dong = request.POST.get('dong')
+        boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
+    else:
+        boards = Board.objects.all().order_by('-created_at')
+
+    print(boards)
     user = Member.objects.get(user_id=request.user)
     comments = Comment.objects.all()
 
@@ -33,6 +41,26 @@ def petrol_board(request):
         'comments': comments,
     }
     return render(request, 'boards/petrol_board_main.html', context)
+
+
+# 지역 게시글 검색
+# def region_select(request):
+#     sido = request.POST.get('sido')
+#     sigungu = request.POST.get('sigungu')
+#     dong = request.POST.get('dong')
+#     boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
+#
+#     # 게시물 내용을 자르기
+#     for board in boards:
+#         if len(board.content) > 150:
+#             board.short_content = board.content[:150]
+#         else:
+#             board.short_content = board.content
+#
+#     context = {
+#         'boards': boards,
+#     }
+#     return render(request, 'boards/petrol_board_main.html', context)
 
 
 # 게시글 등록하기
@@ -178,28 +206,4 @@ def comment_delete(request, id):
         return redirect('boards:petrol_board_detail', id=comment.board.id)
 
 
-# 지역 게시글 검색
-def region_select(request):
-    sido = request.POST.get('sido')
-    sigungu = request.POST.get('sigungu')
-    dong = request.POST.get('dong')
-    boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong)
 
-    # 게시물 내용을 자르기
-    for board in boards:
-        if len(board.content) > 150:
-            board.short_content = board.content[:150]
-        else:
-            board.short_content = board.content
-
-    # 게시물 내용을 자르기
-    for board in boards:
-        if len(board.content) > 150:
-            board.short_content = board.content[:150]
-        else:
-            board.short_content = board.content
-
-    context = {
-        'boards': boards,
-    }
-    return render(request, 'boards/petrol_board_main.html', context)

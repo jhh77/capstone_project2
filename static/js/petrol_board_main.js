@@ -124,7 +124,7 @@ jQuery(document).ready(function () {
         let sigugun = jQuery('#sigugun-input').val();
         let dong = jQuery('#dong-input').val();
 
-        alert(sido + sigugun + dong);
+        // alert(sido + sigugun + dong);
 
         // 유효성 검사
         if (!sido || !sigugun || !dong) {

@@ -15,7 +15,8 @@
             <div class="content">
                 <div class="top-block">
                     <div>
-                        <a href="{% url 'boards:petrol_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+{#                        <a href="{% url 'boards:petrol_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->#}
+                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();"> <!--⭐여기 url 연결-->
                     </div>
                     <div class="title">신고 게시판</div>
                 </div>
