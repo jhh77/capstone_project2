@@ -35,15 +35,15 @@
 
                         <div class="region">
                             <div class="custom-select" id="sido-select">
-                                <div class="select-selected">시/도 {{ sido }}</div>
+                                <div class="select-selected">{{ sido|default:'시/도' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <div class="custom-select" id="sigugun-select">
-                                <div class="select-selected">시/군/구</div>
+                                <div class="select-selected">{{ sigungu|default:'시/군/구' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <div class="custom-select" id="dong-select">
-                                <div class="select-selected">읍/면/동</div>
+                                <div class="select-selected">{{ dong|default:'읍/면/동' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <input type="hidden" name="sido" id="sido-input" required>

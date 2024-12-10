@@ -13,6 +13,8 @@ from .models import *
 # 게시판 메인 페이지
 def petrol_board(request):
     sido = ''
+    sigungu = ''
+    dong = ''
     if request.method == 'POST':
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
@@ -41,6 +43,8 @@ def petrol_board(request):
         'user': user,
         'comments': comments,
         'sido': sido,
+        'sigungu': sigungu,
+        'dong': dong,
     }
     return render(request, 'boards/petrol_board_main.html', context)
 
