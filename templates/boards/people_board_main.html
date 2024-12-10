@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>의견/제보 게시판 메인</title>
+    <link rel="stylesheet" href="{% static 'css/people_board_main.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <div class="test">
+                <div class="top-block">
+                    <div>
+                        <a href=""><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                    </div>
+                    <div class="title">의견/제보 게시판</div>
+                </div>
+
+                <div class="img-block">
+                    <img src="{% static 'image/people-group.png' %}" alt="">
+                </div>
+
+                <div class="board-block">
+                    <div class="region-block">
+                        <div class="block-title">
+                            지역 설정
+                            <button type="button" class="check-btn"><img src="{% static 'image/check.png' %}" alt=""></button>
+                        </div>
+
+                        <div class="region">
+                            <div class="custom-select" id="sido-select">
+                                <div class="select-selected">시/도</div>
+                                <div class="select-items"></div>
+                            </div>
+                            <div class="custom-select" id="sigugun-select">
+                                <div class="select-selected">시/군/구</div>
+                                <div class="select-items"></div>
+                            </div>
+                            <div class="custom-select" id="dong-select">
+                                <div class="select-selected">읍/면/동</div>
+                                <div class="select-items"></div>
+                            </div>
+                            <input type="hidden" name="sido" id="sido-input" required>
+                            <input type="hidden" name="sigugun" id="sigugun-input" required>
+                            <input type="hidden" name="dong" id="dong-input" required>
+                        </div>
+                    </div>
+
+                    <div class="post-type-select">
+                        <div class="select-all">#전체</div>
+                        <div class="select-idea">#의견</div>
+                        <div class="select-report">#제보</div>
+                    </div>
+
+                    <!--⭐⭐여기 컨텐츠 반복문-->
+                    <div class="post-block">
+                        <a href=""> <!--⭐여기 url 연결-->
+                            <div class="post-header">
+                                <div class="user-profile">
+                                    <div class="user-img"><img src="{% static 'image/people_profile.png' %}" alt=""></div>
+                                    <div class="user-name">동네 주민 <span class="text-strong">나리</span></div> <!--⭐여기 유저 닉네임-->
+                                </div>
+                                <div class="post-date">2024/11/25</div> <!--⭐여기 게시글 날짜-->
+                            </div>
+
+                            <div class="post-content"> <!--⭐여기 게시글 내용-->
+                                사용자 홍길동은 오늘 2024년 11월 24일에 새로운 게시글을 작성했습니다.
+                                게시글에는 그의 반려견 사진이 포함되어 있어 많은 사람들의 관심을 끌고 있습니다.
+                                이 게시글은 사랑과 우정에 대한 이야기로, 많은 댓글이 달리고 있습니다.
+                            </div>
+
+                            <div class="post-footer">
+                                <div class="post-region">서울특별시 성동구 사근동</div> <!--⭐게시글 쓴 유저 활동지역-->
+                                <div class="comment">
+                                    <div class="comment-img">
+                                        <img src="{% static 'image/speech-bubble.png' %}" alt="">
+                                    </div>
+                                    <div>12 <!--⭐여기 댓글 수--></div>
+                                </div>
+                            </div>
+                            <div class="post-type">#제보</div>
+                        </a>
+                    </div>
+                    <div class="gap-block"></div>
+                </div>
+
+                <a href=""> <!--⭐⭐여기 링크 연결-->
+                    <button type="button" class="write-btn"> <!--글 작성 버튼-->
+                        &#43;
+                    </button>
+                </a>
+
+                <a href="#">
+                    <button type="button" class="up-btn"> <!--멘 위로 올라가기 버튼 #으로 이동-->
+                        <img src="{% static 'image/up.png' %}" alt="">
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="application/javascript" src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
+    <script src="{% static 'js/people_board_main.js' %}"></script>
+</body>
+</html>

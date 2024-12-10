@@ -103,7 +103,7 @@ body {
 .title {
     font-weight: 500;
     font-size: 1.1rem;
-    margin-left: 29%;
+    margin-left: 24%;
 }
 /*-------------------------------------*/
 /*상단 부분 끝*/
@@ -115,12 +115,13 @@ body {
 
 /* 게시판 메인 사진 div */
 .img-block {
+    padding-top: 13%;
     background-color: #FFA652;
 }
 
 /* 게시판 메인 이미지 */
 .img-block > img {
-    width: 50%; /*이거 딱 붙게 만드네*/
+    width: 70%;
     display: block;
     margin: 0 auto;
 }
@@ -140,8 +141,7 @@ body {
 /* 지역 설정 부분 div */
 .region-block {
     /* outline: 1px solid red; */
-    border-bottom: 1px solid #EFEFEF;
-    padding: 4% 4% 5% 4%;
+    padding: 4% 4% 1% 4%;
 }
 
 /* 지역 설정 문구 */
@@ -200,13 +200,6 @@ body {
     color: black; /* 선택 후 글자 색: 검정색 */
 }
 
-#error-message {
-    font-size: 0.78rem;
-    color: #E07070;
-    /*margin-bottom: 11%;*/
-    display: none;
-}
-
 /*지역 설정 버튼*/
 .check-btn {
     width: 8%;
@@ -224,37 +217,31 @@ body {
     width: 100%;
 }
 
-/* 전체 지역 게시글 보기*/
-.all-board {
-    margin-top: 10%;
-    background-color: #b5b5b5;
-    text-align: center;
-    align-content: center;
-    width: 30%;
-    height: 2rem;
+/*게시글 종류 선택 div*/
+.post-type-select{
+    padding: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #EFEFEF;
+    padding-bottom: 7%;
+}
+
+/*게시글 선택 div버튼들*/
+.post-type-select > div {
+    /* outline: 1px solid red; */
+    margin-right: 5%;
+    background-color: #D8D8D8;
     border-radius: 25px;
-}
-
-/* 전체 지역 게시글 보기 a 태그 */
-.all-link {
-    color: black;
-    text-decoration: none;
-}
-
-/*-----------------------------------*/
-
-/*게시글 없을 때 부분 div*/
-.no-board-block {
-    margin-top: 20%;
+    width: 17%;
+    height: 2rem;
     text-align: center;
-    padding-bottom: 400px;
-    opacity: 0.6;
+    font-size: 0.9rem;
+    align-content: center;
+    cursor: pointer;
 }
 
-/* 게시글 하나도 없을 때 이미지 */
-.no-board-img {
-    width: 20%;
-}
+/*———————————————————*/
 
 /* 게시글 부분 div */
 .post-block {
@@ -332,6 +319,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 4%;
 }
 
 .post-footer > div {
@@ -378,6 +366,12 @@ body {
 /* 더보기 텍스트 */
 .text-light {
     color: #a5a5a5;
+}
+
+/* 게시글 종류 */
+.post-type {
+    color: #656EE8;
+    font-size: 0.8rem;
 }
 /*------------------------------------*/
 

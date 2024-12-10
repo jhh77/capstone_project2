@@ -10,7 +10,7 @@ from .models import *
 # Create your views here.
 
 
-# 게시판 메인 페이지
+# 신고 게시판 메인 페이지
 def petrol_board(request):
     sido = ''
     sigungu = ''
@@ -47,6 +47,11 @@ def petrol_board(request):
         'dong': dong,
     }
     return render(request, 'boards/petrol_board_main.html', context)
+
+
+# 의견/제보 게시판 메인페이지
+def people_board(request):
+    return render(request, 'boards/people_board_main.html')
 
 
 # 지역 게시글 검색
