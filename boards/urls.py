@@ -14,4 +14,5 @@ urlpatterns = [
     path('comment-delete/<int:id>/', views.comment_delete, name='comment_delete'),
     # path('region-select/', views.region_select, name='region_select'),
     path('people-board/', views.people_board, name='people_board'),
+    path('people-board-write/', views.people_board_write, name='people_board_write'),
 ]

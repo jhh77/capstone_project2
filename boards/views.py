@@ -74,7 +74,7 @@ def people_board(request):
 #     return render(request, 'boards/petrol_board_main.html', context)
 
 
-# 게시글 등록하기
+# 신고 게시글 등록하기
 def petrol_board_write(request):
     if request.method == 'POST':
         member = Member.objects.get(user_id=request.user)
@@ -96,6 +96,11 @@ def petrol_board_write(request):
 
     form = BoardForm()
     return render(request, 'boards/petrol_board_write.html', {'form': form})
+
+
+# 의견/제보 게시글 등록하기
+def people_board_write(request):
+    return render(request, 'boards/people_board_write.html')
 
 
 # 글 상세보기
