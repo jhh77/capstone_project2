@@ -18,7 +18,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 300px;
+    padding-bottom: 600px;
     z-index: 0;
     position: relative;
 }
@@ -103,7 +103,7 @@ body {
 .title {
     font-weight: 500;
     font-size: 1.1rem;
-    margin-left: 25%;
+    margin-left: 24%;
 }
 /*-------------------------------------*/
 /*상단 부분 끝*/
@@ -178,7 +178,6 @@ body {
 
 /* 카카오 지도 */
 #map {
-    outline: 1px solid red;
     width: 100%;
     height: 20rem;
     margin-bottom: 4%;
@@ -188,7 +187,13 @@ body {
 .user-region {
     color: #A5A5A5;
     font-size: 0.75rem;
+    margin-bottom: 8%;
+}
+
+.board-type {
     margin-bottom: 18%;
+    color: #656EE8;
+    font-size: 0.75rem;
 }
 
 /* 댓글 아이콘이랑 수 div */
@@ -277,6 +282,7 @@ body {
     border-radius: 5px;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 #text-count { /*댓글 글자 수 세는 부분*/

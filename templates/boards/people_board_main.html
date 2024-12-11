@@ -103,11 +103,13 @@
                     {% endfor %}
                 </div>
 
-                <a href="{% url 'boards:people_board_write' %}"> <!--⭐⭐여기 링크 연결-->
-                    <button type="button" class="write-btn"> <!--글 작성 버튼-->
-                        &#43;
-                    </button>
-                </a>
+                {% if user.member_type.id == 1 %}
+                    <a href="{% url 'boards:people_board_write' %}"> <!--⭐⭐여기 링크 연결-->
+                        <button type="button" class="write-btn"> <!--글 작성 버튼-->
+                            &#43;
+                        </button>
+                    </a>
+                {% endif %}
 
                 <a href="#">
                     <button type="button" class="up-btn"> <!--멘 위로 올라가기 버튼 #으로 이동-->

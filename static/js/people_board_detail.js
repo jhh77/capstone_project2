@@ -26,6 +26,32 @@
 //     });
 // }
 
+
+if (latitude != null && longitude != null) {
+    // // 지도 생성
+    let lat = latitude; // Django에서 전달받은 위도
+    let lon = longitude; // Django에서 전달받은 경도
+
+    // 마커를 생성합니다
+    let markerPosition = new kakao.maps.LatLng(lat, lon);
+
+// 지도 생성
+    let mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+// 지도를 생성합니다
+    let map = new kakao.maps.Map(mapContainer, mapOption);
+
+// 마커를 생성하고 지도에 표시합니다
+    let marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+    marker.setMap(map);
+}
+
 //textarea 높이 조절, 글자 수 카운트해서 표시하기
 $('#comment-area').on('input', function() {
     //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)

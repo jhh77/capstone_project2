@@ -16,4 +16,5 @@ urlpatterns = [
     path('people-board/', views.people_board, name='people_board'),
     path('people-board-write/', views.people_board_write, name='people_board_write'),
     path('people-board-detail/<int:id>/', views.people_board_detail, name='people_board_detail'),
+    path('people-board-edit/<int:id>/', views.people_board_edit, name='people_board_edit'),
 ]

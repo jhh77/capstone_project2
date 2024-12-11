@@ -15,7 +15,7 @@
             <div class="content">
                 <div class="top-block">
                     <div>
-                        <a href=""><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                        <a href="{% url 'boards:people_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
                     </div>
                     <div class="title">의견/제보 게시판</div>
                 </div>
@@ -39,9 +39,13 @@
                         </div>
                     {% endif %}
 
-                    <div id="map"></div> <!--카카오 지도--> <!--⭐⭐제보 게시글인 경우에만-->
+                    {% if location %}
+                        <div id="map"></div> <!--카카오 지도--> <!--⭐⭐제보 게시글인 경우에만-->
+                    {% endif %}
 
                     <div class="user-region">{{ board.region_sido }} {{ board.region_sigungu }} {{ board.region_dong }}</div> <!--⭐⭐여기 유저 활동지역-->
+
+                    <div class="board-type">#{{ board.board_type.type_name }}</div>
 
                     <div class="comment-title-header">
                         <div class="comment-img">
@@ -80,10 +84,13 @@
                                 <div class="comment-user-name">{{ comment.user.member_type}} <span class="text-strong">{{ comment.user.nickname }}</span></div> <!--⭐⭐유저 종류에 따라 달라짐-->
                             </div>
 
-                            <div class="comment-btns"> <!--⭐댓글 쓴 사람만 보이게-->
-                                <a href="">수정</a>
-                                <button type="button">삭제</button>
-                            </div>
+                            {% if comment.user == request.user %}
+                                <form class="comment-btns" method="post" action="{% url 'boards:comment_delete' comment.id %}"> <!--⭐댓글 쓴 사람만 보이게-->
+                                    {% csrf_token %}
+                                    <a href="{% url 'boards:comment_edit' comment.id %}">수정</a>
+                                    <button type="submit">삭제</button>
+                                </form>
+                            {% endif %}
                         </div>
 
                         <div class="comment-content"> <!--⭐여기 댓글 내용-->
@@ -101,7 +108,7 @@
                 {% endif %}
 
                 <div class="btns">
-                    <a href="">
+                    <a href="{% url 'boards:people_board_edit' board.id %}">
                         <button type="button" class="edit-btn">수정하기</button> <!--⭐⭐수정하기 버튼-->
                     </a>
 
@@ -124,7 +131,12 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15505acf15cc35a126e3d8d508717896"></script> -->
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15505acf15cc35a126e3d8d508717896"></script>
+    <script>
+        // 서버에서 전달한 위도와 경도를 JavaScript 변수로 설정
+        const latitude = {{ location.lat|default:"null" }}; // 예: location.latitude
+        const longitude = {{ location.lon|default:"null" }}; // 예: location.longitude
+    </script>
     <script src="{% static 'js/people_board_detail.js' %}"></script>
 </body>
 </html>

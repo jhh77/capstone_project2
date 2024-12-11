@@ -312,6 +312,64 @@ def petrol_board_edit(request, id):
     return render(request, 'boards/petrol_board_edit.html', context)
 
 
+# 의견/제보 게시글 수정
+def people_board_edit(request, id):
+    board = Board.objects.get(id=id)
+    old_board_type = board.board_type
+    short_name = ''
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        image_path = request.FILES.get('image_path')
+        delete_value = request.POST.get('delete')
+        board_type = request.POST.get('board_type')
+
+        # 게시물 업데이트
+        board.content = content
+
+        if delete_value == '1':
+            if image_path:
+                # image_path가 있을 경우, 업데이트 로직
+                board.image_path.delete(save=False)
+                board.image_path = image_path  # 새 이미지 경로 가져오기
+            else:
+                # image_path가 None인 경우, 모든 image_path 지우기
+                board.image_path.delete(save=False)  # 파일 삭제
+                board.image_path = None  # 모델 필드 업데이트
+
+        if old_board_type != board_type:
+            board.board_type = board_type
+            if board.boar_type.id == 2: # 제보 글로 바뀌면 위치 정보 추가해야함.
+                location = BoardLocation(board=board)
+                location.lat = request.POST['lat']
+                location.lon = request.POST['lon']
+                location.save()
+            else: # 의견 글로 바뀌면 위치 정보 삭제해야함.
+                location = BoardLocation.objects.get(board=board)
+                location.delete()
+
+        board.save()
+
+        return redirect('boards:people_board_detail', id=id)
+
+    # 수정이 아닐경우
+    if board.image_path:
+        image_url = board.image_path.url
+        file_name = unquote(image_url.split('/')[-1])
+        base_name, extension = file_name.rsplit('.', 1)  # 기본 이름과 확장자를 분리
+
+        if len(base_name) > 10:
+            short_name = base_name[:10] + '...' + '.' + extension
+        else:
+            short_name = file_name  # 기본 이름이 10자 이하일 경우
+
+    context = {
+        'board': board,
+        'short_name': short_name if board.image_path else None,
+    }
+
+    return render(request, 'boards/people_board_edit.html', context)
+
+
 # 신고글 삭제하기
 def petrol_board_delete(request, id):
     if request.method == 'POST':
@@ -329,8 +387,12 @@ def comment_edit(request, id):
         content = request.POST.get('content')
         comment.content = content
         comment.save()
-        return redirect('boards:petrol_board_detail', id=comment.board.id)
+        board_type = comment.board.board_type.id
 
+        if board_type == 1:
+            return redirect('boards:petrol_board_detail', id=comment.board.id)
+        else:
+            return redirect('boards:people_board_detail', id=comment.board.id)
     else:
         form = CommentForm()
 
@@ -347,7 +409,12 @@ def comment_delete(request, id):
     if request.method == 'POST':
         comment = get_object_or_404(Comment, id=id)
         comment.delete()
-        return redirect('boards:petrol_board_detail', id=comment.board.id)
+
+        board_type = comment.board.board_type.id
+        if board_type == 1:
+            return redirect('boards:petrol_board_detail', id=comment.board.id)
+        else:
+            return redirect('boards:people_board_detail', id=comment.board.id)
 
 
 
