@@ -13,7 +13,8 @@
     <div class="container-content">
         <div class="contents">
 
-            <form action="" method="post" class="journal-form" name="people_board_post">
+            <form action="{% url 'boards:people_board_write' %}" method="post" class="journal-form" name="people_board_post">
+                {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
                         <a href="{% url 'boards:people_board' %}"> <!--⭐여기 url 연결-->

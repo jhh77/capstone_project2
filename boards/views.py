@@ -19,9 +19,9 @@ def petrol_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
+        boards = Board.objects.filter(board_type=1, region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
     else:
-        boards = Board.objects.all().order_by('-created_at')
+        boards = Board.objects.filter(board_type=1).order_by('-created_at')
 
     user = Member.objects.get(user_id=request.user)
     comments = Comment.objects.all()
@@ -51,7 +51,42 @@ def petrol_board(request):
 
 # 의견/제보 게시판 메인페이지
 def people_board(request):
-    return render(request, 'boards/people_board_main.html')
+    sido = ''
+    sigungu = ''
+    dong = ''
+    if request.method == 'POST':
+        sido = request.POST.get('sido')
+        sigungu = request.POST.get('sigungu')
+        dong = request.POST.get('dong')
+        boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by(
+            '-created_at')
+    else:
+        boards = Board.objects.filter(board_type__in=[2, 3]).order_by('-created_at')
+
+    user = Member.objects.get(user_id=request.user)
+    comments = Comment.objects.all()
+
+    # 댓글 수를 각 게시물에 추가
+    for board in boards:
+        # 각 게시물에 대한 댓글 수 계산
+        board.comment_count = Comment.objects.filter(board=board).count()
+
+    # 게시물 내용을 자르기
+    for board in boards:
+        if len(board.content) > 150:
+            board.short_content = board.content[:150]
+        else:
+            board.short_content = board.content
+
+    context = {
+        'boards': boards,
+        'user': user,
+        'comments': comments,
+        'sido': sido,
+        'sigungu': sigungu,
+        'dong': dong,
+    }
+    return render(request, 'boards/people_board_main.html', context)
 
 
 # 지역 게시글 검색
@@ -100,10 +135,29 @@ def petrol_board_write(request):
 
 # 의견/제보 게시글 등록하기
 def people_board_write(request):
-    return render(request, 'boards/people_board_write.html')
+    if request.method == 'POST':
+        member = Member.objects.get(user_id=request.user)
+        form = BoardForm(request.POST, request.FILES)
+        if form.is_valid():
+            board = form.save(commit=False)
+            board.user = request.user
+            board.region_sido = member.region_sido
+            board.region_sigungu = member.region_sigungu
+            board.region_dong = member.region_dong
+            board.save()
+
+            # 제보글이면 위치 정보 추가
+            if board.board_type.id == 2:
+                location = BoardLocation(board=board)
+                location.lat = request.POST['lat']
+                location.lon = request.POST['lon']
+                location.save()
+            return redirect('boards:people_board')
+    form = BoardForm()
+    return render(request, 'boards/people_board_write.html', {'form': form})
 
 
-# 글 상세보기
+# 신고 글 상세보기
 def petrol_board_detail(request, id):
     board = Board.objects.get(id=id)
     if request.method == 'POST':
@@ -126,6 +180,38 @@ def petrol_board_detail(request, id):
         'comment_count': comments.count(),
     }
     return render(request, 'boards/petrol_board_detail.html', context)
+
+
+# 의견/제보 글 상세보기
+def people_board_detail(request, id):
+    board = Board.objects.get(id=id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.board = board
+            comment.user = request.user
+            comment.save()
+            return redirect('boards:people_board_detail', id=id)
+    else:
+        form = CommentForm()
+
+    comments = Comment.objects.filter(board=board) # 댓글 가져오기
+    if board.board_type.id == 2:
+        location = BoardLocation.objects.get(board=board)
+        context = {
+            'board': board,
+            'location': location,
+            'comments': comments,
+            'comment_count': comments.count(),
+        }
+
+    else: context = {
+        'board': board,
+        'comments': comments,
+        'comment_count': comments.count(),
+    }
+    return render(request, 'boards/people_board_detail.html', context)
 
 
 # 신고 게시글 수정

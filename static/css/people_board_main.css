@@ -200,6 +200,13 @@ body {
     color: black; /* 선택 후 글자 색: 검정색 */
 }
 
+#error-message {
+    font-size: 0.78rem;
+    color: #E07070;
+    /*margin-bottom: 11%;*/
+    display: none;
+}
+
 /*지역 설정 버튼*/
 .check-btn {
     width: 8%;
@@ -215,6 +222,23 @@ body {
 /* 지역 설정 버튼 체크 이미지 */
 .check-btn > img {
     width: 100%;
+}
+
+/* 전체 지역 게시글 보기*/
+.all-board {
+    margin-top: 10%;
+    background-color: #b5b5b5;
+    text-align: center;
+    align-content: center;
+    width: 30%;
+    height: 2rem;
+    border-radius: 25px;
+}
+
+/* 전체 지역 게시글 보기 a 태그 */
+.all-link {
+    color: black;
+    text-decoration: none;
 }
 
 /*게시글 종류 선택 div*/
@@ -242,6 +266,19 @@ body {
 }
 
 /*———————————————————*/
+
+/*게시글 없을 때 부분 div*/
+.no-board-block {
+    margin-top: 20%;
+    text-align: center;
+    padding-bottom: 400px;
+    opacity: 0.6;
+}
+
+/* 게시글 하나도 없을 때 이미지 */
+.no-board-img {
+    width: 20%;
+}
 
 /* 게시글 부분 div */
 .post-block {

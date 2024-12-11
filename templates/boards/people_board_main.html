@@ -16,7 +16,7 @@
             <div class="test">
                 <div class="top-block">
                     <div>
-                        <a href=""><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                        <a href="{% url 'home' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
                     </div>
                     <div class="title">의견/제보 게시판</div>
                 </div>
@@ -26,30 +26,36 @@
                 </div>
 
                 <div class="board-block">
-                    <div class="region-block">
+                    <form class="region-block" method="post" action="{% url 'boards:people_board' %}">
+                        {% csrf_token %}
                         <div class="block-title">
                             지역 설정
-                            <button type="button" class="check-btn"><img src="{% static 'image/check.png' %}" alt=""></button>
+                            <button type="submit" class="check-btn"><img src="{% static 'image/check.png' %}" alt=""></button>
                         </div>
 
                         <div class="region">
                             <div class="custom-select" id="sido-select">
-                                <div class="select-selected">시/도</div>
+                                <div class="select-selected">{{ sido|default:'시/도' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <div class="custom-select" id="sigugun-select">
-                                <div class="select-selected">시/군/구</div>
+                                <div class="select-selected">{{ sigungu |default:'시/군/구' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <div class="custom-select" id="dong-select">
-                                <div class="select-selected">읍/면/동</div>
+                                <div class="select-selected">{{ dong|default:'읍/면/동' }}</div>
                                 <div class="select-items"></div>
                             </div>
                             <input type="hidden" name="sido" id="sido-input" required>
-                            <input type="hidden" name="sigugun" id="sigugun-input" required>
+                            <input type="hidden" name="sigungu" id="sigugun-input" required>
                             <input type="hidden" name="dong" id="dong-input" required>
                         </div>
-                    </div>
+                        <div id="error-message">지역을 선택해주세요.</div>
+
+                        <a href="{% url 'boards:people_board' %}" class="all-link">
+                            <div class="all-board">전체 게시글</div>
+                        </a>
+                    </form>
 
                     <div class="post-type-select">
                         <div class="select-all">#전체</div>
@@ -57,36 +63,44 @@
                         <div class="select-report">#제보</div>
                     </div>
 
+                    {% if not boards %}
+                        <div class="no-board-block">
+                            <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">
+                            <p>게시글이 없습니다.</p>
+                            <p>게시글을 작성해 보세요!</p>
+                        </div>
+                    {% endif %}
+
                     <!--⭐⭐여기 컨텐츠 반복문-->
-                    <div class="post-block">
-                        <a href=""> <!--⭐여기 url 연결-->
-                            <div class="post-header">
-                                <div class="user-profile">
-                                    <div class="user-img"><img src="{% static 'image/people_profile.png' %}" alt=""></div>
-                                    <div class="user-name">동네 주민 <span class="text-strong">나리</span></div> <!--⭐여기 유저 닉네임-->
-                                </div>
-                                <div class="post-date">2024/11/25</div> <!--⭐여기 게시글 날짜-->
-                            </div>
-
-                            <div class="post-content"> <!--⭐여기 게시글 내용-->
-                                사용자 홍길동은 오늘 2024년 11월 24일에 새로운 게시글을 작성했습니다.
-                                게시글에는 그의 반려견 사진이 포함되어 있어 많은 사람들의 관심을 끌고 있습니다.
-                                이 게시글은 사랑과 우정에 대한 이야기로, 많은 댓글이 달리고 있습니다.
-                            </div>
-
-                            <div class="post-footer">
-                                <div class="post-region">서울특별시 성동구 사근동</div> <!--⭐게시글 쓴 유저 활동지역-->
-                                <div class="comment">
-                                    <div class="comment-img">
-                                        <img src="{% static 'image/speech-bubble.png' %}" alt="">
+                    {% for board in boards %}
+                        <div class="post-block">
+                            <a href="{% url 'boards:people_board_detail' board.id %}"> <!--⭐여기 url 연결-->
+                                <div class="post-header">
+                                    <div class="user-profile">
+                                        <div class="user-img"><img src="{% static 'image/people_profile.png' %}" alt=""></div>
+                                        <div class="user-name">{{ board.user.member_type }} <span class="text-strong">{{ board.user.nickname }}</span></div> <!--⭐여기 유저 닉네임-->
                                     </div>
-                                    <div>12 <!--⭐여기 댓글 수--></div>
+                                    <div class="post-date">{{ board.created_at|date:"Y/m/d"  }}</div> <!--⭐여기 게시글 날짜-->
                                 </div>
-                            </div>
-                            <div class="post-type">#제보</div>
-                        </a>
-                    </div>
-                    <div class="gap-block"></div>
+
+                                <div class="post-content"> <!--⭐여기 게시글 내용-->
+                                    {{ board.short_content }}
+                                </div>
+
+                                <div class="post-footer">
+                                    <div class="post-region">{{ board.region_sido }} {{ board.region_sigungu }} {{ board.region_dong }}</div> <!--⭐게시글 쓴 유저 활동지역-->
+                                    <div class="comment">
+                                        <div class="comment-img">
+                                            <img src="{% static 'image/speech-bubble.png' %}" alt="">
+                                        </div>
+                                        <div>{{ board.comment_count }}</div>
+                                    </div>
+                                </div>
+                                <div class="post-type">#{{ board.board_type.type_name }}</div>
+                            </a>
+                        </div>
+                        <div class="gap-block"></div>
+                    {% endfor %}
                 </div>
 
                 <a href="{% url 'boards:people_board_write' %}"> <!--⭐⭐여기 링크 연결-->

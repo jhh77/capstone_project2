@@ -1,5 +1,5 @@
 //페이지 로딩 시 textarea에 focus 주기 + 원래 컨텐츠 길이 표시하기
-$(document).ready(function() {
+$(document).ready(async function () {
     const write = $('#write-text');
     write.focus();
     const textLength = write.val().length;
@@ -9,6 +9,44 @@ $(document).ready(function() {
     //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)
     $('#write-text').css('height', 'auto');
     $('#write-text').css('height', $('#write-text')[0].scrollHeight + 'px');
+
+    // 위치 정보 가져오기 함수
+    async function getCurrentPosition() {
+        if (navigator.geolocation) {
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+        } else {
+            throw new Error('현재 위치 정보를 지원하지 않는 브라우저입니다.');
+        }
+    }
+
+    // 페이지 로드 시 위치 정보 가져오기
+    try {
+        const position = await getCurrentPosition();
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // 위도와 경도를 hidden input에 설정
+        $('#lat').val(lat);
+        $('#lon').val(lon);
+    } catch (error) {
+        alert('위치 정보를 가져오는데 실패했습니다: ' + error.message);
+        // 위치 정보가 없을 경우 기본값 설정
+        $('#lat').val('');
+        $('#lon').val('');
+    }
+
+    $('.journal-form').on('submit', function (event) {
+        // 위도와 경도가 설정되어 있는지 확인
+        const lat = $('#lat').val();
+        const lon = $('#lon').val();
+
+        if (!lat || !lon) {
+            event.preventDefault(); // 기본 폼 제출 방지
+            alert('위치 정보가 필요합니다. 위치 정보를 확인해주세요.');
+        }
+    });
 });
 
 //textarea 높이 조절, 글자 수 카운트해서 표시하기
