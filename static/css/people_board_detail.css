@@ -181,6 +181,7 @@ body {
     width: 100%;
     height: 20rem;
     margin-bottom: 4%;
+    z-index: 0;
 }
 
 /* 유저 활동 지역 */
@@ -395,6 +396,7 @@ body {
     margin-bottom: 80px;
     margin-left: 347px;
     cursor: pointer;
+    z-index: 1;
 }
 
 #dots-btn > img {

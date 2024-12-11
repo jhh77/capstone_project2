@@ -315,13 +315,13 @@ def petrol_board_edit(request, id):
 # 의견/제보 게시글 수정
 def people_board_edit(request, id):
     board = Board.objects.get(id=id)
-    old_board_type = board.board_type
+    old_board_type = board.board_type.id
     short_name = ''
     if request.method == 'POST':
         content = request.POST.get('content')
         image_path = request.FILES.get('image_path')
         delete_value = request.POST.get('delete')
-        board_type = request.POST.get('board_type')
+        board_type_id = int(request.POST.get('board_type'))
 
         # 게시물 업데이트
         board.content = content
@@ -336,9 +336,10 @@ def people_board_edit(request, id):
                 board.image_path.delete(save=False)  # 파일 삭제
                 board.image_path = None  # 모델 필드 업데이트
 
-        if old_board_type != board_type:
-            board.board_type = board_type
-            if board.boar_type.id == 2: # 제보 글로 바뀌면 위치 정보 추가해야함.
+        if old_board_type != board_type_id:
+            board_type_instance = get_object_or_404(BoardType, id=board_type_id)
+            board.board_type = board_type_instance
+            if board.board_type.id == 2: # 제보 글로 바뀌면 위치 정보 추가해야함.
                 location = BoardLocation(board=board)
                 location.lat = request.POST['lat']
                 location.lon = request.POST['lon']

@@ -6,6 +6,11 @@ $(document).ready(async function () {
     console.log(textLength);
     $('#text-count').text(textLength + ' / 1000');
 
+
+    //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)
+    $('#write-text').css('height', 'auto');
+    $('#write-text').css('height', $('#write-text')[0].scrollHeight + 'px');
+
     // 위치 정보 가져오기 함수
     async function getCurrentPosition() {
         if (navigator.geolocation) {

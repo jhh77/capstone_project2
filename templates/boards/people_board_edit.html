@@ -13,7 +13,7 @@
     <div class="container-content">
         <div class="contents">
 
-            <form action="{% url 'boards:people_board_edit' board.id %}" method="post" class="journal-form">
+            <form action="{% url 'boards:people_board_edit' board.id %}" method="post" class="journal-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
@@ -29,12 +29,12 @@
 
                 <div class="post-select-block">
                     <div>
-                        <input type="radio" name="board-type" id="flexRadioDefault1" value="3" {% if board.board_type.id == 3 %}checked{% endif %} required>
+                        <input type="radio" name="board_type" id="flexRadioDefault1" value="3" {% if board.board_type.id == 3 %}checked{% endif %} required>
                         <label for="flexRadioDefault1">의견</label>
 
                     </div>
                     <div>
-                        <input type="radio" name="board-type" id="flexRadioDefault2" value="2" {% if board.board_type.id == 2 %}checked{% endif %} required>
+                        <input type="radio" name="board_type" id="flexRadioDefault2" value="2" {% if board.board_type.id == 2 %}checked{% endif %} required>
                         <label for="flexRadioDefault2">제보</label>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <input type="file" id="fileInput" name="image_path" accept="image/*">
                     </div>
                     <div class="src-block">
-                        <div class="file-item">최대 1개 첨부 가능 <span id="clearImage">사진 삭제</div>
+                        <div class="file-item">최대 1개 첨부 가능 <span id="clearImage">사진 삭제</span></div>
                         <div class="src-name">
                             {% if board.image_path %}
                                 <div class="file-item" data-full-name="{{ board.image_path.name }}">
