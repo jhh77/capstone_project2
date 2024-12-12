@@ -27,12 +27,13 @@ $('#write-text').on('input', function() {
 });
 
 //파일 업로드 관련
-let deletedFiles = []; // 삭제된 파일의 ID를 저장할 배열
+// let deletedFiles = []; // 삭제된 파일의 ID를 저장할 배열
 $('#fileInput').on('change', function(event) {
     const files = event.target.files; // 선택된 파일들
     const messageBlock = $('.src-name');
     messageBlock.empty(); // 이전 내용을 초기화
-    deletedFiles = []
+    // deletedFiles = []
+    let check = $('#img-delete');
 
     if (files.length > 4) {
         alert('최대 4개의 파일만 선택할 수 있습니다.');
@@ -53,6 +54,19 @@ $('#fileInput').on('change', function(event) {
         fileItem.attr('data-index', index); // 파일 인덱스를 데이터 속성에 저장
         messageBlock.append(fileItem);
     });
+    check.val(1);
+    alert(check.val())
+});
+
+$('#clearImage').on('click', function () {
+    // 파일 입력 초기화
+    $('#fileInput').val('');
+
+    // 파일 이름 표시 초기화
+    $('.src-name').empty(); // 파일 이름 숨기기
+
+    // 체크박스 값 설정
+    $('#img-delete').val(1);
 });
 
 // // 파일 이름 클릭 시 삭제 기능
@@ -72,31 +86,31 @@ $('#fileInput').on('change', function(event) {
 
 // 파일 이름 클릭 시 삭제 기능
 
-$('.src-name').on('click', '.file-item', function() {
-    const fileIdToRemove = $(this).data('id'); // 클릭된 파일의 ID
-    const currentFiles = $('#fileInput')[0].files;
-    const newFileList = Array.from(currentFiles).filter((_, index) => index !== $(this).data('index')); // 클릭한 파일 제외
-
-    // 삭제할 기존 파일의 ID를 저장
-    if (fileIdToRemove) {
-        deletedFiles.push(fileIdToRemove); // 삭제된 파일 ID를 추가
-    }
-
-    // 새 파일 리스트를 설정
-    const dataTransfer = new DataTransfer();
-    newFileList.forEach(file => dataTransfer.items.add(file));
-    $('#fileInput')[0].files = dataTransfer.files;
-
-    // 선택된 파일 이름 업데이트
-    $(this).remove(); // 삭제된 파일의 이름 제거
-});
-
-// 폼 제출 시 삭제된 파일 처리
-$('form').on('submit', function() {
-    // 삭제된 파일의 ID를 서버에 전송할 수 있도록 추가
-    $('<input>').attr({
-        type: 'hidden',
-        name: 'deleted_files',
-        value: JSON.stringify(deletedFiles) // 삭제된 파일 ID를 JSON 문자열로 변환
-    }).appendTo('form');
-});
+// $('.src-name').on('click', '.file-item', function() {
+//     const fileIdToRemove = $(this).data('id'); // 클릭된 파일의 ID
+//     const currentFiles = $('#fileInput')[0].files;
+//     const newFileList = Array.from(currentFiles).filter((_, index) => index !== $(this).data('index')); // 클릭한 파일 제외
+//
+//     // 삭제할 기존 파일의 ID를 저장
+//     if (fileIdToRemove) {
+//         deletedFiles.push(fileIdToRemove); // 삭제된 파일 ID를 추가
+//     }
+//
+//     // 새 파일 리스트를 설정
+//     const dataTransfer = new DataTransfer();
+//     newFileList.forEach(file => dataTransfer.items.add(file));
+//     $('#fileInput')[0].files = dataTransfer.files;
+//
+//     // 선택된 파일 이름 업데이트
+//     $(this).remove(); // 삭제된 파일의 이름 제거
+// });
+//
+// // 폼 제출 시 삭제된 파일 처리
+// $('form').on('submit', function() {
+//     // 삭제된 파일의 ID를 서버에 전송할 수 있도록 추가
+//     $('<input>').attr({
+//         type: 'hidden',
+//         name: 'deleted_files',
+//         value: JSON.stringify(deletedFiles) // 삭제된 파일 ID를 JSON 문자열로 변환
+//     }).appendTo('form');
+// });

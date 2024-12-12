@@ -39,7 +39,7 @@
 
             <div class="post-block">
                 <div class="write-post">
-                    <a href=""> <!--⭐여기 url 연결-->
+                    <a href="{% url 'boards:my_boards' %}"> <!--⭐여기 url 연결-->
                         <div class="write-img">
                             <img src="{% static 'image/write.png' %}" alt="" class="img-margin">
                         </div>
@@ -47,7 +47,7 @@
                     </a>
                 </div>
                 <div class="write-comment">
-                    <a href=""> <!--⭐여기 url 연결-->
+                    <a href="{% url 'boards:commented-boards' %}"> <!--⭐여기 url 연결-->
                         <div class="write-img">
                             <img src="{% static 'image/comment.png' %}" alt="">
                         </div>

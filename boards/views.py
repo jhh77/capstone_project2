@@ -19,7 +19,16 @@ def petrol_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        boards = Board.objects.filter(board_type=1, region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
+        # boards = Board.objects.filter(board_type=1, region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
+        boards = Board.objects.all().order_by('-created_at')
+
+        # 디비 값에 공백이 들어갔을 경우의 처리를 위해
+        boards = [
+            board for board in boards
+            if board.region_sido.replace(" ", "") == sido.replace(" ", "") and
+               board.region_sigungu.replace(" ", "") == sigungu.replace(" ", "") and
+               board.region_dong.replace(" ", "") == dong.replace(" ", "")
+        ]
     else:
         boards = Board.objects.filter(board_type=1).order_by('-created_at')
 
@@ -58,8 +67,21 @@ def people_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by(
-            '-created_at')
+        print(sido, sigungu, dong)
+
+        # boards = Board.objects.filter(region_sido=sido,
+        #                               region_sigungu=sigungu,
+        #                               region_dong=dong).order_by('-created_at')
+        boards = Board.objects.all().order_by('-created_at')
+
+        # 디비 값에 공백이 들어갔을 경우의 처리를 위해
+        boards = [
+            board for board in boards
+            if board.region_sido.replace(" ", "") == sido.replace(" ", "") and
+               board.region_sigungu.replace(" ", "") == sigungu.replace(" ", "") and
+               board.region_dong.replace(" ", "") == dong.replace(" ", "")
+        ]
+        print(boards)
     else:
         boards = Board.objects.filter(board_type__in=[2, 3]).order_by('-created_at')
 
@@ -421,6 +443,43 @@ def comment_delete(request, id):
             return redirect('boards:petrol_board_detail', id=comment.board.id)
         else:
             return redirect('boards:people_board_detail', id=comment.board.id)
+
+
+# 내가 쓴 글 목록
+def my_boards(request):
+    boards = Board.objects.filter(user=request.user).order_by('-created_at')
+
+    for board in boards:
+        # 각 게시물에 대한 댓글 수 계산
+        board.comment_count = Comment.objects.filter(board=board).count()
+        if len(board.content) > 150:
+            board.short_content = board.content[:150]
+        else:
+            board.short_content = board.content
+
+    context = {
+        'boards': boards,
+    }
+    return render(request, 'boards/my_boards.html', context)
+
+
+# 댓글 단 글 목록
+def commented_boards(request):
+    user = request.user
+    boards = Board.objects.filter(comment__user=user).distinct().order_by('-created_at')
+
+    for board in boards:
+        # 각 게시물에 대한 댓글 수 계산
+        board.comment_count = Comment.objects.filter(board=board).count()
+        if len(board.content) > 150:
+            board.short_content = board.content[:150]
+        else:
+            board.short_content = board.content
+
+    context = {
+        'boards': boards,
+    }
+    return render(request, 'boards/commented_boards.html', context)
 
 
 

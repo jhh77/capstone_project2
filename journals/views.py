@@ -105,27 +105,66 @@ def journal_detail(request, id):
 #         'images': processed_images,
 #     }
 #     return render(request, 'journals/journal_edit.html', context)
+# def journal_edit(request, id):
+#     journal = get_object_or_404(Journal, id=id)
+#     images = JournalImage.objects.filter(journal=journal)
+#
+#     if request.method == 'POST':
+#         # 삭제할 이미지 처리
+#         deleted_files = json.loads(request.POST.get('deleted_files', '[]'))
+#         for image_id in deleted_files:
+#             try:
+#                 image = JournalImage.objects.get(id=image_id)
+#                 image.delete()  # 이미지 삭제
+#             except JournalImage.DoesNotExist:
+#                 continue  # 이미지가 존재하지 않으면 무시
+#
+#         # 새 이미지 처리
+#         images_test = request.FILES.getlist('image_path')
+#         if images_test:  # 새 파일이 선택된 경우
+#             # 기존 이미지 삭제
+#             images.delete()  # 모든 기존 이미지 삭제
+#             for img in images_test:
+#                 JournalImage.objects.create(journal=journal, image_path=img)
+#
+#         # 내용 변경
+#         journal.date = request.POST['date']
+#         journal.start_time = request.POST['start_time']
+#         journal.end_time = request.POST['end_time']
+#         journal.content = request.POST['content']
+#         journal.save()
+#
+#         return redirect('journals:journal_detail', id=journal.id)
+#
+#     # 이미지 파일 이름 처리
+#     processed_images = []
+#     for image in images:
+#         image_url = image.image_path.url
+#         file_name = unquote(image_url.split('/')[-1])
+#         base_name, extension = file_name.rsplit('.', 1)  # 기본 이름과 확장자를 분리
+#
+#         # 짧은 이름 처리
+#         if len(base_name) > 10:
+#             short_name = base_name[:10] + '...' + '.' + extension  # 확장자 붙이기
+#         else:
+#             short_name = file_name  # 기본 이름이 10자 이하일 경우
+#
+#         processed_images.append({'short_name': short_name, 'full_name': file_name, 'id': image.id})  # ID 추가
+#
+#     context = {
+#         'journal': journal,
+#         'images': processed_images,
+#     }
+#     return render(request, 'journals/journal_edit.html', context)
+
+# 일지 수정하기 (변경코드)
 def journal_edit(request, id):
     journal = get_object_or_404(Journal, id=id)
-    images = JournalImage.objects.filter(journal=journal)
+    images = JournalImage.objects.filter(journal=journal) # 기존 이미지들
 
     if request.method == 'POST':
-        # 삭제할 이미지 처리
-        deleted_files = json.loads(request.POST.get('deleted_files', '[]'))
-        for image_id in deleted_files:
-            try:
-                image = JournalImage.objects.get(id=image_id)
-                image.delete()  # 이미지 삭제
-            except JournalImage.DoesNotExist:
-                continue  # 이미지가 존재하지 않으면 무시
-
-        # 새 이미지 처리
-        images_test = request.FILES.getlist('image_path')
-        if images_test:  # 새 파일이 선택된 경우
-            # 기존 이미지 삭제
-            images.delete()  # 모든 기존 이미지 삭제
-            for img in images_test:
-                JournalImage.objects.create(journal=journal, image_path=img)
+        image_path = request.FILES.getlist('image_path') # 새 이미지들
+        delete_value = request.POST.get('delete')
 
         # 내용 변경
         journal.date = request.POST['date']
@@ -133,6 +172,28 @@ def journal_edit(request, id):
         journal.end_time = request.POST['end_time']
         journal.content = request.POST['content']
         journal.save()
+
+        # if delete_value == '1':
+        #     # 이미지 변경한 경우, 업데이트 로직
+        #     if image_path:
+        #         images.delete()
+        #         for image in image_path:
+        #             journal_image = JournalImage(journal=journal, image_path=image)
+        #             journal_image.save()
+        #     # 이미지 삭제함.
+        #     else:
+        #         images.delete()
+        # 이미지 처리
+        if delete_value == '1':
+            # 기존 이미지를 삭제
+            for image in images:
+                image.image_path.delete(save=False)
+                image.delete()
+
+        # 새 이미지가 있는 경우
+        for image in image_path:
+            journal_image = JournalImage(journal=journal, image_path=image)  # 새 이미지 추가
+            journal_image.save()
 
         return redirect('journals:journal_detail', id=journal.id)
 

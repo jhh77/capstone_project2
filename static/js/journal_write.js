@@ -5,6 +5,10 @@ $(document).ready(function() {
     const textLength = write.val().length;
     console.log(textLength);
     $('#text-count').text(textLength + ' / 1000');
+
+    //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)
+    $('#write-text').css('height', 'auto');
+    $('#write-text').css('height', $('#write-text')[0].scrollHeight + 'px');
 });
 
 //textarea 높이 조절, 글자 수 카운트해서 표시하기
@@ -49,17 +53,26 @@ $('#fileInput').on('change', function(event) {
     });
 });
 
-// 파일 이름 클릭 시 삭제 기능
-$('.src-name').on('click', '.file-item', function() {
-    const indexToRemove = $(this).data('index'); // 클릭된 파일의 인덱스
-    const currentFiles = $('#fileInput')[0].files;
-    const newFileList = Array.from(currentFiles).filter((_, index) => index !== indexToRemove); // 클릭한 파일 제외
+// "사진 삭제" 스팬 클릭 시 파일 입력 초기화
+$('#clearImage').on('click', function () {
+    // 파일 입력 초기화
+    $('#fileInput').val('');
 
-    // 새 파일 리스트를 설정
-    const dataTransfer = new DataTransfer();
-    newFileList.forEach(file => dataTransfer.items.add(file));
-    $('#fileInput')[0].files = dataTransfer.files;
-
-    // 선택된 파일 이름 업데이트
-    $(this).remove(); // 삭제된 파일의 이름 제거
+    // 파일 이름 표시 초기화
+    $('.src-name').empty(); // 파일 이름 숨기기
 });
+
+// 파일 이름 클릭 시 삭제 기능
+// $('.src-name').on('click', '.file-item', function() {
+//     const indexToRemove = $(this).data('index'); // 클릭된 파일의 인덱스
+//     const currentFiles = $('#fileInput')[0].files;
+//     const newFileList = Array.from(currentFiles).filter((_, index) => index !== indexToRemove); // 클릭한 파일 제외
+//
+//     // 새 파일 리스트를 설정
+//     const dataTransfer = new DataTransfer();
+//     newFileList.forEach(file => dataTransfer.items.add(file));
+//     $('#fileInput')[0].files = dataTransfer.files;
+//
+//     // 선택된 파일 이름 업데이트
+//     $(this).remove(); // 삭제된 파일의 이름 제거
+// });

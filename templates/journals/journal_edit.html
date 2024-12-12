@@ -58,16 +58,17 @@
                         <input type="file" id="fileInput" name="image_path" accept="image/*" multiple>
                     </div>
                     <div class="src-block">
-                        <div class="file-item">최대 4개 첨부 가능 (파일 이름 클릭 시 삭제)</div>
+                        <div class="file-item">최대 4개 첨부 가능 <span id="clearImage">사진 삭제</span></div>
                         <div class="src-name">
                             {% if images %}
                                 {% for image in images %}
-                                    <div class="file-item" data-id="{{ image.id }}">{{ image.short_name }}</div>
+                                    <div class="file-item" data-full-name="{{ journal.image_path.name }}">{{ image.short_name }}</div>
                                 {% endfor %}
                             {% endif %}
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="delete" id="img-delete" value="0">
             </form>
         </div>
     </div>
