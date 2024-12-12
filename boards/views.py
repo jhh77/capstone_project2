@@ -372,12 +372,17 @@ def people_board_edit(request, id):
 
 
 # 신고글 삭제하기
-def petrol_board_delete(request, id):
+def board_delete(request, id):
     if request.method == 'POST':
         board = Board.objects.get(id=id)
+        type = board.board_type.id
         board.image_path.delete(save=False)
         board.delete()
-        return redirect('boards:petrol_board')
+
+        if type == 1:
+            return redirect('boards:petrol_board')
+        else:
+            return redirect('boards:people_board')
 
 
 # 댓글 수정하기
