@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신고게시판 글 상세보기</title>
     <link rel="stylesheet" href="{% static 'css/people_board_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menubar.css' %}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
 </head>
@@ -16,7 +17,7 @@
                 <div class="top-block">
                     <div class="arrow-img">
 {#                        <a href="{% url 'boards:people_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->#}
-                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();" class="cursor">
+                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();"> <!--⭐여기 url 연결-->
                     </div>
                     <div class="title">의견/제보 게시판</div>
                 </div>
@@ -134,8 +135,8 @@
                         </form>
                     </div>
                 </div>
-
             </div>
+            {% include 'menubar.html' %}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

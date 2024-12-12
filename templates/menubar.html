@@ -1,0 +1,29 @@
+{% load static %}
+<div class="menu">
+    <div class="menu-icons">
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'image/menu-home.png' %}" alt="">
+                <div class="menu-name">홈</div>
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'boards:petrol_board' %}">
+                <img src="{% static 'image/menu-petrol.png' %}" alt="">
+                <div class="menu-name">순찰대 게시판</div>
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'boards:people_board' %}">
+                <img src="{% static 'image/menu-people.png' %}" alt="">
+                <div class="menu-name">주민 게시판</div>
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'accounts:mypage' %}">
+                <img src="{% static 'image/menu-my.png' %}" alt="">
+                <div class="menu-name">마이페이지</div>
+            </a>
+        </div>
+    </div>
+</div>

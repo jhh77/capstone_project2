@@ -17,9 +17,7 @@
                 {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
-                        <a href="{% url 'boards:petrol_board' %}"> <!--⭐여기 url 연결-->
-                            <img src="{% static 'image/back.png' %}" alt="">
-                        </a>
+                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();" class="cursor">
                     </div>
                     <div class="title">댓글 수정</div>
                     <div class="btn-block">

@@ -21,13 +21,13 @@
                     <div class="title">내가 쓴 글</div>
                 </div>
 
-{#                {% if not boards %}#}
-{#                    <div class="no-board-block">#}
-{#                        <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">#}
-{#                        <p>게시글이 없습니다.</p>#}
-{#                        <p>게시글을 작성해 보세요!</p>#}
-{#                    </div>#}
-{#                {% endif %}#}
+                {% if not boards %}
+                    <div class="no-board-block">
+                        <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">
+                        <p>게시글이 없습니다.</p>
+                        <p>게시글을 작성해 보세요!</p>
+                    </div>
+                {% endif %}
 
                 <!--⭐⭐여기 컨텐츠 반복문-->
                 {% for board in boards %}

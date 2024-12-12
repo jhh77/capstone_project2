@@ -6,8 +6,8 @@ $(document).ready(function() {
     $('#text-count').text(textLength + ' / 500');
 
     //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)
-    $('#write-text').css('height', 'auto');
-    $('#write-text').css('height', $('#write-text')[0].scrollHeight + 'px');
+    $('#comment-area').css('height', 'auto');
+    $('#comment-area').css('height', $('#comment-area')[0].scrollHeight + 'px');
 });
 
 //textarea 높이 조절, 글자 수 카운트해서 표시하기

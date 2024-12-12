@@ -18,4 +18,6 @@ urlpatterns = [
     path('my-profile/', views.my_profile, name='my_profile'),
     path('nickname-change/', views.nickname_change, name='nickname_change'),
     path('region-change/', views.region_change, name='region_change'),
+    path('menubar/', views.menubar, name='menubar'),
+
 ]

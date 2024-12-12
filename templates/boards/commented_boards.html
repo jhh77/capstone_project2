@@ -21,13 +21,13 @@
                     <div class="title">댓글 단 글</div>
                 </div>
 
-{#                {% if not boards %}#}
-{#                    <div class="no-board-block">#}
-{#                        <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">#}
-{#                        <p>게시글이 없습니다.</p>#}
-{#                        <p>게시글을 작성해 보세요!</p>#}
-{#                    </div>#}
-{#                {% endif %}#}
+                {% if not boards %}
+                    <div class="no-board-block">
+                        <img src="{% static 'image/no_board.png' %}" alt="" class="no-board-img">
+                        <p>댓글이 없습니다.</p>
+                        <p>댓글을 작성해 보세요!</p>
+                    </div>
+                {% endif %}
 
                 <!--⭐⭐여기 컨텐츠 반복문-->
                 {% for board in boards %}
@@ -40,7 +40,7 @@
                             <div class="post-header">
                                 <div class="user-profile">
                                     <div class="user-img">
-                                        {% if request.user.member_type.type_name == '주민' %}
+                                        {% if board.user.member_type.type_name == '주민' %}
                                             <img src="{% static 'image/people_profile.png' %}" alt="">
                                         {% else %}
                                             <img src="{% static 'image/petrol_profile.png' %}" alt="">
@@ -67,7 +67,7 @@
                                     <div>{{ board.comment_count }}</div>
                                 </div>
                             </div>
-                            {% if request.user.member_type.type_name == '주민' %}
+                            {% if board.user.member_type.type_name == '주민' %}
                                 <div class="post-type">#{{ board.board_type.type_name }}</div>
                             {% endif %}
                         </a>

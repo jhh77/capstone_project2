@@ -60,7 +60,7 @@ $('#write-text').on('input', function() {
     let textLength = $(this).val().length;
     $('#text-count').text(textLength + ' / 1000');
 
-    if (textLength > 150) { //글자 수 150을 초과하지 않도록 설정 (maxlength는 한 글자가 초과되는 것이 발생)
+    if (textLength > 1000) { //글자 수 150을 초과하지 않도록 설정 (maxlength는 한 글자가 초과되는 것이 발생)
         $(this).value =  $(this).slice(0, 1000);
     }
 });

@@ -121,9 +121,21 @@ def nickname_change(request):
 # 지역 변경
 def region_change(request):
     member = Member.objects.get(user_id=request.user)
+    if request.method == 'POST':
+        sido = request.POST.get('sido').replace(" ", "")
+        sigungu = request.POST.get('sigungu').replace(" ", "")
+        dong = request.POST.get('dong').replace(" ", "")
+        member.region_sido = sido
+        member.region_sigungu = sigungu
+        member.region_dong = dong
+        member.save()
+        return redirect('accounts:region_change')
 
     context = {
         'member': member,
     }
     return render(request, 'accounts/region_change.html', context)
 
+
+def menubar(request):
+    return render(request, 'menubar.html')

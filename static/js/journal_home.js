@@ -133,21 +133,34 @@ function express_journals(journalData) {
 
     journalContainer.empty(); // 기존 내용 초기화
 
-    $.each(journalData, function(index, journal) {
-        let date = formatDate(journal.date);
-        const journalElement = $(`
-            <div class="journal-block">
-                <a href="${journalDetailUrl.replace('0', journal.id)}">
-                    <div class="date-block">
-                        <div class="date">${date}</div>
-                        <div class="time">${journal.start_time} ~ ${journal.end_time}</div>
-                    </div>
-                    <div class="journal-title">반려견 순찰대 일지</div>
-                </a>
+    if (journalData.length === 0) {
+        // 일지가 없는 경우
+        const noJournalElement = $(`
+            <div class="no-board-block">
+                <img src="../../static/image/no_board.png" alt="" class="no-board-img"/>
+                <p>일지가 없습니다.</p>
+                <p>일지를 작성해 보세요.</p>
             </div>
         `);
-        journalContainer.append(journalElement);
-    });
+        journalContainer.append(noJournalElement);
+    } else {
+        // 일지가 있는 경우
+        $.each(journalData, function(index, journal) {
+            let date = formatDate(journal.date);
+            const journalElement = $(`
+                <div class="journal-block">
+                    <a href="${journalDetailUrl.replace('0', journal.id)}">
+                        <div class="date-block">
+                            <div class="date">${date}</div>
+                            <div class="time">${journal.start_time} ~ ${journal.end_time}</div>
+                        </div>
+                        <div class="journal-title">반려견 순찰대 일지</div>
+                    </a>
+                </div>
+            `);
+            journalContainer.append(journalElement);
+        });
+    }
 }
 
 

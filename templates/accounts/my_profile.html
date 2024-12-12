@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이프로필</title>
     <link rel="stylesheet" href="{% static 'css/my_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menubar.css' %}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
 </head>
@@ -13,8 +14,14 @@
     <div class="container-content">
         <div class="contents">
 
+            <div class="top-block">
+                <div>
+                    <a href="{% url 'accounts:mypage' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                </div>
+                <div class="title">회원 정보</div>
+            </div>
+
             <div class="profile-block">
-                <div><a href="{% url 'accounts:mypage' %}">임시 마이페이지 이동</a></div>
                 <div>
                     {% if member_type == '주민' %}
                         <img src="{% static 'image/people_profile.png' %}" alt=""> <!--⭐⭐유저 종류에 따라 프로필 바뀜-->
@@ -27,7 +34,7 @@
 
             <div class="user-info-block">
                 <div class="nickname-block">
-                    <div class="title">닉네임</div>
+                    <div>닉네임</div>
                     <div>
                         <a href="{% url 'accounts:nickname_change' %}"> <!--⭐여기 url 연결-->
                             <div class="link-block">
@@ -41,7 +48,7 @@
                 </div>
 
                 <div class="nickname-block">
-                    <div class="title">지역</div>
+                    <div>지역</div>
                     <div>
                         <a href="{% url 'accounts:region_change' %}"> <!--⭐여기 url 연결-->
                             <div class="link-block">
@@ -55,7 +62,7 @@
                 </div>
 
                 <div class="nickname-block">
-                    <div class="title">이메일</div>
+                    <div>이메일</div>
                     <div>
                         <a href=""> <!--⭐여기 url 연결-->
                             <div class="link-block">

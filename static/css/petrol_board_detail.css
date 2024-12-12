@@ -31,53 +31,6 @@ body {
     /* height: calc(100vh + 600px); */
     height: 100%;
 }
-
-/*메뉴바(footer)*/
-.menu {
-    width: 420px;
-    height: 57px;
-    z-index: 1;
-    /* outline: 1px solid blue; */
-    position: fixed;
-    bottom: 0;
-
-    border-radius: 0.625rem 0.625rem 0rem 0rem;
-    background: #FFF;
-    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
-}
-
-/*메뉴바 아이콘 배치*/
-.menu-icons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-
-}
-
-.menu-icons div {
-    text-align: center;
-    /* outline: 1px solid red; */
-    padding-top: 3%;
-}
-
-/*메뉴바 hover 시 변경 css*/
-.menu-icons div img:hover {
-    cursor: pointer;
-}
-
-.write:hover {
-    content: url(../image/write-yellow.png);
-}
-
-.home:hover {
-    content: url(../image/home-yellow.png);
-}
-
-.user:hover {
-    content: url(../image/user-info-yellow.png);
-}
-
 /*--------------------------------------*/
 /*여기서부터 컨텐츠 영역*/
 
@@ -138,7 +91,7 @@ body {
 
 /* 프로필 이미지 div */
 .user-img {
-    width: 11%;
+    width: 9%;
     margin: 1% 3% 0 0;
 }
 
@@ -328,7 +281,7 @@ body {
 }
 
 .comment-block-header > div {
-    /* outline: 1px solid brown; */
+     /*outline: 1px solid brown;*/
 }
 
 /* 프로필 & 닉네임 div */
@@ -336,13 +289,15 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 80%;
 }
 
 /* 유저 프로필 이미지 div */
 .comment-user-profile {
-    width: 11%;
-    margin-right: 4%;
+    width: 9%;
+    margin-right: 3%;
 }
+
 
 /* 유저 프로필 이미지 */
 .comment-user-profile > img {
@@ -379,7 +334,7 @@ body {
 
 /* 댓글 버튼들 div */
 .comment-btns {
-    width: 17%;
+    width: 20%;
     text-align: right;
 }
 
@@ -409,7 +364,7 @@ body {
     box-shadow: 0px 4px 4px 0px rgba(142, 78, 78, 0.25);
     position: fixed;
     bottom: 0;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     margin-left: 347px;
     cursor: pointer;
     z-index: 1;
@@ -422,7 +377,7 @@ body {
 .btns { /*수정하기, (글) 삭제하기 버튼 div*/
     position: fixed;
     bottom: 0;
-    margin-bottom: 155px;
+    margin-bottom: 175px;
     margin-left: 280px;
 }
 
