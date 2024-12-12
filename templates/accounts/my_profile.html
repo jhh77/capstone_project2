@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이프로필</title>
+    <link rel="stylesheet" href="{% static 'css/my_profile.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <div class="profile-block">
+                <div><a href="{% url 'accounts:mypage' %}">임시 마이페이지 이동</a></div>
+                <div>
+                    {% if member_type == '주민' %}
+                        <img src="{% static 'image/people_profile.png' %}" alt=""> <!--⭐⭐유저 종류에 따라 프로필 바뀜-->
+                    {% else %}
+                        <img src="{% static 'image/petrol_profile.png' %}" alt=""> <!--⭐⭐유저 종류에 따라 프로필 바뀜-->
+                    {% endif %}
+                </div>
+                <div class="nickname">{{ member_type }} <span class="text-strong">{{ member.nickname }}</span></div> <!--⭐여기 유저 닉네임-->
+            </div>
+
+            <div class="user-info-block">
+                <div class="nickname-block">
+                    <div class="title">닉네임</div>
+                    <div>
+                        <a href="{% url 'accounts:nickname_change' %}"> <!--⭐여기 url 연결-->
+                            <div class="link-block">
+                                <div class="user-name">{{ member.nickname }}</div> <!--⭐여기 유저 닉네임-->
+                                <div class="arrow-img">
+                                    <img src="{% static 'image/back.png' %}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nickname-block">
+                    <div class="title">지역</div>
+                    <div>
+                        <a href="{% url 'accounts:region_change' %}"> <!--⭐여기 url 연결-->
+                            <div class="link-block">
+                                <div class="user-name">{{ member.region_sido }} {{ member.region_sigungu }} {{ member.region_dong }}</div> <!--⭐여기 유저 지역-->
+                                <div class="arrow-img">
+                                    <img src="{% static 'image/back.png' %}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nickname-block">
+                    <div class="title">이메일</div>
+                    <div>
+                        <a href=""> <!--⭐여기 url 연결-->
+                            <div class="link-block">
+                                <div class="user-name">{{ member.email }}</div> <!--⭐여기 유저 이메일-->
+                                <div class="arrow-img">
+                                    <img src="{% static 'image/back.png' %}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

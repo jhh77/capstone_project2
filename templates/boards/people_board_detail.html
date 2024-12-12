@@ -14,8 +14,9 @@
         <div class="contents">
             <div class="content">
                 <div class="top-block">
-                    <div>
-                        <a href="{% url 'boards:people_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                    <div class="arrow-img">
+{#                        <a href="{% url 'boards:people_board' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->#}
+                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();" class="cursor">
                     </div>
                     <div class="title">의견/제보 게시판</div>
                 </div>

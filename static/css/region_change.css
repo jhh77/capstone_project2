@@ -1,0 +1,192 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+::-webkit-scrollbar { /*화면 스크롤바로 인해 화면 밀림 방지*/
+	display: none;
+}
+
+/*전체 영역*/
+.container-content {
+    font-family: 'SCoreDream';
+    font-weight: 400;
+    outline: 1px solid black;
+    width: 420px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* padding-bottom: 150px; */
+    z-index: 0;
+    position: relative;
+}
+
+.contents {
+    /* outline: 1px solid red; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/*메뉴바(footer)*/
+.menu {
+    width: 420px;
+    height: 57px;
+    z-index: 1;
+    /* outline: 1px solid blue; */
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+/*메뉴바 아이콘 배치*/
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
+
+.menu-icons div {
+    text-align: center;
+    /* outline: 1px solid red; */
+    padding-top: 3%;
+}
+
+/*메뉴바 hover 시 변경 css*/
+.menu-icons div img:hover {
+    cursor: pointer;
+}
+
+.write:hover {
+    content: url(../image/write-yellow.png);
+}
+
+.home:hover {
+    content: url(../image/home-yellow.png);
+}
+
+.user:hover {
+    content: url(../image/user-info-yellow.png);
+}
+
+/*--------------------------------------*/
+/*여기서부터 컨텐츠 영역*/
+
+/* 상단 부분 div */
+.top-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding: 5% 0 0 4%;
+    margin-bottom: 17%;
+}
+
+.top-block > div {
+    /* outline: 1px solid red; */
+}
+
+/* 화살표 이미지 */
+.top-block img {
+    width: 1.5rem;
+    margin-right: 1.1rem;
+}
+
+/* 페이지 제목(~변경) */
+.page-title {
+    margin-top: 0.13rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+/*-------------------------------------*/
+/*상단 끝*/
+
+.user-region {
+    outline: 1px solid #c5c5c5;
+    border: none;
+    border-radius: 10px;
+    padding: 3%;
+    width: 84.5%;
+    margin-bottom: 15%;
+    margin-left: 5%;
+    color: #c5c5c5;
+}
+
+/*유저 정보 변경 form*/
+.region-block {
+    margin-left: 5%;
+}
+
+.region {
+    margin-bottom: 10%;
+}
+
+/*지역 선택*/
+.custom-select {
+    position: relative;
+    margin-bottom: 15px; /* 간격 설정 */
+    width: 95%;
+}
+
+
+.select-selected {
+    padding: 10px; /* 패딩 */
+    border: 1px solid #A5A5A5; /* 테두리 */
+    cursor: pointer; /* 커서 변경 */
+    border-radius: 10px;
+    color: #a5a5a5;
+    font-size: 0.9rem;
+}
+
+.select-items {
+    position: absolute;
+    background-color: white; /* 배경색 */
+    border: 1px solid #a5a5a5; /* 테두리 */
+    border-radius: 10px;
+    z-index: 999; /* 다른 요소 위에 표시 */
+    width: 100%; /* 너비 설정 */
+    display: none; /* 기본적으로 숨김 */
+    /* bottom: 100%; */
+    max-height: 250px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+}
+
+
+.select-items div {
+    padding: 10px; /* 패딩 */
+    cursor: pointer; /* 커서 변경 */
+}
+
+.select-items div:hover {
+    background-color: #f3f3f3; /* hover 시 배경색 변경 */
+}
+
+
+.select-selected.selected {
+    color: black; /* 선택 후 글자 색: 검정색 */
+}
+
+/* sumbit 버튼  */
+.submit-btn {
+    width: 95%;
+    border-radius: 10px;
+    padding: 3.5% 3%;
+    border: none;
+    font-family: 'SCoreDream';
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#error-message {
+    font-size: 0.78rem;
+    color: #E07070;
+    /*margin-bottom: 11%;*/
+    display: none;
+}

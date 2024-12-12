@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닉네임 수정</title>
+    <link rel="stylesheet" href="{% static 'css/nickname_change.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <div class="top-block">
+                <div>
+                    <a href="{% url 'accounts:my_profile' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                </div>
+                <div class="page-title">닉네임 변경</div>
+            </div>
+
+            <form action="{% url 'accounts:nickname_change' %}" method="post" class="nickname-form"> <!--⭐⭐여기 닉네임 변경 폼-->
+                {% csrf_token %}
+                <input type="text" name="nickname" value="{{ member.nickname }}" maxlength="8"> <!--⭐⭐value 값 유저 닉네임 값으로-->
+                <div>
+                    <button type="submit" class="submit-btn">변경</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

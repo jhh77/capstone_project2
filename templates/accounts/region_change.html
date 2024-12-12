@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역 수정</title>
+    <link rel="stylesheet" href="{% static 'css/region_change.css' %}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-face.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/ungveloper/web-fonts/SCoreDream/font-family.css" />
+</head>
+<body>
+    <div class="container-content">
+        <div class="contents">
+
+            <div class="top-block">
+                <div>
+                    <a href="{% url 'accounts:my_profile' %}"><img src="{% static 'image/back.png' %}" alt=""></a> <!--⭐여기 url 연결-->
+                </div>
+                <div class="page-title">지역 변경</div>
+            </div>
+
+            <div class="user-region">{{ member.region_sido }} {{ member.region_sigungu }} {{ member.region_dong }}</div> <!--⭐여기 유저 지역 보이게-->
+
+            <form action="{% url 'accounts:region_change' %}" method="post" class="region-block"> <!--⭐⭐여기 닉네임 변경 폼-->
+                {% csrf_token %}
+                <div class="region">
+                    <div class="custom-select" id="sido-select">
+                        <div class="select-selected">시/도 선택</div>
+                        <div class="select-items"></div>
+                    </div>
+                    <div class="custom-select" id="sigugun-select">
+                        <div class="select-selected">시/군/구 선택</div>
+                        <div class="select-items"></div>
+                    </div>
+                    <div class="custom-select" id="dong-select">
+                        <div class="select-selected">읍/면/동 선택</div>
+                        <div class="select-items"></div>
+                    </div>
+
+                    <div id="error-message">지역을 선택해주세요.</div>
+                    <input type="hidden" name="sido" id="sido-input" required>
+                    <input type="hidden" name="sigungu" id="sigugun-input" required>
+                    <input type="hidden" name="dong" id="dong-input" required>
+
+                </div>
+                <div>
+                    <button type="submit" class="submit-btn">변경</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="application/javascript" src="https://zelkun.tistory.com/attachment/cfile8.uf@99BB7A3D5D45C065343307.js"></script>
+    <script src="{% static 'js/region_change.js' %}"></script>
+</body>
+</html>

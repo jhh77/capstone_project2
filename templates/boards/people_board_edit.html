@@ -13,13 +13,14 @@
     <div class="container-content">
         <div class="contents">
 
-            <form action="{% url 'boards:people_board_edit' board.id %}" method="post" class="journal-form" enctype="multipart/form-data">
+            <form action="{% url 'boards:people_board_edit' board.id %}?from=main" method="post" class="journal-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
-                        <a href="{% url 'boards:people_board_detail' board.id %}"> <!--⭐여기 url 연결-->
-                            <img src="{% static 'image/back.png' %}" alt="">
-                        </a>
+{#                        <a href="{% url 'boards:people_board_detail' board.id %}"> <!--⭐여기 url 연결-->#}
+{#                            <img src="{% static 'image/back.png' %}" alt="">#}
+{#                        </a>#}
+                        <img src="{% static 'image/back.png' %}" alt="" onclick="window.history.back();" class="cursor">
                     </div>
                     <div class="title">글 수정</div>
                     <div class="btn-block">

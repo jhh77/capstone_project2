@@ -100,6 +100,14 @@ def people_board(request):
         else:
             board.short_content = board.content
 
+    # 뒤로 가기 부분 추가
+    from_page = request.GET.get('from')
+    if from_page:
+        request.session['from_page'] = from_page # 세션에 추가
+
+    if request.session.get('from_page'):
+        back_url = '/boards/people_board/'
+
     context = {
         'boards': boards,
         'user': user,
@@ -107,6 +115,7 @@ def people_board(request):
         'sido': sido,
         'sigungu': sigungu,
         'dong': dong,
+        # 'back_url': back_url,
     }
     return render(request, 'boards/people_board_main.html', context)
 

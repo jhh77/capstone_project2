@@ -543,3 +543,7 @@ body {
     margin-right: 7%;
     cursor: pointer;
 }
+
+.arrow-img {
+    cursor: pointer;
+}

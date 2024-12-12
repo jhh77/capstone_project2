@@ -15,4 +15,7 @@ urlpatterns = [
     path('sign-up-done', views.sign_up_done, name='sign-up-done'),
     path('logout/', views.logout_view, name='logout'),
     path('mypage/', views.my_page, name='mypage'),
+    path('my-profile/', views.my_profile, name='my_profile'),
+    path('nickname-change/', views.nickname_change, name='nickname_change'),
+    path('region-change/', views.region_change, name='region_change'),
 ]

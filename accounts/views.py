@@ -18,7 +18,8 @@ def home(request):
         member = Member.objects.get(user_id=request.user) # 현재 로그인 한 유저 정보 저장
 
         if member.member_type.type_name == '주민':
-            print('주민')
+            info1_count = Board.objects.filter(user_id=request.user, board_type=3).count()
+            info2_count = Board.objects.filter(user_id=request.user, board_type=2).count()
         else:
             info1_count = Board.objects.filter(user_id=request.user).count()
             info2_count = Journal.objects.filter(user_id=request.user).count()
@@ -90,4 +91,39 @@ def my_page(request):
         'member_type': member.member_type.type_name,
     }
     return render(request, 'accounts/my_page.html', context)
+
+
+# 회원 정보 보기
+def my_profile(request):
+    member = Member.objects.get(user_id=request.user)
+    member_type = member.member_type.type_name
+    context = {
+        'member': member,
+        'member_type': member_type,
+    }
+    return render(request, 'accounts/my_profile.html', context)
+
+
+# 닉네임 변경
+def nickname_change(request):
+    member = Member.objects.get(user_id=request.user)
+    if request.method == 'POST':
+        nickname = request.POST.get('nickname')
+        member.nickname = nickname
+        member.save()
+        return redirect('accounts:nickname_change')
+    context = {
+        'member': member,
+    }
+    return render(request, 'accounts/nickname_change.html', context)
+
+
+# 지역 변경
+def region_change(request):
+    member = Member.objects.get(user_id=request.user)
+
+    context = {
+        'member': member,
+    }
+    return render(request, 'accounts/region_change.html', context)
 
