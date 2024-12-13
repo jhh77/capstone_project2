@@ -62,17 +62,3 @@ $('#clearImage').on('click', function () {
     $('.src-name').empty(); // 파일 이름 숨기기
 });
 
-// 파일 이름 클릭 시 삭제 기능
-// $('.src-name').on('click', '.file-item', function() {
-//     const indexToRemove = $(this).data('index'); // 클릭된 파일의 인덱스
-//     const currentFiles = $('#fileInput')[0].files;
-//     const newFileList = Array.from(currentFiles).filter((_, index) => index !== indexToRemove); // 클릭한 파일 제외
-//
-//     // 새 파일 리스트를 설정
-//     const dataTransfer = new DataTransfer();
-//     newFileList.forEach(file => dataTransfer.items.add(file));
-//     $('#fileInput')[0].files = dataTransfer.files;
-//
-//     // 선택된 파일 이름 업데이트
-//     $(this).remove(); // 삭제된 파일의 이름 제거
-// });

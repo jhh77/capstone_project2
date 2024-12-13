@@ -25,7 +25,6 @@ body {
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -110,13 +109,8 @@ td {
     font-family: 'SCoreDream';
 }
 
-/* .pastDay {
-            color: lightgray;
-        } */
-
 .today {
     background-color: #FFD79E;
-    /* color: #fff; */
     font-weight: 600;
     cursor: pointer;
 }
@@ -134,7 +128,6 @@ td {
 .today.choiceDay {
     background: #FDEDE3;
     color: gray;
-    /* font-weight: 500; */
     cursor: pointer;
 }
 

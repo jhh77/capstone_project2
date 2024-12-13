@@ -12,7 +12,6 @@ urlpatterns = [
     path('board-delete/<int:id>/', views.board_delete, name='board_delete'),
     path('comment-edit/<int:id>/', views.comment_edit, name='comment_edit'),
     path('comment-delete/<int:id>/', views.comment_delete, name='comment_delete'),
-    # path('region-select/', views.region_select, name='region_select'),
     path('people-board/', views.people_board, name='people_board'),
     path('people-board-write/', views.people_board_write, name='people_board_write'),
     path('people-board-detail/<int:id>/', views.people_board_detail, name='people_board_detail'),

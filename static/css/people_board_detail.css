@@ -24,7 +24,6 @@ body {
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -121,7 +120,6 @@ body {
 
 /* 게시글 사진 div */
 .post-img-block {
-    /* width: 100%; */
     margin-bottom: 4%;
 }
 
@@ -176,10 +174,6 @@ body {
     /* width: 100%; */
 }
 
-.comment-title-header > div {
-    /* outline: 1px solid green; */
-}
-
 /* 말풍선 이미지 div */
 .comment-img {
     width: 6%;
@@ -197,10 +191,6 @@ body {
     font-size: 0.97rem;
 }
 
-#comment-form {
-    /* border-bottom: 1px solid #D5D5D5; */
-    /* padding-bottom */
-}
 
 #comment-area { /*댓글 쓰기 textarea*/
     font-family: 'SCoreDream';
@@ -231,13 +221,9 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* outline: 1px solid blue; */
     height: 2rem;
 }
 
-.comment-form-footer > div {
-    /* outline: 1px solid saddlebrown; */
-}
 
 /* 버튼 div */
 .submit-btn {
@@ -257,9 +243,7 @@ body {
 }
 
 #text-count { /*댓글 글자 수 세는 부분*/
-    /* text-align: right; */
     font-size: 14px;
-    /* margin: 2% 0% 4% 0%; */
     color: #5D6DBE;
 }
 
@@ -285,9 +269,6 @@ body {
     margin-bottom: 3%;
 }
 
-.comment-block-header > div {
-    /* outline: 1px solid brown; */
-}
 
 /* 프로필 & 닉네임 div */
 .comment-infos {

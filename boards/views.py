@@ -19,7 +19,6 @@ def petrol_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        # boards = Board.objects.filter(board_type=1, region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
         boards = Board.objects.all().order_by('-created_at')
 
         # 디비 값에 공백이 들어갔을 경우의 처리를 위해
@@ -67,11 +66,6 @@ def people_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        print(sido, sigungu, dong)
-
-        # boards = Board.objects.filter(region_sido=sido,
-        #                               region_sigungu=sigungu,
-        #                               region_dong=dong).order_by('-created_at')
         boards = Board.objects.all().order_by('-created_at')
 
         # 디비 값에 공백이 들어갔을 경우의 처리를 위해
@@ -118,26 +112,6 @@ def people_board(request):
         # 'back_url': back_url,
     }
     return render(request, 'boards/people_board_main.html', context)
-
-
-# 지역 게시글 검색
-# def region_select(request):
-#     sido = request.POST.get('sido')
-#     sigungu = request.POST.get('sigungu')
-#     dong = request.POST.get('dong')
-#     boards = Board.objects.filter(region_sido=sido, region_sigungu=sigungu, region_dong=dong).order_by('-created_at')
-#
-#     # 게시물 내용을 자르기
-#     for board in boards:
-#         if len(board.content) > 150:
-#             board.short_content = board.content[:150]
-#         else:
-#             board.short_content = board.content
-#
-#     context = {
-#         'boards': boards,
-#     }
-#     return render(request, 'boards/petrol_board_main.html', context)
 
 
 # 신고 게시글 등록하기
@@ -271,16 +245,6 @@ def petrol_board_edit(request, id):
                 board.image_path.delete(save=False)  # 파일 삭제
                 board.image_path = None  # 모델 필드 업데이트
                 board.save()
-        #
-        # # delete 값이 0일 때는 아무것도 하지 않음
-        # elif delete_value == '0':
-        #     return  # 아무 응답도 하지 않음
-        #
-        # if image_path is not None and delete != 0:
-        #     board.image_path = image_path  # 새 이미지로 업데이트
-        # else:
-        #     board.image_path = None
-        # board.save()  # 변경 사항 저장
 
         return redirect('boards:petrol_board_detail', id=id)
 
@@ -293,48 +257,6 @@ def petrol_board_edit(request, id):
             short_name = base_name[:10] + '...' + '.' + extension
         else:
             short_name = file_name  # 기본 이름이 10자 이하일 경우
-
-    #     # 삭제된 파일 ID를 받기
-    #     deleted_files = request.POST.get('deleted_files')
-    #     if deleted_files:
-    #         deleted_files = json.loads(deleted_files)
-    #         print(deleted_files)
-    #
-    #         # 빈 배열이 아닐 때만 작업 수행
-    #         if deleted_files:  # deleted_files가 비어있지 않을 때
-    #             print(deleted_files)
-    #
-    #             if board.image_path:  # board.image_path가 None이 아닐 때만 접근
-    #                 current_file_name = board.image_path.name.split('/')[-1]  # 파일 이름만 추출
-    #                 print(current_file_name)  # 파일 이름 확인
-    #
-    #                 # 삭제할 파일 이름 가져오기
-    #                 deleted_file_name = deleted_files[0].split('/')[-1]  # 첫 번째 요소에서 파일 이름 추출
-    #                 print(deleted_file_name)  # 삭제할 파일 이름 확인
-    #
-    #                 # 기존 이미지 삭제
-    #                 if current_file_name == deleted_file_name:  # 이름이 같을 때 삭제
-    #                     board.image_path.delete()  # 기존 이미지를 삭제
-    #                     board.image_path = None  # 이미지 필드를 None으로 설정
-    #
-    #     # 게시물 업데이트
-    #     board.content = content
-    #
-    #     if image_path:
-    #         board.image_path = image_path  # 새 이미지로 업데이트
-    #     board.save()  # 변경 사항 저장
-    #
-    #     return redirect('boards:petrol_board_detail', id=board.id)
-    #
-    # if board.image_path:
-    #     image_url = board.image_path.url
-    #     file_name = unquote(image_url.split('/')[-1])
-    #     base_name, extension = file_name.rsplit('.', 1)  # 기본 이름과 확장자를 분리
-    #
-    #     if len(base_name) > 10:
-    #         short_name = base_name[:10] + '...' + '.' + extension
-    #     else:
-    #         short_name = file_name  # 기본 이름이 10자 이하일 경우
 
     context = {
         'board': board,

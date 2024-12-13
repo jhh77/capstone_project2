@@ -18,13 +18,11 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    /* padding-bottom: 150px; */
     z-index: 0;
     position: relative;
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -43,9 +41,6 @@ body {
     margin-bottom: 15%;
 }
 
-.top-block > div {
-    /* outline: 1px solid red; */
-}
 
 /* 화살표 이미지 */
 .top-block img {

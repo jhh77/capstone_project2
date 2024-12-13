@@ -96,8 +96,6 @@ body {
     flex-wrap: wrap;
     gap: 5%;
     padding: 4% 5%;
-    /*margin-top: 5%;*/
-    /*outline: 1px solid #d5d5d5;*/
 }
 
 /* 이미지들 */
@@ -113,22 +111,22 @@ body {
 
 /* 모달 */
 .modal {
-    display: none; /* 기본적으로 숨김 */
+    display: none;
     position: fixed;
-    z-index: 1000; /* 최상위 레이어 */
-    width: 420px; /* 전체 화면 너비 */
-    height: 100%; /* 전체 화면 높이 */
-    overflow: auto; /* 스크롤 가능 */
-    background-color: rgba(88, 88, 88, 0.8); /* 반투명 배경 */
+    z-index: 1000;
+    width: 420px;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(88, 88, 88, 0.8);
 }
 
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 90%; /* 최대 너비를 90%로 설정 */
-    max-height: 80%; /* 최대 높이를 80%로 설정 */
-    width: auto; /* 자동으로 너비 조정 */
-    height: auto; /* 자동으로 높이 조정 */
+    max-width: 90%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
     padding-top: 30%;
 }
 

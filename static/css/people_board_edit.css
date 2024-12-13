@@ -24,7 +24,6 @@ body {
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -133,10 +132,6 @@ body {
     background-color: white;
 }
 
-.img-select > div {
-    /* outline: 1px solid red; */
-}
-
 /* 카메라 아이콘 부분 div */
 .camera-block {
     width: 17%;
@@ -167,9 +162,6 @@ body {
     width: 100%;
 }
 
-/*.file-items {*/
-/*    align-content: center;*/
-/*}*/
 
 /* 사진 삭제 */
 #clearImage {

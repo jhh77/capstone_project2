@@ -24,7 +24,6 @@ body {
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -66,7 +65,6 @@ body {
 
 /* 버튼 div */
 .btn-block {
-    /* width: 15%; */
     text-align: right;
 }
 
@@ -95,8 +93,6 @@ body {
     padding: 2%;
     outline: 1.5px solid #d5d5d5;
     border-radius: 7px;
-    /* outline: 1px solid #c5c5c5;
-    border-radius: 10px; */
 }
 
 #write-text:focus { /*textarea focus*/
@@ -122,9 +118,6 @@ body {
     background-color: white;
 }
 
-.img-select > div {
-    /* outline: 1px solid red; */
-}
 
 /* 카메라 아이콘 부분 div */
 .camera-block {
@@ -156,9 +149,6 @@ body {
     width: 100%;
 }
 
-/*.file-items {*/
-/*    align-content: center;*/
-/*}*/
 
 /* 사진 삭제 */
 #clearImage {

@@ -40,8 +40,6 @@ def login(request):
 
 # 회원가입 메서드
 def sign_up(request):
-    # member_type = request.GET.get('member_type')
-    # print(member_type)
     current_path = request.path
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -122,9 +120,6 @@ def nickname_change(request):
 def region_change(request):
     member = Member.objects.get(user_id=request.user)
     if request.method == 'POST':
-        # sido = request.POST.get('sido').replace(" ", "")
-        # sigungu = request.POST.get('sigungu').replace(" ", "")
-        # dong = request.POST.get('dong').replace(" ", "")
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')

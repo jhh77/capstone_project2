@@ -18,13 +18,11 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    /* padding-bottom: 150px; */
     z-index: 0;
     position: relative;
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -105,9 +103,6 @@ body {
     margin-bottom: 6%;
 }
 
-.nickname-block > div {
-    /* outline: 1px solid blue; */
-}
 
 /* a 태그 속성 없애려고 */
 .nickname-block a {
@@ -128,9 +123,6 @@ body {
     font-size: 0.9rem;
 }
 
-.arrow-img {
-    /* width: 20%; */
-}
 
 /* 화살표 이미지 */
 .arrow-img > img {
@@ -138,9 +130,5 @@ body {
     width: 1rem;
     transform: scaleX(-1);
     opacity: 0.5;
-    /* outline: 1px solid red; */
-}
-
-.link-block > div {
     /* outline: 1px solid red; */
 }

@@ -1,31 +1,3 @@
-// // 지도 생성
-// let lat, lon;
-
-// if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function (position) {
-//         lat = position.coords.latitude;
-//         lon = position.coords.longitude;
-
-//         let markerPosition = new kakao.maps.LatLng(lat, lon);
-
-//         // 마커를 생성합니다
-//         let marker = new kakao.maps.Marker({
-//             position: markerPosition
-//         });
-
-//         // 위치 정보를 가져온 후에 지도를 생성합니다.
-//         let mapContainer = document.getElementById('map'), // 지도를 표시할 div
-//             mapOption = {
-//                 center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
-//                 level: 3 // 지도의 확대 레벨
-//                 //draggable: false // 지도 이동 막기.. 막으면 불편한가..?
-//             };
-
-//         let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-//         marker.setMap(map);
-//     });
-// }
-
 
 if (latitude != null && longitude != null) {
     // // 지도 생성

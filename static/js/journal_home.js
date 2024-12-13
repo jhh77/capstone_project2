@@ -3,22 +3,6 @@ let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달�
 let today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
-// //url에서 쿼리 문자열 가져오기
-// let urlParams = new URLSearchParams(window.location.search);
-// let selectDate = urlParams.get('date');
-// let year, month, day; // 전역 변수 선언
-//
-// if (selectDate) {
-//     let [year, month, day] = selectDate.split('-');
-//     year = parseInt(year); // 문자열을 숫자로 변환
-//     month = parseInt(month); // 문자열을 숫자로 변환
-//     day = parseInt(day); // 문자열을 숫자로 변환
-//     nowMonth = new Date(year, month - 1, day);
-//     console.log(`Parsed Date: ${year}-${month}-${day}`); // 파싱된 날짜 출력
-// } else {
-//     nowMonth = new Date(); // 쿼리 파라미터가 없을 경우 현재 날짜로 설정
-//     console.log(`Using Current Date: ${nowMonth}`); // 현재 날짜 출력
-// }
 
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
@@ -67,23 +51,6 @@ function buildCalendar() {
             newDIV.onclick = function () { choiceDate(this); }
         }
 
-        // // 날짜 클릭 이벤트 처리
-        // newDIV.onclick = function () { choiceDate(this); };
-        //
-        // // 날짜 클래스 설정
-        // if (nowDay < today) {
-        //     newDIV.className = "pastDay"; // 과거일
-        // } else if (nowDay.getFullYear() === today.getFullYear() && nowDay.getMonth() === today.getMonth() && nowDay.getDate() === today.getDate()) {
-        //     newDIV.className = "today"; // 오늘
-        // } else {
-        //     newDIV.className = "futureDay"; // 미래일
-        // }
-        //
-        // // 선택된 날짜가 URL에서 가져온 경우
-        // if (selectDate && nowDay.getFullYear() === year && nowDay.getMonth() === month - 1 && nowDay.getDate() === day) {
-        //     choiceDate(newDIV); // 선택된 날짜에 대해 선택 처리
-        //     console.log(`Selected Date Highlighted: ${nowDay}`); // 디버깅 로그
-        // }
     }
 }
 
@@ -93,9 +60,6 @@ function choiceDate(newDIV) {
         document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");  // 해당 날짜의 "choiceDay" class 제거
     }
     newDIV.classList.add("choiceDay");           // 선택된 날짜에 "choiceDay" class 추가
-    // console.log(document.getElementById("calYear").innerText);
-    // console.log(document.getElementById("calMonth").innerText);
-    // console.log(newDIV.innerText);
 
     const selectedDate = $(newDIV).text(); // 선택한 날짜
     const year = $('#calYear').text();
@@ -189,20 +153,6 @@ buildCalendar();
 
 //달력 코드 끝-------------------------------------------------------------------------
 
-// //반려견 순찰대 일지 삭제 모달 코드
-// const modal = $('#modal'); //모달 변수에 저장
-//
-// $('.delete').on('click', function() { //삭제하기 버튼 누르면 모달창 뜨기
-//     modal.slideDown();
-// });
-//
-// $('.closePopup').on('click', function() { // 아니오를 누르면 모달창이 사라지기
-//     modal.slideUp();
-// });
-//
-// $('.btn-close').on('click', function() { // X를 누르면 모달창이 사라지기
-//     modal.slideUp();
-// });
 $(document).ready(function() {
     //반려견 순찰대 일지 삭제 모달 코드
     const modal = $('#modal'); //모달 변수에 저장

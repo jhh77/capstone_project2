@@ -24,7 +24,6 @@ body {
 }
 
 .contents {
-    /* outline: 1px solid red; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -35,9 +34,6 @@ body {
 /*여기서부터 컨텐츠 영역*/
 
 /*일지 작성 form*/
-.journal-form {
-    /* outline: 1px solid red; */
-}
 
 /* 상단 부분 div */
 .top-block {
@@ -69,7 +65,6 @@ body {
 
 /* 버튼 div */
 .btn-block {
-    /* width: 15%; */
     text-align: right;
 }
 
@@ -90,7 +85,6 @@ body {
 .date-block {
     display: flex;
     flex-direction: row;
-    /* outline:1px solid blue; */
     padding-left: 4%;
     align-items: center;
     margin: 5% 0;
@@ -169,10 +163,6 @@ body {
     width: 420px;
     bottom: 0;
     background-color: white;
-}
-
-.img-select > div {
-    /* outline: 1px solid red; */
 }
 
 /* 카메라 아이콘 부분 div */

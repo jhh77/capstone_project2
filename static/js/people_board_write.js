@@ -95,36 +95,3 @@ $('#clearImage').on('click', function () {
     // 파일 이름 표시 초기화
     $('.src-name').empty(); // 파일 이름 숨기기
 });
-
-// 파일 이름 클릭 시 삭제 기능
-// $('.src-name').on('click', '.file-item', function() {
-//     // 파일 초기화
-//     $('#fileInput').val(''); // 선택된 파일 초기화
-//     $(this).remove(); // 삭제된 파일의 이름 제거
-// });
-
-// $('.journal-form').on('submit', function (event) {
-//     event.preventDefault();
-//     const selectValue = $('input[name="post-type"]:checked').val();
-//
-//     if (selectValue === '제보') {
-//         if (navigator.geolocation) {
-//             navigator.geolocation.getCurrentPosition(function (position) {
-//                 const lat = position.coords.latitude;
-//                 const lon = position.coords.longitude;
-//
-//                 // 위치 정보가 설정된 후에 alert 실행
-//                 alert('폼 막아놓음.\n' + '위도: ' + lat + ', 경도: ' + lon);
-//
-//                 // 위도와 경도를 hidden input에 설정
-//                 $('#lat').val(lat);
-//                 $('#lon').val(lon);
-//             });
-//         } else {
-//             alert('현재 위치 정보를 가져오는데 실패했습니다.');
-//         }
-//     }
-//     else {
-//         alert('폼 막아놓음');
-//     }
-// });

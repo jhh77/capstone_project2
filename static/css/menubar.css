@@ -4,7 +4,6 @@
     width: 420px;
     height: 76px;
     z-index: 1;
-    /* outline: 1px solid blue; */
     position: fixed;
     bottom: 0;
 
@@ -35,33 +34,9 @@
 
 .menu-icons div {
     text-align: center;
-     /*outline: 1px solid red;*/
     padding-top: 3%;
     flex: 1; /* 동일한 너비 설정 */
-    /*box-sizing: border-box;*/
 }
-
-
-/*메뉴바 hover 시 변경 css*/
-/*.menu-icons div img:hover {*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.home:hover {*/
-/*    content: url(../image/home-hover.png);*/
-/*}*/
-
-/*.petrol:hover {*/
-/*    content: url(../image/petrol-hover.png);*/
-/*}*/
-
-/*.people:hover {*/
-/*    content: url(../image/people-hover.png);*/
-/*}*/
-
-/*.mypage:hover {*/
-/*    content: url(../image/mypage-hover.png);*/
-/*}*/
 
 /* 이미지 변경 */
 .home:hover img {

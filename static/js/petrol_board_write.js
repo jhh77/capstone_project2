@@ -10,30 +10,6 @@ $(document).ready(async function () {
     $('#write-text').css('height', 'auto');
     $('#write-text').css('height', $('#write-text')[0].scrollHeight + 'px');
 
-    // function getCurrentPosition() {
-    //     return new Promise((resolve, reject) => {
-    //         if (navigator.geolocation) {
-    //             navigator.geolocation.getCurrentPosition(resolve, reject);
-    //         } else {
-    //             reject(new Error('현재 위치 정보를 지원하지 않는 브라우저입니다.'));
-    //         }
-    //     });
-    // }
-    //
-    // // 페이지 로드 시 위치 정보 가져오기
-    // getCurrentPosition()
-    //     .then(position => {
-    //         const lat = position.coords.latitude;
-    //         const lon = position.coords.longvitude;
-    //
-    //         // 위도와 경도를 hidden input에 설정
-    //         $('#lat').val(lat);
-    //         $('#lon').val(lon);
-    //     })
-    //     .catch(error => {
-    //         alert('위치 정보를 가져오는데 실패했습니다: ' + error.message);
-    //     });
-
     // 위치 정보 가져오기 함수
     async function getCurrentPosition() {
         if (navigator.geolocation) {
@@ -121,34 +97,3 @@ $('#clearImage').on('click', function () {
     $('.src-name').empty(); // 파일 이름 숨기기
 });
 
-// 파일 이름 클릭 시 삭제 기능
-// $('.src-name').on('click', '.file-item', function() {
-//     // 파일 초기화
-//     $('#fileInput').val(''); // 선택된 파일 초기화
-//     $(this).remove(); // 삭제된 파일의 이름 제거
-// });
-
-// $('.journal-form').on('submit', function (event) {
-//     event.preventDefault(); // 기본 폼 제출 방지
-//
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(function (position) {
-//             const lat = position.coords.latitude;
-//             const lon = position.coords.longitude;
-//
-//             // 위도와 경도를 hidden input에 설정
-//             $('#lat').val(lat);
-//             $('#lon').val(lon);
-//
-//             if ($('#lat').val() && $('#lon').val()) {
-//                 $('.journal-form').off('submit').submit(); // 이벤트를 제거하고 폼 제출
-//             }
-//             // alert($('#lat').val() + $('#lon').val());
-//         }, function (error) {
-//             alert('위치 정보를 가져오는데 실패했습니다: ' + error.message);
-//             // 여기서 폼을 제출할 수도 있습니다. 예: $('.journal-form').submit();
-//         });
-//     } else {
-//         alert('현재 위치 정보를 지원하지 않는 브라우저입니다.');
-//     }
-// });
