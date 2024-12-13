@@ -3,7 +3,6 @@ $(document).ready(async function () {
     const write = $('#write-text');
     write.focus();
     const textLength = write.val().length;
-    console.log(textLength);
     $('#text-count').text(textLength + ' / 1000');
 
     //높이 조절(내부 콘텐츠 만큼 height가 늘어나도록)

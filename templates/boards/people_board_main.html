@@ -53,9 +53,11 @@
                         </div>
                         <div id="error-message">지역을 선택해주세요.</div>
 
-                        <a href="{% url 'boards:people_board' %}" class="all-link">
-                            <div class="all-board">전체 지역글</div>
-                        </a>
+                        <div class="all-board">
+                            <a href="{% url 'boards:people_board' %}" class="all-link">
+                                전체 지역글
+                            </a>
+                        </div>
                     </form>
 
                     <div class="post-type-select">
@@ -85,7 +87,7 @@
                                 </div>
 
                                 <div class="post-content"> <!--⭐여기 게시글 내용-->
-                                    {{ board.short_content }}
+                                    {{ board.short_content|linebreaks }}
                                 </div>
 
                                 <div class="post-footer">

@@ -43,7 +43,7 @@ def petrol_board(request):
     # 게시물 내용을 자르기
     for board in boards:
         if len(board.content) > 150:
-            board.short_content = board.content[:150]
+            board.short_content = board.content[:150] + '....'
         else:
             board.short_content = board.content
 
@@ -96,7 +96,7 @@ def people_board(request):
     # 게시물 내용을 자르기
     for board in boards:
         if len(board.content) > 150:
-            board.short_content = board.content[:150]
+            board.short_content = board.content[:150] + '....'
         else:
             board.short_content = board.content
 
@@ -462,7 +462,7 @@ def my_boards(request):
         # 각 게시물에 대한 댓글 수 계산
         board.comment_count = Comment.objects.filter(board=board).count()
         if len(board.content) > 150:
-            board.short_content = board.content[:150]
+            board.short_content = board.content[:150] + '....'
         else:
             board.short_content = board.content
 
@@ -481,7 +481,7 @@ def commented_boards(request):
         # 각 게시물에 대한 댓글 수 계산
         board.comment_count = Comment.objects.filter(board=board).count()
         if len(board.content) > 150:
-            board.short_content = board.content[:150]
+            board.short_content = board.content[:150] + '....'
         else:
             board.short_content = board.content
 

@@ -12,14 +12,14 @@ class SignupForm(UserCreationForm):
         fields = ['user_id', 'email', 'nickname', 'region_sido', 'region_sigungu', 'region_dong', 'member_type']
 
     #지역 여백 없애기
-    def clean_region_sido(self):
-        return self.cleaned_data['region_sido'].replace(" ", "")
-
-    def clean_region_sigungu(self):
-        return self.cleaned_data['region_sigungu'].replace(" ", "")
-
-    def clean_region_dong(self):
-        return self.cleaned_data['region_dong'].replace(" ", "")
+    # def clean_region_sido(self):
+    #     return self.cleaned_data['region_sido'].replace(" ", "")
+    #
+    # def clean_region_sigungu(self):
+    #     return self.cleaned_data['region_sigungu'].replace(" ", "")
+    #
+    # def clean_region_dong(self):
+    #     return self.cleaned_data['region_dong'].replace(" ", "")
 
     # 유효성 검사 메서드들 정의
     # 비밀번호 일치 검사

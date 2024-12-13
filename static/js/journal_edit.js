@@ -55,7 +55,6 @@ $('#fileInput').on('change', function(event) {
         messageBlock.append(fileItem);
     });
     check.val(1);
-    alert(check.val())
 });
 
 $('#clearImage').on('click', function () {

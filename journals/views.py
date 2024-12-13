@@ -18,7 +18,7 @@ def get_journal(request):
     if request.method == 'GET':
         date_str = request.GET.get('date')
         # 해당 날짜에 대한 일지 조회
-        journals = Journal.objects.filter(date=date_str, user=request.user)  # 현재 로그인한 사용자에 대한 일지
+        journals = Journal.objects.filter(date=date_str, user=request.user).order_by('start_time')  # 현재 로그인한 사용자에 대한 일지
 
         # 일지 데이터를 직렬화하여 반환
         journal_data = []

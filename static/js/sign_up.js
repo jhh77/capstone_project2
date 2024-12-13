@@ -229,7 +229,6 @@ $('.submit-btn').click(function (e) {
     $('.id-error').text('');
     let passwd1 = $('#password1').val()
     let passwd2 = $('#password2').val()
-    alert(passwd1 + passwd2)
 
     const isIdChecked = $('#idCheckSuccess').val();
     if (isIdChecked !== "true") {

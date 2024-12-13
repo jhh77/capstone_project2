@@ -69,6 +69,7 @@
                     <div class="modal-title">글을 삭제하시겠습니까?</div>
                     <div class="closePopup">아니오</div>
                     <form class="yesBtn" method="post" action="{% url 'journals:journal_delete' journal.id %}">
+                        {% csrf_token %}
                         <button type="submit" class="delete_post">네</button> <!--⭐⭐여기 글 삭제 버튼-->
                     </form>
                 </div>

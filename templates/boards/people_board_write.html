@@ -13,7 +13,7 @@
     <div class="container-content">
         <div class="contents">
 
-            <form action="{% url 'boards:people_board_write' %}" method="post" class="journal-form" name="people_board_post">
+            <form action="{% url 'boards:people_board_write' %}" method="post" class="journal-form" name="people_board_post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="top-block">
                     <div class="arrow-img">
