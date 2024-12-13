@@ -19,7 +19,7 @@ def petrol_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        boards = Board.objects.all().order_by('-created_at')
+        boards = Board.objects.filter(board_type=1).order_by('-created_at')
 
         # 디비 값에 공백이 들어갔을 경우의 처리를 위해
         boards = [
@@ -66,7 +66,7 @@ def people_board(request):
         sido = request.POST.get('sido')
         sigungu = request.POST.get('sigungu')
         dong = request.POST.get('dong')
-        boards = Board.objects.all().order_by('-created_at')
+        boards = Board.objects.filter(board_type__in=[2, 3]).order_by('-created_at')
 
         # 디비 값에 공백이 들어갔을 경우의 처리를 위해
         boards = [
