@@ -21,6 +21,7 @@ body {
     padding-bottom: 500px;
     z-index: 0;
     position: relative;
+        background-color: #F8F8FA;
 }
 
 .contents {
@@ -37,7 +38,7 @@ body {
 /* 상단 부분 div */
 .top-block {
     height: 3rem;
-    background-color: #D9D9D9;
+    background-color: #FFD79E;
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -64,7 +65,7 @@ body {
 
 /*3️⃣달력 부분 css*/
 .CalendarStart {
-    /* background-color: white; */
+     background-color: white;
     height: auto;
     width: 88%;
     margin: 0px;
@@ -114,7 +115,7 @@ td {
         } */
 
 .today {
-    background-color: #FFDB79;
+    background-color: #FFD79E;
     /* color: #fff; */
     font-weight: 600;
     cursor: pointer;
@@ -126,35 +127,36 @@ td {
 }
 
 .futureDay:hover {
-    background: #eee;
+    background: #FDEDE3;
 }
 
 .futureDay.choiceDay,
 .today.choiceDay {
-    background: rgb(202, 202, 202);
-    color: #fff;
+    background: #FDEDE3;
+    color: gray;
     /* font-weight: 500; */
     cursor: pointer;
 }
 
 .sunday {
-    color: #656EE8;
+    color: #FF3C3C;
 }
 
 .saturday {
-    color: #FF3C3C;
+    color: #656EE8;
 }
 /*-------------------------------------*/
 /*달력 부분 끝*/
 
 /* 순찰 일지 부분 div */
 .journal-block {
-    outline: 1px solid #d5d5d5;
+    outline: 1px solid #e5e5e5;
     width: 85%;
     padding: 4%;
     margin: 0 0 5% 4%;
     border-radius: 10px;
     box-shadow: 0px 4px 7px #E5E5E5;
+    background-color: white;
 }
 
 /* 일지 상세보기로 넘어가는 a */
@@ -210,7 +212,7 @@ td {
 
 /* 글 작성하기 버튼(+)*/
 .write-btn {
-    background-color: #d5d5d5;
+    background-color: #FFD79E;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;

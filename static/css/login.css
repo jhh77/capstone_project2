@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     /* height: 100vh; */
     width: 100%;
-    background-color: #FFA652;
+    background-color: #FFD79E;
 }
 
 /*-------------------------------------------------------------------*/
@@ -39,10 +39,10 @@ body {
 
 /*이미지 영역*/
 .login-img {
-    margin-top: 5%; /*임의로 띄운 것*/
+    margin-top: 13%; /*임의로 띄운 것*/
     /* outline: 1px solid red; */
     text-align: center;
-    background-color: #FFA652;
+    background-color: #FFD79E;
 }
 
 /*강아지 사진 이미지*/
@@ -56,7 +56,8 @@ body {
     height: 100%;  /*📌이거 하니까 되네...?*/
     background-color: white;
     border-radius: 30px 30px 0 0;
-    padding-top: 20%;
+    padding-top: 23%;
+    /*box-shadow: 0px -4px 7px #E5E5E5;*/
 }
 
 .login-form {
@@ -87,14 +88,14 @@ body {
     margin-top: 7%;
     border-radius: 10px;
     font-size: 17px;
-    background-color: #F9E3A7;
+    background-color: #FFD79E;
     box-shadow: 0px 4px 8px 0px #F1F1F1;
     font-family: 'SCoreDream';
     cursor: pointer;
 }
 
 .login-form input:focus { /*입력부분들 포커스 css*/
-    outline: 1px solid #FF8652;
+    outline: 1px solid #FDAF7B;
     border: none;
     box-shadow: 0px 4px 8px 0px #f0f0f0;
 }

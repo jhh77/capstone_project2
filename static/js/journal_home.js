@@ -139,7 +139,7 @@ function express_journals(journalData) {
             <div class="no-board-block">
                 <img src="../../static/image/no_board.png" alt="" class="no-board-img"/>
                 <p>일지가 없습니다.</p>
-                <p>일지를 작성해 보세요.</p>
+                <p>일지를 작성해 보세요!</p>
             </div>
         `);
         journalContainer.append(noJournalElement);

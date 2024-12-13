@@ -29,12 +29,35 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-
     /*display: flex;*/
     /*flex-direction: row;*/
     /*flex-wrap: wrap;*/
     /*height: 100%;*/
     /*width: 100%;*/
+}
+/*------------------------*/
+
+/*상단의 페이지 제목 div*/
+.top-block {
+    height: 3rem;
+    background-color: #FFD79E;
+    align-content: center;
+    flex-shrink: 0;
+}
+
+/*뒤로가기 아이콘*/
+.top-block img {
+    width: 5%;
+    margin: 0 30% 0 3%;
+    float: left;
+}
+
+/*상단에 페이지 제목 문구*/
+.top-text {
+    padding: 0;
+    margin: 0 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 /*------------------------*/
 
@@ -48,7 +71,7 @@ body {
 .service-name {
     font-size: 1.6rem;
     font-weight: 500;
-    color: #656EE8;
+    color: #5D6DBE;
 }
 
 /*환영합니다 문구*/
@@ -80,6 +103,7 @@ body {
     text-align: center;
     text-decoration: none;
     padding-top: 5%;
+    background-color: white;
 }
 
 /*순찰대랑 주민 사진*/
@@ -94,7 +118,7 @@ body {
 
 /*각 버튼마다 순찰대, 동네 주민 문구 p 태그*/
 .select-title {
-    color: #656EE8;
+    color: #5D6DBE;
     font-size: 1.1rem;
     margin: 5% 0 7% 0;
 }

@@ -180,7 +180,7 @@ body {
 /*글자 파란색, 두껍게 span*/
 .text-blue-strong {
     font-weight: 500;
-    color: #656EE8;
+    color: #5D6DBE;
 }
 /*-----------------------------------*/
 /*순찰대 일지 작성 부분 끝*/
@@ -199,7 +199,7 @@ body {
 }
 
 .patrol-board > div {
-    /* outline: 1px solid blue; */
+     /*outline: 1px solid blue;*/
 }
 
 /*게시판 관련 문구들 div*/
@@ -224,13 +224,14 @@ body {
 
 /*순찰대 게시판 이미지 div*/
 .patrol-img {
-    padding-top: 15%;
+    padding-top: 20%;
     width: 20%;
 }
 
 /*순찰대 게시판 이미지*/
 .patrol-img > img {
     width: 110%;
+    margin-top: 15%;
 }
 
 /* 주민 게시판 이미지 div */

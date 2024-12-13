@@ -183,7 +183,7 @@ $('#idCheckBtn').click(function () {
 
     //아무것도 입력 안했을 때
     if (userId.trim() === '') {
-        $('#idCheckResponse').text("아이디를 입력해주세요.");
+        $('#idCheckResponse').text("아이디를 입력해 주세요.");
         $('#idCheckResponse').css('color', '#E07070');
         return;
     }
@@ -218,7 +218,7 @@ $('#idCheckBtn').click(function () {
             }
         });
     } else {
-        $('#idCheckResponse').text("아이디를 입력해주세요.");
+        $('#idCheckResponse').text("아이디를 입력해 주세요.");
         $('#idCheckResponse').css('color', '#E07070');
     }
 });

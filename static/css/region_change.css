@@ -31,52 +31,6 @@ body {
     height: 100vh;
 }
 
-/*메뉴바(footer)*/
-.menu {
-    width: 420px;
-    height: 57px;
-    z-index: 1;
-    /* outline: 1px solid blue; */
-    position: fixed;
-    bottom: 0;
-
-    border-radius: 0.625rem 0.625rem 0rem 0rem;
-    background: #FFF;
-    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
-}
-
-/*메뉴바 아이콘 배치*/
-.menu-icons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-
-}
-
-.menu-icons div {
-    text-align: center;
-    /* outline: 1px solid red; */
-    padding-top: 3%;
-}
-
-/*메뉴바 hover 시 변경 css*/
-.menu-icons div img:hover {
-    cursor: pointer;
-}
-
-.write:hover {
-    content: url(../image/write-yellow.png);
-}
-
-.home:hover {
-    content: url(../image/home-yellow.png);
-}
-
-.user:hover {
-    content: url(../image/user-info-yellow.png);
-}
-
 /*--------------------------------------*/
 /*여기서부터 컨텐츠 영역*/
 
@@ -116,7 +70,7 @@ body {
     width: 84.5%;
     margin-bottom: 15%;
     margin-left: 5%;
-    color: #c5c5c5;
+    color: gray;
 }
 
 /*유저 정보 변경 form*/
@@ -182,6 +136,7 @@ body {
     font-family: 'SCoreDream';
     font-size: 1rem;
     cursor: pointer;
+    background-color: #FFD79E;
 }
 
 #error-message {

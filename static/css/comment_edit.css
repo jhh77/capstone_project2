@@ -73,7 +73,7 @@ body {
 .submit-btn {
     font-family: 'SCoreDream';
     border: none;
-    background-color: #D4D4D4;
+    background-color: #FFD79E;
     border-radius: 7px;
     padding: 6% 10%;
     margin-right: 5%;
@@ -92,13 +92,12 @@ body {
     line-height: 1.7rem;
     font-size: 14px;
     padding: 2%;
-    /* outline: 1px solid #c5c5c5;
-    border-radius: 10px; */
+    outline: 1px solid #c5c5c5;
+    border-radius: 10px;
 }
 
 #comment-area:focus { /*textarea focus*/
-    border-radius: 7px;
-    outline: 1.5px solid #656EE8;
+    outline:1px solid #FDAF7B;
 }
 
 #text-count { /*글자 수 표시 부분*/

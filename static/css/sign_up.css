@@ -41,7 +41,7 @@ body {
 /*상단의 페이지 제목 div*/
 .top-block {
     height: 3rem;
-    background-color: #D9D9D9;
+    background-color: #FFD79E;
     align-content: center;
     flex-shrink: 0;
 }
@@ -92,7 +92,7 @@ body {
 /*input들 공통 설정*/
 #user_id, #password1, #password2, #nickname, #email {
     height: 2.5rem;
-    border: 1px solid #A5A5A5;
+    border: 1px solid #b5b5b5;
     border-radius: 10px;
     padding-left: 2%;
     font-family: 'SCoreDream';
@@ -116,7 +116,7 @@ body {
 
 /*input 입력 중*/
 #user_id:focus, #password1:focus, #password2:focus, #nickname:focus, #email:focus{
-    outline: 1px solid #656EE8;
+    outline: 1px solid #B3C7F9;
 }
 
 /*아이디 중복검사 버튼*/
@@ -125,7 +125,7 @@ body {
     height: 2.7rem;
     border-radius: 10px;
     border: none;
-    background-color: #D4D4D4;
+    background-color: #FFD79E;
     padding: 2%;
     font-family: 'SCoreDream';
     cursor: pointer;
@@ -146,6 +146,7 @@ body {
     border: none;
     padding: 2%;
     cursor: pointer;
+    background-color: #FFD79E;
 }
 
 /*지역 선택*/
@@ -197,7 +198,7 @@ body {
 .submit-btn {
     margin: 0 auto;
     font-size: 1.1rem;
-    background-color: #D9D9D9;
+    background-color: #FFD79E;
     width: 420px;
     height: 3rem;
     position: fixed;

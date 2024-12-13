@@ -145,3 +145,26 @@ $('.post-content').each(function() {
         $(this).html(shortContent + '<span class="text-light">...더보기</span>'); // "더보기" 링크 추가
     }
 });
+
+
+function filterPosts(type) {
+    const posts = document.querySelectorAll('.post-block');
+
+    posts.forEach((post, index) => {
+        const gapBlock = post.nextElementSibling; // 다음 형제 요소인 gap-block을 선택
+        const postType = post.getAttribute('data-type').trim();
+
+        if (type === 'all') {
+            post.style.display = 'block';  // 모든 게시글 보이기
+            gapBlock.style.display = 'block';  // 모든 gap-block 보이기
+        } else {
+            if (postType === type) {
+                post.style.display = 'block';  // 해당 타입 게시글 보이기
+                gapBlock.style.display = 'block'
+            } else {
+                post.style.display = 'none';  // 해당 타입 게시글 숨기기
+                gapBlock.style.display = 'none';  // gap-block 숨기기
+            }
+        }
+    });
+}

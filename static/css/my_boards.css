@@ -18,7 +18,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 300px;
+    padding-bottom: 600px;
     z-index: 0;
     position: relative;
 }
@@ -38,7 +38,7 @@ body {
 /* 상단 부분 div */
 .top-block {
     height: 3rem;
-    background-color: #D9D9D9;
+    background-color: #FFD79E;
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -63,7 +63,7 @@ body {
 
 /*이거 요소들 높이 자동 조절 되는 거 막으려고 테스트*/
 .test {
-    height: 100vh;
+    height: 100%;
 }
 
 /*게시글 없을 때 부분 div*/

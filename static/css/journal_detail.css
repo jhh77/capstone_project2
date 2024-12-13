@@ -96,8 +96,8 @@ body {
     flex-wrap: wrap;
     gap: 5%;
     padding: 4% 5%;
-    margin-top: 5%;
-    outline: 1px solid #d5d5d5;
+    /*margin-top: 5%;*/
+    /*outline: 1px solid #d5d5d5;*/
 }
 
 /* 이미지들 */
@@ -108,6 +108,7 @@ body {
     border-radius: 7px;
     cursor: pointer;
     opacity: 0.9;
+    outline: 1px solid #c5c5c5;
 }
 
 /* 모달 */
@@ -142,7 +143,7 @@ body {
 /*--------------------------------*/
 
 #dots-btn { /*... 버튼*/
-    background-color: #F9E3A7;
+    background-color: #FFD79E;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -190,12 +191,12 @@ body {
 
 .edit-btn { /*수정하기 버튼*/
     margin-bottom: 50px;
-    background-color: #FFCD4A;
+    background-color: #FFD79E;
 
 }
 
 .delete-btn { /*삭제하기 버튼*/
-    background-color: #E5E5E5;
+    background-color: #ededed;
 }
 
 #modal { /*모달 큰 div*/
@@ -280,7 +281,7 @@ body {
     font-family: 'SCoreDream';
     font-size: 1rem;
     border: none;
-    background-color: #FFCD4A;
+    background-color: #FFD79E;
     margin-right: 7%;
     cursor: pointer;
 }
