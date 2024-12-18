@@ -77,7 +77,7 @@
                     <!--⭐⭐여기 컨텐츠 반복문-->
                     {% for board in boards %}
                         <div class="post-block" data-type="{{ board.board_type.type_name }}">
-                            <a href="{% url 'boards:people_board_detail' board.id %}"> <!--⭐여기 url 연결-->
+                            <a href="{% url 'boards:people_board_detail' board.id %}?page=board"> <!--⭐여기 url 연결-->
                                 <div class="post-header">
                                     <div class="user-profile">
                                         <div class="user-img"><img src="{% static 'image/people_profile.png' %}" alt=""></div>

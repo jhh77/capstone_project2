@@ -33,9 +33,9 @@
                 {% for board in boards %}
                     <div class="post-block">
                         <a href="{% if request.user.member_type.type_name == '주민' %}
-                                    {% url 'boards:people_board_detail' board.id %}
+                                    {% url 'boards:people_board_detail' board.id %}?page=myboard
                                  {% else %}
-                                    {% url 'boards:petrol_board_detail' board.id %}
+                                    {% url 'boards:petrol_board_detail' board.id %}?page=myboard
                                 {% endif %}"> <!--⭐여기 url 연결-->
                             <div class="post-header">
                                 <div class="user-profile">

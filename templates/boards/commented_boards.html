@@ -33,9 +33,9 @@
                 {% for board in boards %}
                     <div class="post-block">
                         <a href="{% if board.board_type.id == 1 %}
-                                    {% url 'boards:petrol_board_detail' board.id %}
+                                    {% url 'boards:petrol_board_detail' board.id %}?page=commented
                                  {% else %}
-                                    {% url 'boards:people_board_detail' board.id %}
+                                    {% url 'boards:people_board_detail' board.id %}?page=commented
                                  {% endif %}"> <!--⭐여기 url 연결-->
                             <div class="post-header">
                                 <div class="user-profile">

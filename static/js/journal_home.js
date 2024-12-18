@@ -65,7 +65,7 @@ function choiceDate(newDIV) {
     const year = $('#calYear').text();
     const month = $('#calMonth').text();
 
-    // 해당 날짜의 순찰 일지 ajax로 요청학히
+    // 해당 날짜의 순찰 일지 ajax로 요청하기
     $.ajax({
         url: '/journals/get-journal/',
         method: 'GET',
@@ -74,8 +74,7 @@ function choiceDate(newDIV) {
         },
         success: function(response) {
             // 서버에서 받은 데이터 처리
-            express_journals(response) // 일지 데이터 출력
-            // 여기에 일지를 페이지에 표시하는 코드를 추가하세요
+            express_journals(response) // 일지 데이터 화면에 보이게
         },
         error: function(xhr, status, error) {
             console.error(error);

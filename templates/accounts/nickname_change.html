@@ -26,7 +26,7 @@
 
             <form action="{% url 'accounts:nickname_change' %}" method="post" class="nickname-form"> <!--⭐⭐여기 닉네임 변경 폼-->
                 {% csrf_token %}
-                <input type="text" name="nickname" placeholder="닉네임" maxlength="8"> <!--⭐⭐value 값 유저 닉네임 값으로-->
+                <input type="text" name="nickname" placeholder="닉네임" maxlength="8" required> <!--⭐⭐value 값 유저 닉네임 값으로-->
                 <div>
                     <button type="submit" class="submit-btn">변경</button>
                 </div>

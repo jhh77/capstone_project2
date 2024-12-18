@@ -178,11 +178,14 @@ def petrol_board_detail(request, id):
 
     location = BoardLocation.objects.get(board=board)
     comments = Comment.objects.filter(board=board)
+    page = request.GET.get("page")
+    print(page)
     context = {
         'board': board,
         'location': location,
         'comments': comments,
         'comment_count': comments.count(),
+        'page': page,
     }
     return render(request, 'boards/petrol_board_detail.html', context)
 
@@ -202,6 +205,8 @@ def people_board_detail(request, id):
         form = CommentForm()
 
     comments = Comment.objects.filter(board=board) # 댓글 가져오기
+    page = request.GET.get("page")
+    print(page)
     if board.board_type.id == 2:
         location = BoardLocation.objects.get(board=board)
         context = {
@@ -209,12 +214,14 @@ def people_board_detail(request, id):
             'location': location,
             'comments': comments,
             'comment_count': comments.count(),
+            'page': page,
         }
 
     else: context = {
         'board': board,
         'comments': comments,
         'comment_count': comments.count(),
+        'page': page,
     }
     return render(request, 'boards/people_board_detail.html', context)
 
@@ -324,18 +331,29 @@ def people_board_edit(request, id):
     return render(request, 'boards/people_board_edit.html', context)
 
 
-# 신고글 삭제하기
+# 글 삭제하기
 def board_delete(request, id):
     if request.method == 'POST':
         board = Board.objects.get(id=id)
         type = board.board_type.id
+        page = request.GET.get('page')
         board.image_path.delete(save=False)
         board.delete()
 
         if type == 1:
-            return redirect('boards:petrol_board')
+            if page == 'board':
+                return redirect('boards:petrol_board')
+            elif page == 'myboard':
+                return redirect('boards:my_boards')
+            else:
+                return redirect('boards:commented-boards')
         else:
-            return redirect('boards:people_board')
+            if page == 'board':
+                return redirect('boards:people_board')
+            elif page == 'myboard':
+                return redirect('boards:my_boards')
+            else:
+                return redirect('boards:commented-boards')
 
 
 # 댓글 수정하기
